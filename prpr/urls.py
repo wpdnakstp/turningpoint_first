@@ -18,8 +18,7 @@ from django.urls import path, include
 import hi.views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hi.views.home, name="home"),
-    path('pr/', hi.views.pr, name="pr"),
+    path('', hi.views.pr, name="pr"),
     path('go/', include('hi.urls')),
     path('dd/', hi.views.dd, name="dd"),
     path('calender/', hi.views.calender, name="calender"),

@@ -1,0 +1,27 @@
+nav ul li a{
+    color:white;
+}
+
+.nav-right{
+    float: right;
+}
+
+.nav{
+    clear:left;
+}
+
+.table-cell{
+    margin-top: 200px;
+}
+
+
+@media screen and (max-width:1400px){
+    
+   body{
+       background-color: blueviolet;
+   }
+   #lolo{
+       position: absolute;
+       margin-top: 50px;
+   }
+}

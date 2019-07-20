@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="static/css/test.css">
+
+    <title>Document</title>
+</head>
+<body>
+   
+    <section class="panel home" data-section-name="home" style=" background-image:url('http://www.baemin.com/img/main_02@2x.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;">
+            <div class="inner">
+                <header>
+                        <img src="http://www.baemin.com/img/logo@2x.png" alt="배달의민족"style="
+                        position: absolute;
+                    left:0;
+                    padding-left: 30px;
+                    padding-top: 30px;
+                        ">
+                    <img src="http://www.baemin.com/img/main_text_02@2x.png" alt="따뜻한 라떼 한 잔이 생각날 때"
+                    style="
+                    position: absolute;
+                    left:0;
+                    margin-top: 150px;
+                    padding-left: 30px;">
+                    <img src="http://www.baemin.com/img/scroll@2x.png" alt="스크롤" style="
+                    max-width: 100%;
+                    height: auto;
+                    margin-top: 1000px;
+                    margin-right: 800px;">
+                    
+                <a href="#overview" class="scroll" style="margin-top: 990px;">Scroll for more</a>
+                <a href="https://twitter.com/lukehaas" target="_blank" class="twitter"><img src="https://projects.lukehaas.me/scrollify/images/me.jpeg" width="45" height="45" alt="Twitter pic"><span>Created by @lukehaas</span></a>
+            </div>
+        </section>
+        <div class="section">
+                <div class="content">
+                  <div class="cont-text">
+                    <h2 class="con-txt1 app-cont01-text"><img src="http://www.baemin.com/img/ctn01_text_02@2x.png" alt="바로 그거! 배민에 다 있다"></h2>
+                  </div>
+                  <p class="cont-desc">
+                    3천만 이상이 선택한 배달의민족,<br>
+                    업계 최다 배달가능 업소 보유 중!
+                    <span class="sub-desc">(2017년 11월 기준)</span>
+                  </p>
+                  <div class="animation">
+                    <div class="road">
+                      <img src="http://www.baemin.com/img/img-road@2x.png" alt="배달이">
+                    </div>
+                    <div class="bike">
+                      <img src="http://www.baemin.com/img/img-bike@2x.png" alt="배달이">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+                          <section class="panel methods" data-section-name="methods">
+                <div class="inner">
+                    <footer class="footer section fp-section fp-table active fp-completely" data-anchor="4" style="height: 969px;"><div class="fp-tableCell" style="height: 969px;">
+                        <div class="content bg_footer">
+                          <div class="footer-title">
+                            <h2 class="txt-footer" style="font-family:'배달의민족 도현','궁서체','Arial';"><img src="{% static '/img/ttest.png' %}" alt="" style="width:200px; float:right; margin-right:600px; margin-top:130px">
+                          </div>
+                          <div class="family-link" style="margin-top:100px ; margin-left:450px;">
+                            <ul class="family-link-first-line">
+                              <li><a href="http://www.woowahan.com" target="_blank"><img src="{% static '/img/wooa.png' %}" alt="우아한형제들" style="width:150px; position:relative; float:left; padding:1%;"></a></li>
+                              <li><a href="https://ceo.baemin.com" target="_blank"><img src="{% static '/img/sajang.png' %}" alt="사장님사이트" style="width:150px; position:relative; padding:1%;"></a></li>
+                              <li><a href="http://www.baeminriders.kr" target="_blank"><img src="{% static '/img/link_baera@2x.png'%}" alt="배민라이더스"></a></li>
+                            </ul>
+                            <ul class="family-link-second-line">
+                              <li><a href="http://store.baemin.com/shop/main/index.php?utm_source=baemin.com&amp;utm_medium=referral" target="_blank"><img src="{% static '/img/munbanggu.png' %}" alt="배민문방구" style="width:150px; position:relative; float:left; padding:1%;"></a></li>
+                              <li><a href="http://www.baeminriders.kr/" target="_blank"><img src="{% static '/img/rider.png' %}" alt="라이더채용" style="width:150px; position:relative; padding:1%;"></a></li>
+                            </ul>
+                          </div>
+                          <ul class="footer-sns-list" style="margin-left:450px; margin-bottom:30px">
+                            <li><a title="facebook" href="http://www.facebook.com/smartbaedal/" target="_blank"><img src="{% static '/img/face.png' %}" alt="페이스북" style="width:40px; position:relative; float:left; padding:1%;"></a></li>
+                            <li><a title="instagram" href="http://www.instagram.com/baemin_official/" target="_blank"><img src="{% static '/img/insta.png' %}" alt="인스타그램" style="width:40px; position:relative; float:left; padding:1%;"></a></li>
+                            <li><a title="naver blog" href="http://blog.naver.com/smartbaedal" target="_blank"><img src="{% static '/img/blog.png' %}" alt="네이버블로그" style="width:40px; position:relative; float:left; padding:1%;"></a></li>
+                            <li><a title="youtube" href="https://www.youtube.com/user/smartbaedal2" target="_blank"><img src="{% static '/img/youtube.png' %}" alt="유투브" style="width:40px; position:relative; padding:1%;"></a></li>
+                          </ul>
+                          <div class="company-info" style="margin-left:450px; font-size:90%">
+                            <p class="address">
+                              <span>(주)우아한형제들</span><br>
+                              <span>서울시 송파구 위례성대로 2 장은빌딩 2층</span>
+                            </p>
+                            <p class="business-info">
+                              <span>사업자번호:120-87-65763</span>
+                              <span class="link-business-info">
+                                <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208765763" target="_blank">사업자정보확인</a>
+                              </span><br>
+                              <span>통신판매업: 서울 송파-0515</span>
+                            </p>
+                            <p class="contact">
+                              <span>전자금융분쟁처리</span><br>
+                              <span>대표전화 : 1600-0987</span><span class="ico-bar">|</span><span>팩스 : 050-6050-0400</span><br>
+                              <span class="link-mail">
+                                              <a href="mailto:help@woowahan.com">대표메일 : help@woowahan.com</a>
+                                          </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div></footer>
+                </div>
+            </section>
+
+      <!-- script!! -->
+      <script src="static/js/test.js"></script>
+</body>
+</html>

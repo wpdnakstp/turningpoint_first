@@ -4,6 +4,10 @@ from django.contrib import auth  # auth라는 모듈도 import합니다. 서버�
 from django.core.paginator import Paginator
 from django.utils import timezone
 from django.core.files.storage import FileSystemStorage
+#TurningUser > Model of turningaccounts > other app
+from turningaccounts.models import TurningUser
+#email validation check import re
+import re
 
 # Create your views here.
 
@@ -31,7 +35,7 @@ def userlogin(request):   # userlogin으로 꼭 안하셔도 되고 login등등�
 def signup(request): # 회원가입 함수입니다.
     if request.method == 'POST':   # POST방식일 때, 즉 서버로 데이터가 넘겨졌을 때(사용자가 회원가입 정보를 입력하고 가입하기를 눌렀을 때) 아래 함수를 실행합니다.
         if request.POST['password1'] == request.POST['password2']: # 우리가 '비밀번호'와 '비밀번호 확인' 두 개의 데이터를 받아 이 두 항목이 일치할 때 회원가입을 진행시켜줄거에요!
-            user = User.objects.create_user(username = request.POST['username'], password = request.POST['password1'])
+            user = TurningUser.objects.create_user(username = request.POST['username'], password = request.POST['password1'])
 						# 비밀번호 확인이 되면, 넘어온 회원가입 데이터를 가지고 User모델에 유저 데이터를 생성해줍니다.
             auth.login(request, user) # 그리고 회원가입이 성공적으로 수행된 후에 자동으로 로그인을 한번 해줍니다.
             return redirect('pr')
@@ -39,14 +43,16 @@ def signup(request): # 회원가입 함수입니다.
 
 
 #Custom Model Signup Test 
-def signupTest(request): # 회원가입 함수입니다.
-    if request.method == 'POST':   # POST방식일 때, 즉 서버로 데이터가 넘겨졌을 때(사용자가 회원가입 정보를 입력하고 가입하기를 눌렀을 때) 아래 함수를 실행합니다.
-        if request.POST['password1'] == request.POST['password2']: # 우리가 '비밀번호'와 '비밀번호 확인' 두 개의 데이터를 받아 이 두 항목이 일치할 때 회원가입을 진행시켜줄거에요!
-            user = User.objects.create_user(username = request.POST['username'], password = request.POST['password1'])
-						# 비밀번호 확인이 되면, 넘어온 회원가입 데이터를 가지고 User모델에 유저 데이터를 생성해줍니다.
-            auth.login(request, user) # 그리고 회원가입이 성공적으로 수행된 후에 자동으로 로그인을 한번 해줍니다.
-            return redirect('pr')
-    return render(request, 'signupTest.html') # Post방식이 아닌 get방식일 경우 회원가입창을 띄워줍니다.
+def signupTest(request): 
+    if request.method == 'POST':
+        originPW = request.POST['password1']
+        checkPW = request.POST['password2']
+        userName = request.POST['username']
+        userEmail = request.POST['trEmail']
+        userArmyStatus = request.POST['selectArmy']
+        #for checking email validation
+        emailValidation = re.compile('^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
+    return render(request,'pr.html')
 
 
 

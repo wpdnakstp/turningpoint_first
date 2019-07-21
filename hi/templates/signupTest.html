@@ -34,8 +34,9 @@
     
     <body class="is-preload">
     <div class="">
+        <h1>SignUp Test Page</h1>
         <h1>Sign up!</h1>
-        <form method = "POST" action = "{%url 'signup' %}"> <!-- 위에서 작성한 signup url로 아래 사용자 input들을 post방식으로 넘겨줍니다.-->
+        <form method = "POST" action = "{%url 'signupTest' %}"> <!-- 위에서 작성한 signup url로 아래 사용자 input들을 post방식으로 넘겨줍니다.-->
             <div class="container">
             <div class="row gtr-uniform" style="width:300px;">
                 <div class="row">
@@ -68,17 +69,45 @@
                         <input type="text" name="phonenumber" id="phonenumber" value="" placeholder="Phone Number" />   
                     </div>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-12 col-12-xsmall">
+                    E-mail :
+                    <br>
+                        <input type="text" name="trEmail" id="trEmail" value="" placeholder="E-mail" />   
+                    </div>
+                </div>
                     <br>
                     <br>
                 <div class="row">
                     <div class="col-12">
                         <div class="select">
-                        Sex :
+                        Army Status :
                         <br>
-                            <input type="radio" id="man" name="man"> 
-                            <label for="man">Man</label>
-                            <input type="radio" id="woman" name="woman">
-                            <label for="woman">Woman</label>
+                            <input type="radio" id="army" name="selectArmy"> 
+                            <label for="army">육군</label>
+                            <br>
+                            <input type="radio" id="navy" name="selectArmy">
+                            <label for="navy">해군</label>
+                            <br>
+                            <input type="radio" id="airForce" name="selectArmy"> 
+                            <label for="airForce">공군</label>
+                            <br>
+                            <input type="radio" id="marine" name="selectArmy">
+                            <label for="marine">해병대</label>
+                            <br>
+                            <input type="radio" id="PublicServiceWorker" name="selectArmy"> 
+                            <label for="PublicServiceWorker">사회복무요원</label>
+                            <br>
+                            <input type="radio" id="" name="selectArmy">
+                            <label for="conscriptedPolice">의무경찰</label>
+                            <br>
+                            <input type="radio" id="conscriptedFireFighter" name="selectArmy">
+                            <label for="conscriptedFireFighter">의무소방</label>
+                            <br>
+                            <input type="radio" id="katusa" name="selectArmy"> 
+                            <label for="katusa">카투사</label>
+                            <br>
                         </div>
                     </div>
                 </div>

@@ -45,14 +45,42 @@ def signup(request): # 회원가입 함수입니다.
 #Custom Model Signup Test 
 def signupTest(request): 
     if request.method == 'POST':
+        userNickName = request.POST['nickName']
         originPW = request.POST['password1']
         checkPW = request.POST['password2']
         userName = request.POST['username']
         userEmail = request.POST['trEmail']
         userArmyStatus = request.POST['selectArmy']
+        userPhoneNumb = request.POST.get('phonenumber','')
         #for checking email validation
         emailValidation = re.compile('^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
-    return render(request,'pr.html')
+        #for checking phoneNumber
+        phoneNumb = re.compile('\d{3}-\d{4}-\d{4}')
+        if emailValidation.match(userEmail) == None:
+            return render(request,'signupTest.html',{"error":"올바른 이메일 형식이 아닙니다."})
+        else:
+            if phoneNumb.match(userPhoneNumb) == None:
+                return render(request,'signupTest.html',{"error":"올바른 전화번호 형식이 아닙니다."})
+            if originPW == checkPW:
+                try:
+                    tnUser = TurningUser.objects.get(nickName=userNickName)
+                    return render(request, 'signup.html',{"error":"이미 가입된 닉네임 입니다."})
+                except TurningUser.DoesNotExist:
+                    tnUser = TurningUser.objects.create_user(
+                        userName,
+                        userEmail,
+                        password=originPW,
+                        nickName=userNickName,
+                        tnPhoneNumb=userPhoneNumb
+                    )
+                    auth.login(request,tnUser)
+            else:
+                return render(request,'signupTest.html',{"error":"비밀번호가 같지 않습니다."})
+    else:
+        return render(request,'signupTest.html')
+
+
+    return render(request,'signupTest.html')
 
 
 

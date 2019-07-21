@@ -1,4 +1,10 @@
 {% load staticfiles %}
+{% if error %}
+  <script>
+    alert("{{ error }}")
+  </script>
+{% endif  %}
+
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +53,16 @@
                         <input type="text" name="username" id="username" value="" placeholder="Username" /> <!-- username input입니다 -->
                     </div> 
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-12 col-12-xsmall">
+                    NickName : 
                     <br>
+                        <!-- NickName -->
+                        <input type="text" name="nickName" id="nickName" value="" placeholder="NickName" />
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col-12 col-12-xsmall">
                     Password : 
@@ -66,7 +81,7 @@
                     <div class="col-12 col-12-xsmall">
                     Phone Number :
                     <br>
-                        <input type="text" name="phonenumber" id="phonenumber" value="" placeholder="Phone Number" />   
+                        <input type="tel" name="phonenumber" id="phonenumber" placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
                     </div>
                 </div>
                 <br>

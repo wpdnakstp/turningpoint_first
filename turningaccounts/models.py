@@ -18,7 +18,8 @@ class TurningUser(AbstractUser):
     ("CFF","의무 소방"),
     ("K","카투사"),
   )
+  nickName = models.CharField(max_length=20,default='random')
   #On website for choosing user's army status
   userArmyStatus = models.CharField(max_length=20,choices=ARMY_STATUS,blank=False,default='A')
   #5. Phone Number > default value 'Null'
-  tnPhoneNumb = models.PositiveIntegerField(default=0)
+  tnPhoneNumb = models.CharField(max_length=13,blank=False)

@@ -1,0 +1,7 @@
+{% for free in frees.all %}
+    <div class="container">
+        <h1><a href="{% url 'freedetail' free.id %}">{{ free.title }}</a></h1>
+        <p>{{ free.pub_date }}</p>
+    </div>
+{% endfor %}
+<p><a href="{% url 'freenew' %}">글쓰기</a></p>

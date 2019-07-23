@@ -1,0 +1,7 @@
+{% for develop in develops.all %}
+    <div class="container">
+        <h1><a href="{% url 'developdetail' develop.id %}">{{ develop.title }}</a></h1>
+        <p>{{ develop.pub_date }}</p>
+    </div>
+{% endfor %}
+<p><a href="{% url 'developnew' %}">글쓰기</a></p>

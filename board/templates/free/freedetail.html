@@ -1,0 +1,39 @@
+<div class="container">
+        <h1>{{ free.title }}</h1>
+        <p>{{ free.pub_date }}</p>
+        <p>{{ free.body }}</p>
+        <a href="{% url 'free' %}">돌아가기</a>
+        <a href="{% url 'freeupdate' free.id %}"><input type="button" value="수정하기"></a>
+        <a href="{% url 'freedelete' free.id %}"><input type='button' value="삭제하기"></a>
+    
+        <hr>
+        <div class="comment">
+             <form action="{% url 'freecommentcreate' free_id=free.id %}" method="POST"> <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
+                {% csrf_token %}
+                <input type="text" name="content" placeholder="댓글을 작성해 주세요.">
+                <input type="submit" value="작성하기">
+            </form>
+        </div>
+        <hr>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>날짜</th>
+                    <th>댓글</th>
+            </thead>
+        <tbody>
+            {% for comment in free.comments.all %}
+            <tr>
+                <td>{{ comment.commentdate }}</td>
+                <td>{{ comment.commentbody }}</td>
+            </tr>
+            {% empty %}
+                <p>댓글이 없습니다!</p>
+            {% endfor %}  
+        </tbody>
+        </table>
+    
+    
+    
+        </div>
+    </div>

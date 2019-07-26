@@ -1,0 +1,13 @@
+{% if error %}
+    <script>
+        alert("{{error}}")
+    </script>
+{% endif %}
+
+{% for notice in notices.all %}
+    <div class="container">
+        <h1><a href="{% url 'noticedetail' notice.id %}">{{ notice.title }}</a></h1>
+        <p>{{ notice.pub_date }}</p>
+    </div>
+{% endfor %}
+<p><a href="{% url 'noticenew' %}">글쓰기</a></p>

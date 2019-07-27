@@ -26,6 +26,7 @@ def noticenew(request):
 
 def noticecreate(request):
     notice = Notice()
+    #tnUser라는 테이블 값에 현재 request를 보내는 User값을 넣어줌
     notice.tnUser = request.user
     notice.title = request.GET['title']
     notice.body = request.GET['body']
@@ -51,9 +52,10 @@ def noticeupdatesend(request, notice_id):
     return redirect('/board/notice/' + str(noticeupdatesend.id)) 
 
 def noticecommentcreate(request, notice_id):
-    notice=get_object_or_404(Notice, pk=notice_id) # 부모클래스의 아이디값을 가져와야한다 - 부모클래스에 종속시켜야 하기 때문에
+    notice=get_object_or_404(Notice, pk=notice_id) # 부모클래스의 아이디값을 가져와야한다 - 부모클래스에 종속시켜야 하기 때문에 
     content = request.POST.get('content') # POST['comment'] 라고 하면 안된다!
-    Noticecomment.objects.create(notice=notice,commentbody=content) # 새롭게 모델 안에 정보를 만든다 - 여기서 좌변은 models 안에 있는거, 우변은 def 안에 있는거
+    #tnUser라는 테이블 값에 현재 request를 보내는 User값을 넣어줌
+    Noticecomment.objects.create(notice=notice,commentbody=content,noticeCommentUser=request.user) # 새롭게 모델 안에 정보를 만든다 - 여기서 좌변은 models 안에 있는거, 우변은 def 안에 있는거
     return redirect('/board/notice/' + str(notice.id)) # 저 문자열 '/detail/<int:board.id>'라고 하면 안된다! 그냥 저렇게 하자
 
 

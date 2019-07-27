@@ -46,6 +46,9 @@
                 <li><a href="#experience">experience</a></li>
                 <li><a href="#projects">projects</a></li>
                 <li><a href="#contact">contact</a></li>
+                <li><a href="{% url 'notice' %}">공지사항</a></li>
+                <li><a href="{% url 'free' %}">자유게시판</a></li>
+                <li><a href="{% url 'develop' %}">자기계발</a></li>
 <!-- 로그인시  -->
                 {% if user.is_authenticated %}
                                         

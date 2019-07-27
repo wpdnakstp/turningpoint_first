@@ -5,10 +5,57 @@
 
 {% endif %}
 
-{% for notice in notices.all %}
+
+<table class='table'>
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+            <th>조회수</th>
+            <th>추천</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if notices %}
+            {% for post in posts %}
+                <tr>
+                <td>{{ post.id }}</td>
+                <td><a href="{% url 'noticedetail' post.id %}">{{ post.title }}</a></td>
+                <td>{{ post.tnUser }}</td>
+                <td>{{ post.pub_date }}</td>
+                <td>{{ post.postHit }}</td>
+                <td>{{ post.id }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <p>글이 존재하지 않습니다!</p>
+        {% endif %}
+    </tbody>
+</table>
+<hr>
+
+
+<!-- {% for notice in notices.all %}
     <div class="container">
         <h1><a href="{% url 'noticedetail' notice.id %}">{{ notice.title }}</a></h1>
         <p>{{ notice.pub_date }}</p>
     </div>
-{% endfor %}
+{% endfor %} -->
+
+{% if posts.has_previous %}
+    <a href="?page=1"><strong>&nbsp;</strong></a>
+    <a href="?page={{posts.previous_page_number}}"><strong><&nbsp;&nbsp;</strong></a>
+{% endif %}
+
+<span>{{posts.number}}</span>
+<span>of</span>
+<span>{{posts.paginator.num_pages}}&nbsp;&nbsp;</span>
+
+{% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}"><strong>>&nbsp;</strong></a>
+    <a href="?page={{posts.paginator.num_pages}}"><strong>>></strong></a>
+{% endif %}
+
 <p><a href="{% url 'noticenew' %}">글쓰기</a></p>

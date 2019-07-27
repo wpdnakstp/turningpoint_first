@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-
+from django.core.paginator import Paginator
 from .models import Notice, Noticecomment, Free, Freecomment, Develop, Developcomment
 from turningaccounts.models import TurningUser
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -10,7 +11,11 @@ from turningaccounts.models import TurningUser
 
 def notice(request):
     notices = Notice.objects
-    return render(request, 'notice/notice.html',{'notices' : notices})
+    notices_list = Notice.objects.all()
+    paginator = Paginator(notices_list,15)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'notice/notice.html', {'notices' : notices,'posts' : posts})
 
 def noticedetail(request, notice_id):
     notice_detail = get_object_or_404(Notice, pk=notice_id)
@@ -210,3 +215,24 @@ def developcommentcreate(request, develop_id):
     content = request.POST.get('content') # POST['comment'] 라고 하면 안된다!
     Developcomment.objects.create(develop=develop,commentbody=content,tnDevelopCommentUser=request.user) # 새롭게 모델 안에 정보를 만든다 - 여기서 좌변은 models 안에 있는거, 우변은 def 안에 있는거
     return redirect('/board/develop/' + str(develop.id)) # 저 문자열 '/detail/<int:board.id>'라고 하면 안된다! 그냥 저렇게 하자
+
+
+
+
+
+
+# # 좋아요
+# @login_required
+# def like(request,notice_id):
+#     post=get_object_or_404(Notice, pk = notice_id)
+#     if Notice.objects.filter(userLike=request.user.userLike).exists():
+#       post.likePoint.remove(request.user)
+#     else:
+#         post.likePoint.add(request.user)
+#     post.save()
+#     return redirect('/board/notice/'+str(notice_id))
+#     # return render(request,'notice/test.html', {"set":post.userLike})
+
+
+# def test(request):
+#   return render(request,'notice/test.html')

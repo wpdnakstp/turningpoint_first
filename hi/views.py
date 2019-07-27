@@ -52,6 +52,7 @@ def signupTest(request):
         userEmail = request.POST['trEmail']
         userArmyStatus = request.POST['selectArmy']
         userPhoneNumb = request.POST.get('phonenumber','')
+        userLikeName = userName
         #for checking email validation
         emailValidation = re.compile('^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
         #for checking phoneNumber
@@ -71,7 +72,8 @@ def signupTest(request):
                         userEmail,
                         password=originPW,
                         nickName=userNickName,
-                        tnPhoneNumb=userPhoneNumb
+                        tnPhoneNumb=userPhoneNumb,
+                        userLike = userLikeName
                     )
                     auth.login(request,tnUser)
                     return redirect('pr')

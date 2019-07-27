@@ -1,11 +1,20 @@
 <div class="container">
         <h1>{{ notice.title }}</h1>
         <p>{{ notice.pub_date }}</p>
+        <p>작성자 : {{ notice.tnUser}} 조회수 : {{ notice.postHit }}</p>
         <p>{{ notice.body }}</p>
-        <p>{{ notice.tnUser}}</p>
+        <input type="hidden" value="{{ notice.update_counter }}">
         <a href="{% url 'notice' %}">돌아가기</a>
         <a href="{% url 'noticeupdate' notice.id %}"><input type="button" value="수정하기"></a>
         <a href="{% url 'noticedelete' notice.id %}"><input type='button' value="삭제하기"></a>
+
+        <!-- 좋아요 버튼 구현 실패 -->
+        <!-- <form action="" method="get">
+
+                <input type="hidden" name = 'like' value="{{notice.user}}">
+                <button type="submit">좋아요</button>
+            
+        </form> -->
     
         <hr>
         <div class="comment">

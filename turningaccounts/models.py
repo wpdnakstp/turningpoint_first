@@ -23,3 +23,4 @@ class TurningUser(AbstractUser):
   userArmyStatus = models.CharField(max_length=20,choices=ARMY_STATUS,blank=False,default='A')
   #5. Phone Number > default value 'Null'
   tnPhoneNumb = models.CharField(max_length=13,blank=False)
+  # userLike = models.CharField(max_length=30,blank=True)

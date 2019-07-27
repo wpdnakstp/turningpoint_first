@@ -12,6 +12,8 @@ urlpatterns = [
     path('notice/update/<int:notice_id>', views.noticeupdate, name='noticeupdate'),
     path('notice/updatesend/<int:notice_id>', views.noticeupdatesend, name='noticeupdatesend'),
     path('notice/<int:notice_id>/commentcreate', views.noticecommentcreate, name='noticecommentcreate'),
+    # path('notice/<int:notice_id>/like', views.like, name="noticelike"),
+    # path('notice/test',views.test,name="test"),
 
     # 자유게시판 - Free
     path('free/', views.free, name="free" ),

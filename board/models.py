@@ -8,9 +8,17 @@ class Notice(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
+    postHit=models.PositiveIntegerField(default=0) # 조회수 체크 - 정수를 인수로 받음
+    # like_count = models.PositiveIntegerField(default=0)
+    # userLike = models.CharField(max_length=30,blank=True)
+    # likePoint = models.ManyToManyField(TurningUser, blank=True)
 
     def __str__(self):
         return self.title
+    
+    def update_counter(self):
+        self.postHit = self.postHit + 1
+        self.save()
 
 class Noticecomment(models.Model):
     #글의 원주인을 정해주기 위해서 ForeignKey를 사용하여 TurningUser모델의 User값을 가지고 옴
@@ -32,6 +40,7 @@ class Free(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
+    postHit=models.PositiveIntegerField(default=0) # 조회수 체크 - 정수를 인수로 받음
 
     def __str__(self):
         return self.title
@@ -55,6 +64,7 @@ class Develop(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
+    postHit=models.PositiveIntegerField(default=0) # 조회수 체크 - 정수를 인수로 받음
 
     def __str__(self):
         return self.title

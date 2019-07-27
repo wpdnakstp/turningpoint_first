@@ -64,7 +64,7 @@ def signupTest(request):
             if originPW == checkPW:
                 try:
                     tnUser = TurningUser.objects.get(nickName=userNickName)
-                    return render(request, 'signup.html',{"error":"이미 가입된 닉네임 입니다."})
+                    return render(request, 'signupTest.html',{"error":"이미 가입된 닉네임 입니다."})
                 except TurningUser.DoesNotExist:
                     tnUser = TurningUser.objects.create_user(
                         userName,
@@ -74,6 +74,7 @@ def signupTest(request):
                         tnPhoneNumb=userPhoneNumb
                     )
                     auth.login(request,tnUser)
+                    return redirect('pr')
             else:
                 return render(request,'signupTest.html',{"error":"비밀번호가 같지 않습니다."})
     else:

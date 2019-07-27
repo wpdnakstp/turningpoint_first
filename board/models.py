@@ -32,9 +32,16 @@ class Free(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
+    #좋아요를 알기 위해서 다대다 모델을 걸어줍니다.
+    userLikeName = models.ManyToManyField(TurningUser,related_name='likes')
+    
 
     def __str__(self):
         return self.title
+
+    @property
+    def totalLike(self):
+        return self.userLikeName.count()
 
 class Freecomment(models.Model):
     tnFreeCommentUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,related_name='tnFreeCommentUser',null=True)

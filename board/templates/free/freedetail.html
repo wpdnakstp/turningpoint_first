@@ -35,7 +35,11 @@
             {% endfor %}  
         </tbody>
         </table>
-    
+        <form action="{% url 'freeLike' free_id=free.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="좋아요♥">
+        </form>
+        <h1>{{free.totalLike}}</h1>
     
     
         </div>

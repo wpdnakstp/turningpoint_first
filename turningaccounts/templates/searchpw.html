@@ -1,0 +1,19 @@
+<h1>쿼리셋 비밀번호 테스트</h1>
+
+{% for filterName in testQuerySet %}
+  username: {{filterName.username}}
+  <br>
+  email: {{filterName.email}}
+  <br>
+  nickName: {{filterName.nickName}}
+  <br>
+
+{% endfor %}
+<form action="#" method="POST">
+  {% csrf_token %}
+  변경할 비밀번호: <input type="text" placeholder="비밀번호를 입력해주세요." name="fgChangePW">
+  <br>
+  비밀번호 확인: <input type="text" placeholder="비밀번호를 다시 입력해주세요." name="fgReChangePW">
+  <br>
+  <input type="submit" value="비밀번호 바꾸기">
+</form>

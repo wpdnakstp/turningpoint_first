@@ -24,5 +24,7 @@ urlpatterns = [
     path('calender/', hi.views.calender, name="calender"),
     path('mypage/', hi.views.mypage, name="mypage"),
     path('board/', include('board.urls')), # board쪽으로 url 연결
+    #turningaccounts url
+    path('turningaccounts/',include('turningaccounts.urls')),
 
 ]

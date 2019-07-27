@@ -25,7 +25,7 @@ def noticenew(request):
     error = "권한이 없습니다."
     # return render(request,"notice/notice.html",{"error":"권한이 없습니다."})
     return render(request,'notice/notice.html',{"error":error,"notices":notices})
-  
+
 
 def noticecreate(request):
     notice = Notice()
@@ -48,16 +48,16 @@ def noticedelete(request, notice_id):
       notice_delete.delete()
       return redirect('/board/notice/')
     else:
-      return redirect('/board/notice/'+str(notice_id))  
+      return redirect('/board/notice/'+str(notice_id))
       # return render(request,'notice/notice.html',{"error":"id값이 다릅니다."} )
-    
+
 
 def noticeupdate(request,notice_id):
     notice_update=get_object_or_404(Notice,pk=notice_id)
     nowUser = request.user
     realUser = notice_update.tnUser
     #유저의 아이디값이 같아야 수정할 수 있도록 바꿈
-    if nowUser == realUser:  
+    if nowUser == realUser:
       return render(request,'notice/noticeupdate.html',{"noticeupdate":notice_update})
     else:
       return redirect('/board/notice/'+str(notice_id))
@@ -69,11 +69,11 @@ def noticeupdatesend(request, notice_id):
     noticeupdatesend.body=request.GET['updatebody']
     noticeupdatesend.pub_date=timezone.datetime.now() # 수정하면 그 시간으로 변경
     noticeupdatesend.save()
-    return redirect('/board/notice/' + str(noticeupdatesend.id)) 
+    return redirect('/board/notice/' + str(noticeupdatesend.id))
 
 def noticecommentcreate(request, notice_id):
-    notice=get_object_or_404(Notice, pk=notice_id) # 부모클래스의 아이디값을 가져와야한다 - 부모클래스에 종속시켜야 하기 때문에 
-    
+    notice=get_object_or_404(Notice, pk=notice_id) # 부모클래스의 아이디값을 가져와야한다 - 부모클래스에 종속시켜야 하기 때문에
+
     content = request.POST.get('content') # POST['comment'] 라고 하면 안된다!
     #tnUser라는 테이블 값에 현재 request를 보내는 User값을 넣어줌
     Noticecomment.objects.create(notice=notice,commentbody=content,noticeCommentUser=request.user) # 새롭게 모델 안에 정보를 만든다 - 여기서 좌변은 models 안에 있는거, 우변은 def 안에 있는거
@@ -97,7 +97,30 @@ def freenew(request):
     else:
       return render(request,"free/free.html",{"error":"로그인이 필요합니다."})
 
-    
+#좋아요 기능 구현
+def freeLike(request,free_id):
+  #POST 형식일 때
+  if request.method=="POST":
+    #현재 user 상태
+    user = request.user
+    #free라는 변수에, Free 모델의 free_id값을 pk로 가지는 queryset 저장
+    free = Free.objects.get(pk=free_id)
+    #테스트용 free class의 totalLike 함수 불러오기
+    aaa = free.totalLike
+    #만약 Free 모델의 userLikeName 항목에서 filter값이 id=user.id값이 존재한다면
+    #user.id -> 각 유저모델이 만들어질때, 발생하는 특정 값
+    if free.userLikeName.filter(id=user.id).exists():
+      #Free 모델의 다대다 함수에서 user를 삭제 > 빼기
+      free.userLikeName.remove(user)
+      error = "좋아요를 취소합니다."
+      return redirect('/board/free/'+str(free_id))
+      # return render(request,'free/ttest.html',{"message":error,"aaa":aaa})
+    else:
+      #만약 Free User model에서 다대다 관계에 해당 user값이 없으면 queryset에 추가할 것
+      free.userLikeName.add(user)
+      error = "좋아요를 누릅니다."
+      # return render(request,'free/ttest.html',{"message":error,"aaa":aaa})
+      return redirect('/board/free/'+str(free_id))
 
 def freecreate(request):
     free = Free()
@@ -120,7 +143,7 @@ def freedelete(request, free_id):
     else:
       return redirect('/board/free/'+str(free_id))
 
-    
+
 
 def freeupdate(request,free_id):
   #유저값 확인 후 수정 가능
@@ -132,7 +155,7 @@ def freeupdate(request,free_id):
     else:
       return redirect('/board/free/'+str(free_id))
 
-    
+
 
 def freeupdatesend(request, free_id):
     freeupdatesend=get_object_or_404(Free,pk=free_id)
@@ -165,7 +188,7 @@ def developnew(request):
     else:
       return render(request,'develop/develop.html',{"error":"로그인이 필요합니다."})
 
-    
+
 
 def developcreate(request):
     develop = Develop()
@@ -210,3 +233,9 @@ def developcommentcreate(request, develop_id):
     content = request.POST.get('content') # POST['comment'] 라고 하면 안된다!
     Developcomment.objects.create(develop=develop,commentbody=content,tnDevelopCommentUser=request.user) # 새롭게 모델 안에 정보를 만든다 - 여기서 좌변은 models 안에 있는거, 우변은 def 안에 있는거
     return redirect('/board/develop/' + str(develop.id)) # 저 문자열 '/detail/<int:board.id>'라고 하면 안된다! 그냥 저렇게 하자
+
+
+
+def ttest(request):
+  return render(request,"free/ttest.html")
+

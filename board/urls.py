@@ -22,7 +22,8 @@ urlpatterns = [
     path('free/update/<int:free_id>', views.freeupdate, name='freeupdate'),
     path('free/updatesend/<int:free_id>', views.freeupdatesend, name='freeupdatesend'),
     path('free/<int:free_id>/commentcreate', views.freecommentcreate, name='freecommentcreate'),
-
+    path('free/<int:free_id>/freeLike',views.freeLike,name="freeLike"),
+    path('free/ttest',views.ttest,name="ttest"),
     # 자기계발게시판 - Develop
     path('develop/', views.develop, name="develop" ),
     path('develop/<int:develop_id>', views.developdetail, name="developdetail"),

@@ -130,7 +130,7 @@ def freeupdate(request,free_id):
     if nowUser == realUser:
       return render(request,'free/freeupdate.html',{"freeupdate":free_update})
     else:
-      return redirect('board/free/'+str(free_id))
+      return redirect('/board/free/'+str(free_id))
 
     
 

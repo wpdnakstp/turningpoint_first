@@ -2,6 +2,7 @@
         <h1>{{ free.title }}</h1>
         <p>{{ free.pub_date }}</p>
         <p>{{ free.body }}</p>
+        <p>{{ free.tnUser }}</p>
         <a href="{% url 'free' %}">돌아가기</a>
         <a href="{% url 'freeupdate' free.id %}"><input type="button" value="수정하기"></a>
         <a href="{% url 'freedelete' free.id %}"><input type='button' value="삭제하기"></a>
@@ -20,12 +21,14 @@
                 <tr>
                     <th>날짜</th>
                     <th>댓글</th>
+                    <th>작성자</th>
             </thead>
         <tbody>
             {% for comment in free.comments.all %}
             <tr>
                 <td>{{ comment.commentdate }}</td>
                 <td>{{ comment.commentbody }}</td>
+                <td>{{ comment.tnFreeCommentUser }}</td>
             </tr>
             {% empty %}
                 <p>댓글이 없습니다!</p>

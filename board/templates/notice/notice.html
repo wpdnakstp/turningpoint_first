@@ -1,3 +1,10 @@
+{% if error %}
+<script>
+    alert("{{error}},{{tnUser}},{{nowUser}}")
+</script>
+
+{% endif %}
+
 {% for notice in notices.all %}
     <div class="container">
         <h1><a href="{% url 'noticedetail' notice.id %}">{{ notice.title }}</a></h1>

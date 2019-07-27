@@ -23,7 +23,6 @@ urlpatterns = [
     path('dd/', hi.views.dd, name="dd"),
     path('calender/', hi.views.calender, name="calender"),
     path('mypage/', hi.views.mypage, name="mypage"),
-
     path('board/', include('board.urls')), # board쪽으로 url 연결
 
 ]

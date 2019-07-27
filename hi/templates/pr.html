@@ -46,6 +46,9 @@
                 <li><a href="#experience">experience</a></li>
                 <li><a href="#projects">projects</a></li>
                 <li><a href="#contact">contact</a></li>
+                <li><a href="{% url 'notice' %}">공지사항</a></li>
+                <li><a href="{% url 'free' %}">자유게시판</a></li>
+                <li><a href="{% url 'develop' %}">자기계발</a></li>
 <!-- 로그인시  -->
                 {% if user.is_authenticated %}
                                         
@@ -56,7 +59,7 @@
                                         <li>
                                                 <a href="{% url 'logout' %}">logout</a>
                                             </li>
-                                            <li><a href="{% url 'signup' %}">signup</a></li>
+                                            <li><a href="{% url 'signupTest' %}">signup</a></li>
                                         </ul>
 
                                         
@@ -65,7 +68,7 @@
 
                 <ul style="padding:0px; margin:0px; position:absolute; right:20px; top:20px; ">
                     <li><a href="{% url 'login' %}">login</a></li>
-                    <li><a href="{% url 'signup' %}">signup</a></li>
+                    <li><a href="{% url 'signupTest' %}">signup</a></li>
                 </ul>
                {% endif %}
 
@@ -125,7 +128,7 @@
         <div class="container">
             <div class="col-md-12">
                 <h4>02</h4>
-                <h1 class="size-50">My <br /> Experience</h1>
+                <h1 class="size-50">My <br /> <a href ="{% url 'free' %}">글쓰기</a></h1>
                 <div class="h-50"></div>
             </div>
             <div class="col-md-12">

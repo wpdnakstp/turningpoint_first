@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     'turningaccounts.apps.TurningaccountsConfig',
 ]
 
+#비밀번호 찾기 email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

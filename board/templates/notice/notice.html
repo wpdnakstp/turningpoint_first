@@ -1,7 +1,8 @@
 {% if error %}
-    <script>
-        alert("{{error}}")
-    </script>
+<script>
+    alert("{{error}},{{tnUser}},{{nowUser}}")
+</script>
+
 {% endif %}
 
 {% for notice in notices.all %}
@@ -11,3 +12,4 @@
     </div>
 {% endfor %}
 <p><a href="{% url 'noticenew' %}">글쓰기</a></p>
+<p><a href="{% url 'pr' %}">홈으로</a></p>

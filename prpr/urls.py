@@ -26,5 +26,6 @@ urlpatterns = [
     path('board/', include('board.urls')), # board쪽으로 url 연결
     #turningaccounts url
     path('turningaccounts/',include('turningaccounts.urls')),
+    path('cal/', include('cal.urls'))
 
 ]

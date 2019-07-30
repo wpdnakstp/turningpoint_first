@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'cal.apps.CalConfig',
     'hi.apps.HiConfig',
     'board.apps.BoardConfig',
     'django.contrib.admin',

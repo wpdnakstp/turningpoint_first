@@ -1,0 +1,242 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/main2.css' %}">
+
+  <title>Django Calendar App</title>
+  <style>
+    <!-- 여기부터 아래 테스트용 -->
+
+    * {
+      outline:none;
+        border:none;
+        margin:0px;
+        padding:0px;
+        font-family:Courier, monospace;
+    }
+    body {
+  background-color: whitesmoke;  }
+    #paper {
+        color:black;
+        font-size:20px;
+        width: 800px;
+        margin-top: 70px;
+        margin-right: 30px;
+    }
+    #margin {
+        margin-left:-66px;
+        margin-bottom:20px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none; 
+        color: black;
+    }
+    #text {
+        width:800px;
+        height: 500px;
+        overflow:hidden;
+        background-color:#FFF;
+        color:  black;
+        font-family:Courier, monospace;
+        font-weight:normal;
+        font-size:15px;
+        resize:none;
+        line-height:30px;
+        padding-left:50px;
+        padding-right:50px;
+        padding-top:45px;
+        padding-bottom:34px;
+        <!-- background-image:url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png); -->
+        background-repeat:repeat-y, repeat; repeat-r;
+        -webkit-border-radius:12px;
+        background-image: cover;
+  
+        border-radius:12px;
+        -webkit-box-shadow: 0px 2px 14px #000;
+        box-shadow: 0px 2px 14px #000;
+        border-top:1px solid #FFF;
+        border-bottom:1px solid #FFF;
+        margin: 0 auto;
+
+    }
+    #title {
+        background-color:transparent;
+        border-bottom:3px solid #FFF;
+        color:#FFF;
+        font-size:20px;
+        font-family:Courier, monospace;
+        height:28px;
+        font-weight:bold;
+        width:220px;
+    }
+    #button {
+        cursor:pointer;
+        margin-top:5px;
+        float:right;
+        height:40px;
+        padding-left:24px;
+        padding-right:24px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:bold;
+        font-size:20px;
+        color: black;
+        text-shadow: 0px -1px 0px #000000;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        border-top:1px solid #FFF;
+        -webkit-box-shadow: 0px 2px 14px #000;
+        box-shadow: 0px 2px 14px #000;
+        background-color: white;
+        background-repeat:repeat-x;
+        padding-top: 5px;
+    }
+    #button:active {
+        zoom: 1;
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+    }
+    #button:focus {
+        zoom: 1;
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+    }
+    #wrapper {
+        width:800px;
+        height:auto;
+        margin-top:24px;
+        margin-bottom:100px;
+        margin: 24px auto 100px;
+    }
+    .navbar_data{
+      position: absolute;
+      top: 5%;
+      right: 0;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    .navbar ul li{
+      display: inline-block;
+      margin-right: 35.5px;
+      color: #323232;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    .navbar_link{
+        text-decoration: none;
+    }
+    #title{
+        display: inline-block;
+        width: 700px;
+        margin-left: 15px;
+        color: black;
+    }
+    .diary_title{
+        position: absolute;
+        margin: 0 auto;
+        top: 0%;
+        left: 50%;
+    }
+    #main{
+        margin-top: 100px;
+
+    }
+    body{
+     
+    }
+    .left_content{
+      margin-left: 300px;
+    }
+    <!-- 여까지 테스트임 -->
+    body{
+      color:brown;
+    }
+    tr th{
+      color:rgb(98, 155, 41);
+    }
+    tr td{
+      color: black;
+    }
+    table{
+      border-color: burlywood; !important
+    }
+    tbody tr{
+      border-width: 10px;
+      border-color:chocolate;
+    }
+  </style>
+</head>
+<body>
+    <div id="header">
+        
+        <div class="top">
+
+            <!-- Logo -->
+                <div id="logo">
+                    <span class="image avatar48"><img src="{% static 'img/avatar.jpg' %}" alt="" /></span>
+                    <h1 id="title">Jane Doe</h1>
+                    <p>Hyperspace Engineer</p>
+                </div>
+
+            <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
+                        <li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
+                        <li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+                        <li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
+                    </ul>
+                </nav>
+
+        </div>
+
+        <div class="bottom">
+
+            <!-- Social Icons -->
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+                    <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+
+        </div>
+
+    </div>
+<div class="left_content">
+  <h1 class="title">{% block title %}{% endblock %}</h1>
+  <hr>
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  {% block script %}
+  {% endblock %}
+
+</div>
+</body>
+</html>

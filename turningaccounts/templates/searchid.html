@@ -1,0 +1,9 @@
+<h1>쿼리셋 테스트</h1>
+
+{% for filterName in testQuerySet %}
+  username: {{filterName.username}}
+  <br>
+  email: {{filterName.email}}
+  <br>
+  nickName: {{filterName.nickName}}
+{% endfor %}

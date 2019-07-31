@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'cal.apps.CalConfig',
     'hi.apps.HiConfig',
     'board.apps.BoardConfig',
     'django.contrib.admin',
@@ -52,6 +53,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'turningaccounts.apps.TurningaccountsConfig',
 ]
+
+#비밀번호 찾기 email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

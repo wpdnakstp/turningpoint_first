@@ -2,6 +2,7 @@
     <h1>{{ develop.title }}</h1>
     <p>{{ develop.pub_date }}</p>
     <p>{{ develop.body }}</p>
+    <p>{{ develop.tnUser }}</p>
     <a href="{% url 'develop' %}">돌아가기</a>
     <a href="{% url 'developupdate' develop.id %}"><input type="button" value="수정하기"></a>
     <a href="{% url 'developdelete' develop.id %}"><input type='button' value="삭제하기"></a>
@@ -26,6 +27,7 @@
         <tr>
             <td>{{ comment.commentdate }}</td>
             <td>{{ comment.commentbody }}</td>
+            <td>{{ comment.tnDevelopCommentUser }}</td>
         </tr>
         {% empty %}
             <p>댓글이 없습니다!</p>

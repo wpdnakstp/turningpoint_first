@@ -42,6 +42,7 @@
         <h1><a href="{% url 'noticedetail' notice.id %}">{{ notice.title }}</a></h1>
         <p>{{ notice.pub_date }}</p>
     </div>
+<<<<<<< HEAD
 {% endfor %} -->
 
 {% if posts.has_previous %}
@@ -59,3 +60,8 @@
 {% endif %}
 
 <p><a href="{% url 'noticenew' %}">글쓰기</a></p>
+=======
+{% endfor %}
+<p><a href="{% url 'noticenew' %}">글쓰기</a></p>
+<p><a href="{% url 'pr' %}">홈으로</a></p>
+>>>>>>> 42fb9d8e26d7005896655d87850aba1ee5a1a61a

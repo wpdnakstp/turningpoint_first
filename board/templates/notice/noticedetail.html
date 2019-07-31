@@ -8,13 +8,12 @@
         <a href="{% url 'noticeupdate' notice.id %}"><input type="button" value="수정하기"></a>
         <a href="{% url 'noticedelete' notice.id %}"><input type='button' value="삭제하기"></a>
 
-        <!-- 좋아요 버튼 구현 실패 -->
-        <!-- <form action="" method="get">
+        <form action="" method="get">
 
                 <input type="hidden" name = 'like' value="{{notice.user}}">
                 <button type="submit">좋아요</button>
             
-        </form> -->
+        </form>
     
         <hr>
         <div class="comment">

@@ -40,13 +40,10 @@ class Free(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
-<<<<<<< HEAD
     postHit=models.PositiveIntegerField(default=0) # 조회수 체크 - 정수를 인수로 받음
-=======
     #좋아요를 알기 위해서 다대다 모델을 걸어줍니다.
     userLikeName = models.ManyToManyField(TurningUser,related_name='likes')
     
->>>>>>> 42fb9d8e26d7005896655d87850aba1ee5a1a61a
 
     def __str__(self):
         return self.title

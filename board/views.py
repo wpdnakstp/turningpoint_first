@@ -241,7 +241,6 @@ def developcommentcreate(request, develop_id):
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -260,8 +259,7 @@ def developcommentcreate(request, develop_id):
 
 # def test(request):
 #   return render(request,'notice/test.html')
-=======
+
 def ttest(request):
   return render(request,"free/ttest.html")
 
->>>>>>> 42fb9d8e26d7005896655d87850aba1ee5a1a61a

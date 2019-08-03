@@ -41,11 +41,12 @@
                     <h2 class="title">터닝포인트</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" action = "{%url 'signup_ok' %}" >
+                            {% csrf_token %} <!--사이트간 위조 방지 토큰을 넣어주고-->
                         <div class="form-row">
                             <div class="name">아이디</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" id="uid" name="full_name"style="width: 60%;">
+                                <input class="input--style-6" type="text" id="uid" name="username"style="width: 60%;">
                                 <input class="input--style-6" type="button" value="중복검사" style="width: 30%; " onclick="checkid();" />
                                 <input type="hidden" value="0" name="chs" />
                             </div>
@@ -53,13 +54,13 @@
                         <div class="form-row">
                             <div class="name">비밀번호</div>
                             <div class="value">
-                                <input class="input--style-6" type="password" name="full_name">
+                                <input class="input--style-6" type="password" name="password1">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">비밀번호 재확인</div>
                             <div class="value">
-                                <input class="input--style-6" type="password" name="full_name">
+                                <input class="input--style-6" type="password1" name="password2">
                             </div>
                         </div>
                         <div class="form-row">
@@ -248,7 +249,7 @@
                                 <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
                 <div class="card-footer">
                     <button class="btn btn--radius-2 btn--blue-2" type="submit">회원가입</button>
@@ -256,7 +257,7 @@
             </div>
         </div>
     </div>
-
+</form>
     <!-- Jquery JS-->
     <script src="vendor/jquery/jquery.min.js"></script>
 

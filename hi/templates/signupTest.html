@@ -1,137 +1,93 @@
-{% load staticfiles %}
-{% if error %}
-  <script>
-    alert("{{ error }}")
-  </script>
-{% endif  %}
+*{margin:0px; padding:0px; font-family:Helvetica, Arial, sans-serif;}
 
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 26px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size:16px;
+}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Elements - Editorial by HTML5 UP</title>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="{% static 'blog/assets/css/main.css' %}">
-        <style>
-            body {
-                margin-top: 4%;
-                margin-left: 40%; 
-                margin-right: 40%;
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 26px;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    font-size:20px;
+}
+button:hover {
+    opacity: 0.8;
+}
 
-                width: 50%;
-                display: block;
-            }
-            #button {
-                margin-left: 15%;
-                margin-right: 15%;
-            }
-            h1 {
-                margin: 5%;
-                margin-left: 7%;
-            }
-            .container {
-                margin-left : 7%;
-            }
- 
-        </style>
-    </head>
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+.avatar {
+    width: 200px;
+    height:200px;
+    border-radius: 50%;
+}
 
-    
-    <body class="is-preload">
-    <div class="">
-        <h1>SignUp Test Page</h1>
-        <h1>Sign up!</h1>
-        <form method = "POST" action = "{%url 'signupTest' %}"> <!-- 위에서 작성한 signup url로 아래 사용자 input들을 post방식으로 넘겨줍니다.-->
-            <div class="container">
-            <div class="row gtr-uniform" style="width:300px;">
-                <div class="row">
-                    <div class="col-12 col-12-xsmall">
-                    {% csrf_token %} <!--사이트간 위조 방지 토큰을 넣어주고-->
-                    Username :  
-                    <br>
-                        <input type="text" name="username" id="username" value="" placeholder="Username" /> <!-- username input입니다 -->
-                    </div> 
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-12 col-12-xsmall">
-                    NickName : 
-                    <br>
-                        <!-- NickName -->
-                        <input type="text" name="nickName" id="nickName" value="" placeholder="NickName" />
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-12 col-12-xsmall">
-                    Password : 
-                    <br>
-                        <input type="password" name="password1" id="password1" value="" placeholder="Password" /> <!-- password를 한번 받구요 -->
-                    </div>
-                </div>
-                    <br>
-                    <div class="col-8 col-12-xsmall">
-                    Confirm Password :
-                    <br>
-                        <input type="password" name="password2" id="password2" value="" placeholder="Confirm Password" /> <!-- 확인을 위해 password를 한번 더 받습니다 -->
-                    </div>
-                    <br>
-                <div class="row">
-                    <div class="col-12 col-12-xsmall">
-                    Phone Number :
-                    <br>
-                        <input type="tel" name="phonenumber" id="phonenumber" placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-12 col-12-xsmall">
-                    E-mail :
-                    <br>
-                        <input type="text" name="trEmail" id="trEmail" value="" placeholder="E-mail" />   
-                    </div>
-                </div>
-                    <br>
-                    <br>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="select">
-                        Army Status :
-                        <br>
-                            <input type="radio" id="army" name="selectArmy"> 
-                            <label for="army">육군</label>
-                            <br>
-                            <input type="radio" id="navy" name="selectArmy">
-                            <label for="navy">해군</label>
-                            <br>
-                            <input type="radio" id="airForce" name="selectArmy"> 
-                            <label for="airForce">공군</label>
-                            <br>
-                            <input type="radio" id="marine" name="selectArmy">
-                            <label for="marine">해병대</label>
-                            <br>
-                            <input type="radio" id="PublicServiceWorker" name="selectArmy"> 
-                            <label for="PublicServiceWorker">사회복무요원</label>
-                            <br>
-                            <input type="radio" id="" name="selectArmy">
-                            <label for="conscriptedPolice">의무경찰</label>
-                            <br>
-                            <input type="radio" id="conscriptedFireFighter" name="selectArmy">
-                            <label for="conscriptedFireFighter">의무소방</label>
-                            <br>
-                            <input type="radio" id="katusa" name="selectArmy"> 
-                            <label for="katusa">카투사</label>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-                    <br>
-                    <div class="col-10 col-12-xsmall" id="button">
-                    <input class="primary" type="submit" value="Sign up!"> <!-- submit버튼이에요! 이걸 누르면 우리가 위에서 action으로 지정한 signup url로 이 데이터를 보낼겁니다! -->
-                    </div>
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
+/* The Modal (background) */
+.modal {
+    display:none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 4% auto 15% auto;
+    border: 1px solid #888;
+    width: 40%; 
+    padding-bottom: 30px;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    animation: zoom 0.3s
+}
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+.modal-content {
+    border-radius: 10px;
+    background-color: #fefefe;
+    margin: 20% auto 20% auto;
+    border: 1px solid #888;
+    width: 30%;
+    padding: 30px 0 30px 0;
+}

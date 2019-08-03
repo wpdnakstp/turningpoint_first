@@ -36,14 +36,6 @@
 </table>
 <hr>
 
-
-<!-- {% for notice in notices.all %}
-    <div class="container">
-        <h1><a href="{% url 'noticedetail' notice.id %}">{{ notice.title }}</a></h1>
-        <p>{{ notice.pub_date }}</p>
-    </div>
-{% endfor %} -->
-
 {% if posts.has_previous %}
     <a href="?page=1"><strong>&nbsp;</strong></a>
     <a href="?page={{posts.previous_page_number}}"><strong><&nbsp;&nbsp;</strong></a>

@@ -1,0 +1,99 @@
+@font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+*{
+    margin:0; 
+    padding:0;
+    font-family: 'Arita-dotum-Medium';
+}
+	ul li{
+        list-style:none;
+    }
+	a{
+        text-decoration:;
+        color:#666;
+    }
+	body{
+        padding:15px;
+    }
+
+	
+	form{
+        overflow:hidden;
+    }
+	input[type="text"],input[type="email"]{
+         width:350px; 
+         height:25px;
+          padding:10px; 
+          margin-bottom:10px; 
+        }
+	button.btn{
+        margin-top:20px;
+        padding:10px 30px;
+        border:1px solid #4CAF50;; 
+        border-radius:20px; 
+        background-color:#4CAF50;; 
+        color:#fff; 
+        cursor:pointer;
+    }
+	.hidden{ 
+        visibility:hidden; 
+        position:absolute; 
+        top:0;left:-100px; 
+    }
+
+	.pw-wrap h2{
+        font-size:28px; 
+    }
+	.pw-box{ 
+        width:960px;
+         margin:0 auto;
+          text-align:center; 
+          margin-top:100px;
+        }
+	.pw-box strong{ 
+        font-size:20px;
+    }
+	.pw-box ul.pw-search{ 
+        overflow:hidden; margin-top:30px; 
+    }
+	.pw-box ul.pw-search > li{
+         float:left; 
+         width:450px; 
+         height:330px; 
+         padding:30px 10px; 
+         border:1px solid #999; 
+         background-color:#e7e7e7;
+         border-radius: 10px;
+        }
+	.pw-box ul.pw-search > li.on{
+         background-color:#fff;  
+         border:1px solid #666;
+        }
+	.pw-box ul.pw-search > li input::placeholder{ color:#999;}
+	.pw-box ul.pw-search li .box h3{ margin-bottom:10px; font-size:18px; }
+	.pw-box ul.pw-search li .box span.txt{ display:inline-block; margin-bottom:20px; font-size:14px; color:#666; }
+	.pw-box ul.pw-search li.id-search{ border-left:0;}
+	.pw-box ul.pw-search li.id-search .inp-box{ display:inline-block; width:327px; text-align:left; }
+	.pw-box ul.pw-search li.id-search .inp-box input{ width:300px; vertical-align:top;}
+	.pw-box ul.pw-search li.id-search .btn-grey{ 
+        height:49px; 
+        padding:10px 15px; 
+        text-align:right; 
+        vertical-align:top; 
+        background-color:#454545; 
+        color:#fff; 
+        border:0;
+        border-radius: 10px; 
+        margin: 60px 0 30px 0;
+
+    }
+	.id-search form{ padding:0 30px ;}
+
+	.certifi{ overflow:hidden; }
+	.certifi li{position:relative; float:left; width:183px; }
+	.certifi li.phone{float:right;}
+	.certifi li a{  display:block; width:197px; height:30px; }
+	/* .certifi li a:hover,
+	.certifi li a.on{background-color:#4CAF50;border-radius: 10px} */
+	.certifi li:first-child{ margin-right:15px;}
+	.notice{ margin-top:30px; font-size:12px; }
+	.notice a{ text-decoration:underline; color:#4CAF50;}

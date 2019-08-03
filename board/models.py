@@ -53,7 +53,7 @@ class Free(models.Model):
         return self.userLikeName.count()
 
 class Freecomment(models.Model):
-    tnFreeCommentUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,related_name='tnFreeCommentUser',null=True)
+    tnFreeCommentUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,null=True)
     free = models.ForeignKey(Free,on_delete=models.CASCADE,related_name="comments") # 부모모델을 소문자로 쓴다 - 그 키의 값을 가지고 온다.
     # on_delete=models.CASCADE는 이 글이 삭제될 때에 댓글들도 다 같이 삭제된다는 뜻 - CASCADE 말고 SET NULL, NO ACTION, SET DEFAULT, RESTRICT등이 올 수 있다!
     # related_name은 우리가 urls.py에서 name='~' 이라고 하는것과 같다! 그거를 가지고 오고 싶을때 이런 이름으로 부르겠다는 뜻
@@ -77,7 +77,7 @@ class Develop(models.Model):
         return self.title
 
 class Developcomment(models.Model):
-    tnDevelopCommentUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,related_name='tnDevelopCommentUser',null=True)
+    tnDevelopCommentUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,null=True)
     develop = models.ForeignKey(Develop,on_delete=models.CASCADE,related_name="comments") # 부모모델을 소문자로 쓴다 - 그 키의 값을 가지고 온다.
     # on_delete=models.CASCADE는 이 글이 삭제될 때에 댓글들도 다 같이 삭제된다는 뜻 - CASCADE 말고 SET NULL, NO ACTION, SET DEFAULT, RESTRICT등이 올 수 있다!
     # related_name은 우리가 urls.py에서 name='~' 이라고 하는것과 같다! 그거를 가지고 오고 싶을때 이런 이름으로 부르겠다는 뜻

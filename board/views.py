@@ -78,7 +78,6 @@ def noticeupdatesend(request, notice_id):
 
 def noticecommentcreate(request, notice_id):
     notice=get_object_or_404(Notice, pk=notice_id) # 부모클래스의 아이디값을 가져와야한다 - 부모클래스에 종속시켜야 하기 때문에
-
     content = request.POST.get('content') # POST['comment'] 라고 하면 안된다!
     #tnUser라는 테이블 값에 현재 request를 보내는 User값을 넣어줌
     Noticecomment.objects.create(notice=notice,commentbody=content,noticeCommentUser=request.user) # 새롭게 모델 안에 정보를 만든다 - 여기서 좌변은 models 안에 있는거, 우변은 def 안에 있는거
@@ -89,7 +88,11 @@ def noticecommentcreate(request, notice_id):
 
 def free(request):
     frees = Free.objects
-    return render(request, 'free/free.html',{'frees' : frees})
+    frees_list = Free.objects.all()
+    paginator = Paginator(frees_list,15)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'free/free.html',{'frees' : frees,'posts':posts})
 
 def freedetail(request, free_id):
     free_detail = get_object_or_404(Free, pk=free_id)
@@ -146,7 +149,7 @@ def freedelete(request, free_id):
       free_delete.delete()
       return redirect('/board/free/')
     else:
-      return redirect('/board/free/'+str(free_id))
+      return redirect('/board/free/'+str(free_id)) 
 
 
 

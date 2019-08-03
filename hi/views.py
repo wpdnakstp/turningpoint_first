@@ -120,3 +120,6 @@ def book_make(request):
 
 def book_final(request):
     return render(request, 'diary/book_final.html')
+
+def todolist(request):
+    return render(request, 'todolist.html')

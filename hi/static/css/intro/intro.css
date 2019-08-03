@@ -4,33 +4,45 @@
     margin:0;
 	box-sizing: border-box;
 	
+	
 }
 
 body{
     width: 100%;
-    height:100vh;
-	background-color:#f9deaf;
-
+	height:100vh;
+	background-color:#34495e;
 	
 }
 
+
+#logo-image{
+	
+	animation: fill 0.5s ease forwards 3.5s;
+	-webkit-animation-name: fadeOut ;
+	animation-name: fadeOut ;
+
+}
+
+
 #logo{
 	position: absolute;
+	block-size: 100%;
     top: 50%;
     left:50%;
 	transform: translate(-50%, -50%);
 	animation: fill 0.5s ease forwards 3.5s;
-	
-
 	-webkit-animation-name: fadeOut ;
 	animation-name: fadeOut ;
-	  
-	  
+	
+	
+   
+ 
+}
 
 	
 
 
-}
+
 #logo path:nth-child(1){
 	stroke-dasharray: 637;
 	stroke-dashoffset: 673;
@@ -1100,8 +1112,8 @@ margin: 2rem auto 0 auto;
 overflow: hidden;
 padding: 0 2rem 0 0;
 position: relative;
-width: calc(100% - 4rem);
-max-width: 100rem;
+width: calc(100% - 2.1em);
+max-width: 120rem;
 z-index: 2;
 }
 
@@ -1232,6 +1244,10 @@ z-index: 2;
 }
 
 /* Main */
+html {
+	height: 100%;
+	
+}
 
 #container {
 	background-color: #ffffff;
@@ -1249,4 +1265,12 @@ z-index: 2;
 }
 .post h2{
 	font-size: 30px;
+}
+
+
+
+
+
+.container{
+	
 }

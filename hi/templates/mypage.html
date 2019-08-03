@@ -21,14 +21,15 @@
 
 					<!-- Logo -->
 						<div id="logo">
-							<span class="image avatar48"><img src="{% static 'img/avatar.jpg' %}" alt="" /></span>
-							<h1 id="title">Jane Doe</h1>
+							<span class="image avatar48"><img src="{% static 'img/avatar.jpg' %}" alt="프로필 사진" /></span>
+							<h1 id="title">사용자이름</h1>
 							<p>Hyperspace Engineer</p>
 						</div>
 
 					<!-- Nav -->
 					<nav id="nav">
 							<ul>
+								<li><a href="{% url 'mypage' %}" id="top-link"><span class="icon solid fa-home">My-page</span></a></li>
 								<li><a href="{% url 'calendar' %}" id="top-link"><span class="icon solid fa-home">Calendar</span></a></li>
 								<li><a href="{% url 'todolist' %}" id="portfolio-link"><span class="icon solid fa-th">계획</span></a></li>
 								<li><a href="{% url 'diary_ok' %}" id="about-link"><span class="icon solid fa-user">diary</span></a></li>
@@ -46,7 +47,7 @@
 						</nav>
 
 			</div>
-
+		</div>
 		<!-- Main -->
 			<div id="main">
 

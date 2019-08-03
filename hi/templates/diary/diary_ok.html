@@ -301,6 +301,12 @@
               .item{
                   cursor: pointer;
               }
+              .navbar {
+                margin-top: 20px;
+                border-bottom: 1px solid #ddd;
+                height: 60px;
+                box-sizing: border-box;
+            }
         </style>
     </head>
     <body>
@@ -319,6 +325,7 @@
                 <!-- Nav -->
                 <nav id="nav">
                     <ul>
+                            <li><a href="{% url 'mypage' %}" id="top-link"><span class="icon solid fa-home">My-page</span></a></li>
                         <li style="padding: none;"><a href="{% url 'calendar' %}" id="top-link"><span class="icon solid fa-home">Calendar</span></a></li>
                         <li style="padding: none;"><a href="{% url 'todolist' %}" id="portfolio-link"><span class="icon solid fa-th">계획</span></a></li>
                         <li style="padding: none;"><a href="{% url 'diary_ok' %}" id="about-link"><span class="icon solid fa-user">diary</span></a></li>
@@ -347,7 +354,7 @@
         <div class="navbar_data">
             <ul class="data_ul">
                 <li class="li_1" data-href="https://naver.com">
-                        <a class="navbar_link" href="https://naver.com">목록보기</a>
+                        <a class="navbar_link" href="https://naver.com" style="margin-top:50px;">목록보기</a>
                 </li>
 
                

@@ -2137,7 +2137,6 @@ input, select, textarea {
 			#nav ul li a {
 				display: block;
 				padding: 0.5em 1.5em 0.5em 1.5em;
-				color: rgba(255, 255, 255, 0.5);
 				text-decoration: none;
 				outline: 0;
 				border: 0;
@@ -2630,4 +2629,10 @@ input, select, textarea {
 					margin-top: 0;
 				}
 
+	}
+
+	#nav ul li a span {
+		position: relative;
+		display: block;
+		font-size: 0.8em;
 	}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>회원가입</title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="{% static '/css/signup.css' %}" rel="stylesheet" media="all">
+</head>
+<script>
+        function checkid(){
+            var userid = document.getElementById("uid").value;
+            if(userid)
+            {
+                url = "check.php?userid="+userid;
+                    window.open(url,"chkid","width=300,height=100");
+                }else{
+                    alert("아이디를 입력하세요");
+                }
+            }
+           
+        </script>
+
+<body>
+    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">제본하시지 말입니다.</h2>
+                </div>
+                <div class="card-body">
+                    <!-- <form method="POST" action = "{%url 'signup_ok' %}" > -->
+                            <!--사이트간 위조 방지 토큰을 넣어주고-->
+                        <div class="form-row">
+                            <div class="name">일기 페이지 수</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" id="uid" name="username"style="width: 60%;">
+                                <input type="hidden" value="0" name="chs" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="name">가격</div>
+                                <div class="value">
+                                    <input class="input--style-6" type="text" id="uid" name="username"style="width: 60%;">
+                                    <input type="hidden" value="0" name="chs" />
+                                </div>
+                            </div>
+
+                        <div class="form-row">
+                            <div class="name">표지제목</div>
+                            <div class="value">
+                                <input class="input--style-6" type="password1" name="password2">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="name">표지선택</div>
+                                <div class="value">
+                            
+    
+    
+                                <select class="input--style-6" type="number" name="gender" style="height: 39px; width:30%; border-radius: 0;">
+                                        
+                                <option>단면인쇄</option>
+                                <option>양면인쇄</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="name">표지종이선택</div>
+                                <div class="value">
+                            
+    
+    
+                                <select class="input--style-6" type="number" name="gender" style="height: 39px; width:30%; border-radius: 0;">
+                                        
+                                <option>듀오매트(스노우지)/백색/200g</option>
+                                <option>듀오매트(스노우지)/백색/250g</option>
+                                <option>듀오매트(스노우지)/백색/300g</option>
+                                <option>아트지/백색/200g</option>
+                                <option>아트지/백색/250g</option>
+                                <option>아트지/백색/300g</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="name">본문인쇄</div>
+                                <div class="value">
+                            
+    
+    
+                                <select class="input--style-6" type="number" name="gender" style="height: 39px; width:30%; border-radius: 0;">
+                                        
+                                <option>단면인쇄</option>
+                                <option>양면인쇄</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="name">본문종이선택</div>
+                                <div class="value">
+                            
+    
+    
+                                <select class="input--style-6" type="number" name="gender" style="height: 39px; width:30%; border-radius: 0;">
+                                        
+                                <option>모조지/백색/80g</option>
+                                <option>모조지/백색/120g</option>
+                                <option>모조지/미색/80g</option>
+                                <option>모조지/미색/120g</option>
+                                <option>아트지/백색/100g</option>
+                                <option>아트지/백색/120g</option>
+                                <option>아트지/백색/150g</option>
+                                <option>아트지/백색/180g</option>
+                                <option>듀오매트/백색/180g</option>
+                                <option>랑데뷰(고급지)/네츄럴/130g</option>
+
+
+
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+                       
+                       
+
+                      
+
+                    
+
+
+                            <div class="form-row">
+                                    <div class="name">주소입력</div>
+                                    <div class="value">
+                                        <input class="input--style-6" type="password1" name="password2">
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-row">
+                                        <div class="name">휴대전화</div>
+                                        <div class="value">
+                                            <input class="input--style-6" type="number" name="full_name"value="" size="4" maxlength="3" autocomplete="off"style="width:28%; padding: 0 10px;"> -
+                                            <input class="input--style-6" type="number" name="full_name"value="" size="4" maxlength="3" autocomplete="off"style="width:28%; padding: 0 10px;"> -
+                                            <input class="input--style-6" type="number" name="full_name"value="" size="4" maxlength="3" autocomplete="off"style="width:28%; padding: 0 10px;">
+            
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                        
+                        
+                    
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn--radius-2 btn--blue-2" type="submit"><a style="text-decoration:none; color:white;"href="{% url 'book_final' %}">결제하기</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+
+    <!-- Main JS-->
+    <script src="{% static 'js/signup_ok.js' %}"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

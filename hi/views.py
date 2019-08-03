@@ -99,3 +99,12 @@ def calender(request):
 def mypage(request):
     return render(request, 'mypage.html')
 
+def intro_final(request):
+    return render(request, 'intro_final.html')
+
+
+def diary_ok(request):
+    return render(request, 'diary/diary_ok.html')
+
+def community_ok(request):
+    return render(request, 'community/community_ok.html')

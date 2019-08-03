@@ -13,19 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
+
 from django.contrib import admin
 from django.urls import path, include
 import hi.views
+import cal.views
+import cal.urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hi.views.pr, name="pr"),
-    path('go/', include('hi.urls')),
+    path('', hi.views.intro_final, name="intro_final"),
+    path('hi/', include('hi.urls')),
     path('dd/', hi.views.dd, name="dd"),
-    path('calender/', hi.views.calender, name="calender"),
+    # path('calender/', hi.views.calender, name="calender"),
     path('mypage/', hi.views.mypage, name="mypage"),
     path('board/', include('board.urls')), # board쪽으로 url 연결
     #turningaccounts url
     path('turningaccounts/',include('turningaccounts.urls')),
-    path('cal/', include('cal.urls'))
+    path('cal/', include('cal.urls')),
+    url(r'^calendar/$', cal.views.CalendarView.as_view(), name='calendar'),
+
 
 ]

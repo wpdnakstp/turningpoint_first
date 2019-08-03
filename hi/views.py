@@ -108,3 +108,6 @@ def diary_ok(request):
 
 def community_ok(request):
     return render(request, 'community/community_ok.html')
+
+def signup_ok(request):
+    return render(request, 'signup_ok.html')

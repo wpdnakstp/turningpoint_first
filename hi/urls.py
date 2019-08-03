@@ -13,6 +13,8 @@ urlpatterns = [
     path('password_ok', views.password_ok, name="password_ok"),
     path('book_make', views.book_make, name="book_make"),
     path('book_final', views.book_final, name="book_final"),
+    path('todolist', views.todolist, name="todolist"),
+
 
 
 

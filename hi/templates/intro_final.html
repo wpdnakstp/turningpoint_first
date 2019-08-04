@@ -62,9 +62,9 @@
             
                      <ul class="loge-effects">
                         <li class="current"></li>
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="#">자유게시판</a></li>
-                        <li><a href="#">커뮤니티</a></li>
+                        <li><a href="{% url 'notice' %}">공지사항</a></li>
+                        <li><a href="{% url 'free' %}">자유게시판</a></li>
+                        <li><a href="{% url 'community_ok' %}">커뮤니티</a></li>
                         <li><a href="#">home</a></li>
                         <li><a href="#">home</a></li>
                     </ul>
@@ -91,15 +91,7 @@
                         <li>
                                 <a href="{% url 'logout' %}">logout</a>
                             </li>
-                            
-
-                        
                         {% else %}
-
-
-
-
-
             <div class="loginbutton">
                 <li><a class="wow fadeIn" data-wow-duration=".5s" data-wow-delay="3.5s" >
             
@@ -119,12 +111,12 @@
                     <form method="POST" action="{% url 'userlogin' %}">
                             {% csrf_token %}
                     <div class="container-login">
-                      <input type="text" placeholder="터닝포인트 아이디" name="username">
-                      <input type="password" placeholder="터닝포인트 비밀번호" name="password">        
-                      <button type="submit" style="font-family: 'BBTreeGL';">로그인</button>
-                      <ul id="btns">
-                            <a class="id" href="#" >아이디 찾기
-                            <a class="id"  href="{% url 'password_ok' %}" >/ 비밀번호 찾기</a>
+                        <input type="text" placeholder="터닝포인트 아이디" name="username">
+                        <input type="password" placeholder="터닝포인트 비밀번호" name="password">        
+                        <button type="submit" style="font-family: 'BBTreeGL';">로그인</button>
+                        <ul id="btns">
+                                <a class="id" href="#" >아이디 찾기
+                                <a class="id"  href="{% url 'password_ok' %}" >/ 비밀번호 찾기</a>
                         </ul>  
                           
                       <div class="bottom-text">

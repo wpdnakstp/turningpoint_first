@@ -22,6 +22,9 @@
 		
 	
 		<link rel="stylesheet" href="{% static '/css/main.css' %}" />  
+		<link rel="stylesheet" href="{% static '/css/sidebar.css' %}" />
+
+
 
 
 	</head>
@@ -36,7 +39,7 @@
 					<nav id="sidebar" class="sidebar-wrapper">
 					  <div class="sidebar-content">
 					  <div class="sidebar-brand">
-						<a href="#">TurningPoint</a>
+						<a href="{% url 'intro_final' %}">TurningPoint</a>
 						<div id="close-sidebar">
 						
 						</div>

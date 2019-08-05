@@ -205,8 +205,7 @@
   /*----------------------sidebar-menu-------------------------*/
   
   .sidebar-wrapper .sidebar-menu {
-	padding-bottom: 10px;
-	padding-left:7px;
+    padding-bottom: 10px;
   }
   
   .sidebar-wrapper .sidebar-menu .header-menu span {
@@ -426,7 +425,7 @@
   .chiller-theme .sidebar-wrapper .sidebar-brand>a,
   .chiller-theme .sidebar-wrapper .sidebar-menu ul li a,
   .chiller-theme .sidebar-footer>a {
-      color: #ffffff6c;
+      color: #818896;
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,

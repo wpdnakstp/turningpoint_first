@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 {% load staticfiles %}
 <!--
@@ -355,7 +356,7 @@
         <div class="navbar_data">
             <ul class="data_ul">
                 <li class="li_1" data-href="https://naver.com">
-                        <a class="navbar_link" href="{% url 'diary_list' %}" style="margin-top:50px;">목록보기</a>
+                        <a class="navbar_link" href="https://naver.com" style="margin-top:50px;">목록보기</a>
                 </li>
 
                
@@ -366,20 +367,170 @@
 <div id="main">
 	<div id="wrapper">
 
-        <form id="paper" method="get" action="">
     
-            <div id="margin">제목 : <input id="title" type="text" name="title"></div>
-            <textarea placeholder=""." id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
-            <br>
-            <input id="button" type="submit" value="작성하기">
-            
-        </form>
     
-    </div>
+				
+	
 
+
+
+			<!-- 본문글 리스트 전체 묶어주는 것 -->
+				<div class="wrap_content"> 
+
+					<!-- 너비 인허릿, 페딩 -, 오버플로우 히든, 플로트 레프트 -->
+					<div id="wrapArticle" class="wrap_article"> 
+
+
+						<!-- 저 리스트스타일 넌 넣어줄라고 -->
+						<div class="wrap_article_list_common"> 
+			
+							<!-- 이제 ul class 넣어줄거야 안에 내용은 그타일 넌
+							-->
+							<ul class="list_article_list_common"> 
+
+								<!-- 이제 li 내용 넣어줄거야     min-height: 180px;
+    padding: 30px 20px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    background-color: #fff;
+    box-sizing: border-box;
+야 참고로 리스트를 계속 돌리는 거다 이제 ㅇㅋ?-->
+								<li class="list_has_image"> 
+
+
+									<!--여기에 a 태그 넣을거야 선택하면 바로 넘어가도록     display: block;
+    clear: both;
+    overflow: hidden; -->
+
+								<a href="https://www.naver.com" class="link_post"> 
+
+
+										<!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+									<strong class="title_subject"> 제목이다dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+									</strong>
+									<div class="wrap_sub_content">
+										<em class="tit_sub"> 그래dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+										</em>
+
+                                            </div>
+                                                </a>
+                                                    </li>
+
+
+
+                                                    <li class="list_has_image"> 
+
+
+                                                        <!--여기에 a 태그 넣을거야 선택하면 바로 넘어가도록     display: block;
+                        clear: both;
+                        overflow: hidden; -->
+                    
+                                                    <a href="https://www.naver.com" class="link_post"> 
+                    
+                    
+                                                            <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+                                                        <strong class="title_subject"> 제목이다
+                                                        </strong>
+                                                        <div class="wrap_sub_content">
+                                                            <em class="tit_sub"> 그래
+                                                            </em>
+                    
+                                                                </div>
+                                                                    </a>
+                                                                        </li>
+
+
+
+
+
+
+                                                                        <li class="list_has_image"> 
+
+
+                                                                            <!--여기에 a 태그 넣을거야 선택하면 바로 넘어가도록     display: block;
+                                            clear: both;
+                                            overflow: hidden; -->
+                                        
+                                                                        <a href="https://www.naver.com" class="link_post"> 
+                                        
+                                        
+                                                                                <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+                                                                            <strong class="title_subject"> 제목이다
+                                                                            </strong>
+                                                                            <div class="wrap_sub_content">
+                                                                                <em class="tit_sub"> 그래
+                                                                                </em>
+                                        
+                                                                                    </div>
+                                                                                        </a>
+                                                                                            </li>
+
+
+
+
+
+
+
+                                                                                            <li class="list_has_image"> 
+
+
+                                                                                                <!--여기에 a 태그 넣을거야 선택하면 바로 넘어가도록     display: block;
+                                                                clear: both;
+                                                                overflow: hidden; -->
+                                                            
+                                                                                            <a href="https://www.naver.com" class="link_post"> 
+                                                            
+                                                            
+                                                                                                    <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+                                                                                                <strong class="title_subject"> 제목이다
+                                                                                                </strong>
+                                                                                                <div class="wrap_sub_content">
+                                                                                                    <em class="tit_sub"> 그래
+                                                                                                    </em>
+                                                            
+                                                                                                        </div>
+                                                                                                            </a>
+                                                                                                                </li>
+
+
+
+
+                                                         </ul>
+                                                                </div>
+                                                                        </div>
+                                                                            </div>
+				<!-- 커뮤니티 글 리스트만들 때 - 일단 리스트 글 다 묵은 div(wrap_contents), 그다음 wrap article로 묶어주고(너비설정), 그 다음에 div(wrap_article_list) 넣어주고, 이건 overflow:hidden;, float:left; 설정해주고,그 안에 ul class설정(list_article_list_common)설정(list-style: none;), 이제 그 안에 li data 넣고, class="list_has 어디어디"넣어 거따가 이제 a href class넣는거야 클릭하자마자 이동할 수 있도록, (ex-  a href="" class="link_post") 그 담에 a 태그 내부에 div class 제목,본문 묶어주는 class하나 파주고 그 안에다가 이제 띄바 복잡하네 바로 본문제목 넣어주고, div 하나 더 파서 본문내용 넣어주는거야 ㅇㅋ?  -->
+    
+    
+
+
+		<!-- Scripts -->
+			<!-- bootstrap4 js관련 CDN 부분 -->
+				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+					crossorigin="anonymous"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+					crossorigin="anonymous"></script>
+				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+					crossorigin="anonymous"></script>
+			<script src="{% static '/js/diary.js' %}"></script>
+</div>
+</div>
+    
 		<!-- Scripts -->
 			
 			<script src="{% static '/js/diary/diary.js' %}"></script>
 </div>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,7 +25,7 @@ def userlogin(request):   # userlogin으로 꼭 안하셔도 되고 login등등�
 					# auth모듈에 내장된 authenticate메서드는 request(요청)을 인자로 받고, 우리가 사용자로부터 받은 username,password를 User모델 데이터들 중에서 일치하는 유저를 가져다 user변수에 담아줍니다.
         if user is not None:  # 그래서 사용자가 보낸 데이터가 User테이블의 데이터와 일치하는게 있으면, 그걸 user변수에 담아줄거고, 그 user변수가 None이 아닐 때, 즉 유저가 있을 때를 여기서 처리합니다.
             auth.login(request, user)  # auth모듈의 login메서드를 통해 위에서 가져온 user를 로그인 처리합니다.
-            return redirect('intro_final') # 그리고 로그인이 정상적으로 되면 index페이지로 리다이렉트 시켜주죠!
+            return redirect('mypage') # 그리고 로그인이 정상적으로 되면 index페이지로 리다이렉트 시켜주죠!
         else :
             return render(request, 'intro_final.html', {'error':'username or password is incorrect'}) # 만약에 위에서 user변수에 아무 유저도 담기지 않았다면, 즉 로그인 정보가 유효하지 않으면 화면을 넘기지 않고 메시지를 띄워줍니다.
     else :  # 요청이 POST방식이 아니라면, 즉 로그인 페이지에 들어오는 get방식의 요청이 있을 때
@@ -123,3 +123,7 @@ def book_final(request):
 
 def todolist(request):
     return render(request, 'todolist.html')
+
+
+def diary_list(request):
+    return render(request, 'diary/diary_list.html')

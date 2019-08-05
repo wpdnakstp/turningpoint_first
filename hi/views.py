@@ -145,7 +145,7 @@ def signup_ok(request):
         else:
             if realPW == checkPW:
                 try:
-                    tnUser = TurningUser.objects.get(userId=userId)
+                    tnUser = TurningUser.objects.get(username=userId)
                     return render(request, 'signup_ok.html',{"error":"이미 가입된 아이디 입니다."})
                 except TurningUser.DoesNotExist:
                     tnUser = TurningUser.objects.create_user(

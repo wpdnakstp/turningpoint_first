@@ -131,21 +131,22 @@ main{
 }
 .home h1{
 	text-shadow: 2px 5px 7px white;
-    font-size: 110px;
+    font-size: 90px;
     text-transform: uppercase;
     margin-bottom: 0;
     visibility: hidden;
     font-family: 'stencil';
     font-style: normal;
-    color: #151E3F;
+	color: #151E3F;
+	font-weight: normal;
     
 }
 .home h5{
 	color: black;
-	font-size: 30px;
+	font-size: 23px;
 	text-align: center;
 	padding: 10px 20px;
-	margin: 30px 0 50px;
+	margin: 10px 0 50px;
 	display: inline-block;
 	letter-spacing: 2px;
 	border-radius: 2px;
@@ -255,7 +256,7 @@ main{
 }
 .sidebar ul{
     margin:0;
-    padding:60px 0 ;
+    padding:40px 0 ;
 
 }
 .sidebar ul li{
@@ -368,8 +369,12 @@ main{
   
 /*logo*/
 .logo{
-
-	background-color:white;
+	margin: 32px 0;
+    background-color: #ffffff87;
+    font-size: 2.1em;
+    font-family: "stencil";
+    border-radius: 38px;
+    color: #044115ab;
 	
 }
 
@@ -399,3 +404,5 @@ main{
     -webkit-box-shadow: 5px 5px 15px 5px #000000;
     box-shadow: 5px 5px 15px 5px #00000054;
 }
+
+/*scroll*/

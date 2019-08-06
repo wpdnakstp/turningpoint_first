@@ -68,9 +68,11 @@
         height: 100%;
         overflow: auto;
         background-color: rgba(0,0,0,0.4);
+     
     }
     
     /* Modal Content Box */
+
     .modal-content {
         border-radius: 10px;
         background-color: #fefefe;

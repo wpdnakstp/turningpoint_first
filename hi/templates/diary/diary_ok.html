@@ -709,8 +709,8 @@
 <div id="main">
 	<div id="wrapper">
 
-        <form id="paper" method="get" action="">
-    
+        <form id="paper" method="POST" action="{% url 'diary_create' %}">
+            {% csrf_token %}
             <div id="margin">제목 : <input id="title" type="text" name="title"></div>
             <textarea placeholder=""." id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
             <br>

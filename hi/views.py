@@ -3,6 +3,7 @@ from django.contrib.auth.models import User   # User모델을 import했어요!
 from django.contrib import auth  # auth라는 모듈도 import합니다. 서버로 넘어온 유저 데이터를 처리하는 역할을 할거에요!
 from django.core.paginator import Paginator
 from django.utils import timezone
+from .models import DiaryForm
 from django.core.files.storage import FileSystemStorage
 #TurningUser > Model of turningaccounts > other app
 from turningaccounts.models import TurningUser
@@ -107,10 +108,6 @@ def mypage(request):
 def intro_final(request):
     return render(request, 'intro_final.html')
 
-
-def diary_ok(request):
-    return render(request, 'diary/diary_ok.html')
-
 def community_ok(request):
     return render(request, 'community/community_ok.html')
 
@@ -178,8 +175,32 @@ def todolist(request):
     return render(request, 'todolist.html')
 
 
-def diary_list(request):
+
+#일기쓰기 views.py 함수들
+def diary_ok(request):
+    return render(request, 'diary/diary_ok.html')
+
+def diary_create(request):
+    diaryPost = DiaryForm()
+    if request.method == 'POST':
+        diaryPost.tnUser = request.user
+        diaryPost.diaryTitle = request.POST.get('title')
+        diaryPost.diaryBody = request.POST.get('text')
+        diaryPost.diaryDate = timezone.datetime.now
+        diaryPost.save()
+        return redirect('diary_list')
+        
+
     return render(request, 'diary/diary_list.html')
+
+
+def diary_list(request):
+    allDiary = DiaryForm.objects.all()
+    return render(request, 'diary/diary_list.html',{"diary":allDiary})
+
+def diary_detail(request,diary_id):
+    diaryDetail = get_object_or_404(DiaryForm,pk=diary_id)
+    return render(request, 'diary/diary_detail.html',{'diaryDetail':diaryDetail})
 
 def base_ok(request):
     return render(request, 'base_ok.html')

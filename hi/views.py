@@ -160,7 +160,7 @@ def signup_ok(request):
                         userBirthDay=birthDay
                     )
                     auth.login(request,tnUser)
-                    return redirect('intro_final')
+                    return redirect('mypage')
             else:
                 return render(request,'signup_ok.html',{"error":"비밀번호가 같지 않습니다."})
     return render(request, 'signup_ok.html',{"year":todayYearList})

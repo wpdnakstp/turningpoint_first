@@ -145,8 +145,6 @@
     } -->
     #title{
         display: inline-block;
-        width: 700px;
-        margin-left: 15px;
         color: black;
     }
     .diary_title{
@@ -301,7 +299,9 @@
     .menu:hover .item:nth-child(10) {
       transition-delay: 0.7s;
     }
-    
+    .fa-envelope {
+      padding-right: 50px;
+  }
   </style>
 </head>
 <body>
@@ -324,7 +324,7 @@
 								<li><a href="{% url 'todolist' %}" id="portfolio-link"><span class="icon solid fa-th">계획</span></a></li>
 								<li><a href="{% url 'diary_ok' %}" id="about-link"><span class="icon solid fa-user">diary</span></a></li>
                 
-                <li style="padding: none; position: absolute; bottom:0%; padding-left: 130px;"><a href="{% url 'book_make' %}" id=""><span class="icon solid fa-envelope">책 제본하기</span></a></li>
+                <li style="padding: none; position: absolute; bottom:0%; padding-left: 60px;"><a href="{% url 'book_make' %}" id=""><span class="icon solid fa-envelope">책 제본하기</span></a></li>
                 <li><div class="menu">
                     <div class="label">Community</div>
                     <div class="spacer"></div>

@@ -309,59 +309,6 @@
   .fa-envelope{
     padding-right: 50px;
   }
-  
-  *{
-    margin: 0;
-    padding: 0;
-    font-family: "montserrat",sans-serif;
-    box-sizing: border-box;
-  }
-  
-  body{
-    <!-- background-image: linear-gradient(120deg,#487eb0,#fbc531); -->
-    min-height: 100vh;
-  }
-  
-  
-  .container{
-    max-width: 800px;
-    margin: auto;
-    padding: 10px;
-  }
-  
-  .txtb{
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid #000;
-    background: none;
-    padding: 10px;
-    outline: none;
-    font-size: 18px;
-  }
-  
-  h3{
-    margin: 10px 0;
-  }
-  
-  .task{
-    width: 100%;
-    background: rgba(255,255,255,0.5);
-    padding: 18px;
-    margin: 6px 0;
-    overflow: hidden;
-  }
-  
-  .task i{
-    float: right;
-    margin-left: 20px;
-    cursor: pointer;
-  }
-  
-  .comp .task{
-    background: rgba(0,0,0,.5);
-    color: #fff;
-  }
-  
     
   </style>
 </head>
@@ -413,141 +360,76 @@
 
 
   <!-- 여기 변경내용넣어!!!!!!!!!!!!!!!!!!!!! -->
-  
-<!-- Intro -->
-<section id="top" class="one dark cover">
-  <div class="container">
+  <div class="navbar">
+    <div class="diary_title">
+        <h1>To DO List</h1>
+    </div>
+    <div class="navbar_data">
+        <ul class="data_ul">
+            <li class="li_1" data-href="https://naver.com">
+                    <a class="navbar_link" href="https://naver.com">목록보기</a>
+            </li>
 
-    <header>
-      <h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
-      site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
-      <p>Ligula scelerisque justo sem accumsan diam quis<br />
-      vitae natoque dictum sollicitudin elementum.</p>
-    </header>
+           
+        </ul>
 
-    <footer>
-      <a href="#portfolio" class="button scrolly">Magna Aliquam</a>
-    </footer>
+    </div>
+</div>
 
-  </div>
-</section>
 
-<!-- Portfolio -->
-<section id="portfolio" class="two">
-  <div class="container">
 
-    <header>
-      <h2>Portfolio</h2>
-    </header>
 
-    <p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
-    egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
-    Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
-    fusce hendrerit lacus ridiculus.</p>
+<div class="main">
+    <div class="container">
+      <input type="text" class="txtb" placeholder="Add a task">
+      <div class="notcomp">
+        <h3>Not Completed</h3>
 
-    <div class="row">
-      <div class="col-4 col-12-mobile">
-        <article class="item">
-          <a href="#" class="image fit"><img src="{% static 'img/pic02.jpg' %}" alt="" /></a>
-          <header>
-            <h3>Ipsum Feugiat</h3>
-          </header>
-        </article>
-        <article class="item">
-          <a href="#" class="image fit"><img src="{% static 'img/pic03.jpg' %}" alt="" /></a>
-          <header>
-            <h3>Rhoncus Semper</h3>
-          </header>
-        </article>
+
+
       </div>
-      <div class="col-4 col-12-mobile">
-        <article class="item">
-          <a href="#" class="image fit"><img src="{% static 'img/pic04.jpg' %}" alt="" /></a>
-          <header>
-            <h3>Magna Nullam</h3>
-          </header>
-        </article>
-        <article class="item">
-          <a href="#" class="image fit"><img src="{% static 'img/pic05.jpg' %}" alt="" /></a>
-          <header>
-            <h3>Natoque Vitae</h3>
-          </header>
-        </article>
-      </div>
-      <div class="col-4 col-12-mobile">
-        <article class="item">
-          <a href="#" class="image fit"><img src="{% static 'img/pic06.jpg' %}" alt="" /></a>
-          <header>
-            <h3>Dolor Penatibus</h3>
-          </header>
-        </article>
-        <article class="item">
-          <a href="#" class="image fit"><img src="{% static 'img/pic07.jpg' %}" alt="" /></a>
-          <header>
-            <h3>Orci Convallis</h3>
-          </header>
-        </article>
+
+      <div class="comp">
+        <h3>Completed</h3>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- About Me -->
-<section id="about" class="three">
-  <div class="container">
-
-    <header>
-      <h2>About Me</h2>
-    </header>
-
-    <a href="#" class="image featured"><img src="{% static 'img/pic08.jpg' %}" alt="" /></a>
-
-    <p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
-    ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
-    laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
-    parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
-    dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
-    ornare iaculis.</p>
-
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="four">
-  <div class="container">
-
-    <header>
-      <h2>Contact</h2>
-    </header>
-
-    <p>Elementum sem parturient nulla quam placerat viverra
-    mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
-    donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
-    orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
-
-    <form method="post" action="#">
-      <div class="row">
-        <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-        <div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
-        <div class="col-12">
-          <textarea name="message" placeholder="Message"></textarea>
-        </div>
-        <div class="col-12">
-          <input type="submit" value="Send Message" />
-        </div>
-      </div>
-    </form>
-
-  </div>
-</section>
-
 </div>
 
+
+    <script type="text/javascript">
+      $(".txtb").on("keyup",function(e){
+        //13  means enter button
+        if(e.keyCode == 13 && $(".txtb").val() != "")
+        {
+          var task = $("<div class='task'></div>").text($(".txtb").val());
+          var del = $("<i class='fas fa-trash-alt'></i>").click(function(){
+            var p = $(this).parent();
+            p.fadeOut(function(){
+              p.remove();
+            });
+          });
+
+          var check = $("<i class='fas fa-check'></i>").click(function(){
+            var p = $(this).parent();
+            p.fadeOut(function(){
+              $(".comp").append(p);
+              p.fadeIn();
+            });
+            $(this).remove();
+          });
+
+          task.append(del,check);
+          $(".notcomp").append(task);
+            //to clear the input
+          $(".txtb").val("");
+        }
+      });
+    </script>
 
     <!-- 그만넣어!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 </div>
-
+</div>
 
 
   

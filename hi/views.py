@@ -31,7 +31,7 @@ def userlogin(request):   # userlogin으로 꼭 안하셔도 되고 login등등�
             return render(request, 'intro_final.html', {'error':'username or password is incorrect'}) # 만약에 위에서 user변수에 아무 유저도 담기지 않았다면, 즉 로그인 정보가 유효하지 않으면 화면을 넘기지 않고 메시지를 띄워줍니다.
     else :  # 요청이 POST방식이 아니라면, 즉 로그인 페이지에 들어오는 get방식의 요청이 있을 때
         return render(request, 'intro_final.html') # 로그인 화면을 띄워주는 html을 렌더링 해줍니다.
-    return render(request, 'intro_final.html')
+    # return render(request, 'intro_final.html')
 
 # def signup(request): # 회원가입 함수입니다.
 #     if request.method == 'POST':   # POST방식일 때, 즉 서버로 데이터가 넘겨졌을 때(사용자가 회원가입 정보를 입력하고 가입하기를 눌렀을 때) 아래 함수를 실행합니다.
@@ -180,3 +180,6 @@ def todolist(request):
 
 def diary_list(request):
     return render(request, 'diary/diary_list.html')
+
+def base_ok(request):
+    return render(request, 'base_ok.html')

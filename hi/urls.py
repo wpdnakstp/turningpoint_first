@@ -15,6 +15,10 @@ urlpatterns = [
     path('book_final', views.book_final, name="book_final"),
     path('todolist', views.todolist, name="todolist"),
     path('diary_list', views.diary_list, name="diary_list"),
+    path('base_ok', views.base_ok, name="base_ok"),
+    path('home', views.home, name="home"),
+
+
 
 
 

@@ -4,3 +4,5 @@ $(document).ready(function(){
              $('.sidebarBtn').toggleClass('toggle');
 })
 })
+
+/*scroll */

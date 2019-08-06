@@ -43,6 +43,10 @@ def userlogin(request):   # userlogin으로 꼭 안하셔도 되고 login등등�
 #     return render(request, 'intro_final.html') # Post방식이 아닌 get방식일 경우 회원가입창을 띄워줍니다.
 
 
+
+
+
+
 # #Custom Model Signup Test 
 # def signupTest(request): 
 #     if request.method == 'POST':
@@ -111,7 +115,55 @@ def community_ok(request):
     return render(request, 'community/community_ok.html')
 
 def signup_ok(request):
-    return render(request, 'signup_ok.html')
+    todayYear = datetime.today().year
+    todayYearList = []
+    for i in range(1,101):
+        a = todayYear + i
+        b = todayYear - i
+        todayYearList.append(a)
+        todayYearList.append(b)
+    todayYearList.append(todayYear)
+    todayYearList.sort()
+    if request.method == "POST":
+        userId = request.POST.get('username')
+        realPW = request.POST.get('password1')
+        checkPW = request.POST.get('password2')
+        userName = request.POST.get('full_name')
+        birthDay = str(request.POST.get('birth_year'))+str(request.POST.get('birth_mon'))+str(request.POST.get('birth_day'))
+        userGender = request.POST.get('gender')
+        userNickName = request.POST.get('nickName')
+        userEmail = request.POST.get('email')
+        phoneNumb = str(request.POST.get('phoneFirst'))+"-"+str(request.POST.get('phoneMiddle'))+"-"+str(request.POST.get('phoneLast'))
+        userArmy = request.POST.get('userArmy')
+        #유효성 검사
+        emailValidation = re.compile('^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
+        phoneNumbValidation = re.compile('\d{3}-\d{4}-\d{4}')
+        if emailValidation.match(userEmail) == None:
+            return render(request,'signup_ok.html',{"error":"올바른 이메일 형식이 아닙니다."})
+        elif phoneNumbValidation.match(phoneNumb) == None:
+            return render(request,'signup_ok.html',{"error":"올바른 휴대폰 형식이 아닙니다."})
+        else:
+            if realPW == checkPW:
+                try:
+                    tnUser = TurningUser.objects.get(username=userId)
+                    return render(request, 'signup_ok.html',{"error":"이미 가입된 아이디 입니다."})
+                except TurningUser.DoesNotExist:
+                    tnUser = TurningUser.objects.create_user(
+                        userId,
+                        userEmail,
+                        password=realPW,
+                        nickName=userNickName,
+                        userFullName=userName,
+                        userGender=userGender,
+                        tnPhoneNumb=phoneNumb,
+                        userArmyName=userArmy,
+                        userBirthDay=birthDay
+                    )
+                    auth.login(request,tnUser)
+                    return redirect('intro_final')
+            else:
+                return render(request,'signup_ok.html',{"error":"비밀번호가 같지 않습니다."})
+    return render(request, 'signup_ok.html',{"year":todayYearList})
 
 
 def password_ok(request):

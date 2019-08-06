@@ -73,14 +73,12 @@
                         <div class="form-row">
                             <div class="name">생년월일</div>
                             <div class="value">
-                             
-                                    <select class="input--style-6" type="number" name="birth_year" placeholder="년" style="height: 39px; width:30%; border-radius: 0;">
-                                            <option>년</option>
-                                     {% for i in year %}
-                                            <option>{{i}}</option>
-                                     {%endfor%}
-                                        </select>
-
+                                <select class="input--style-6" type="number" name="birth_year" placeholder="년" style="height: 39px; width:30%; border-radius: 0;">
+                                    <option>년</option>
+                             {% for i in year %}
+                                    <option>{{i}}</option>
+                             {%endfor%}
+                                </select>
                       <select class="input--style-6" type="number" name="birth_mon" style="height: 39px; width:30%; border-radius: 0;">
                 
 
@@ -122,11 +120,6 @@
         
         
                     <option>12</option>
-        
-        
-                    
-        
-        
                      </select>
                      
                      <select class="input--style-6" type="number" name="birth_day" style="height: 39px; width:30%; border-radius: 0;">
@@ -213,7 +206,7 @@
                             <div class="name">군종</div>
                             <div class="value">
 
-                                    <select class="input--style-6" type="text" name="userArmy" style="height: 39px; width:30%; border-radius: 0;">
+                                    <select class="input--style-6" type="number" name="userArmy" style="height: 39px; width:30%; border-radius: 0;">
                 
 
 

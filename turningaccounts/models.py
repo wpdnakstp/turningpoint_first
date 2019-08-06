@@ -18,7 +18,7 @@ class TurningUser(AbstractUser):
     ("CFF","의무 소방"),
     ("K","카투사"),
   )
-   #생일
+  #생일
   userBirthDay = models.CharField(max_length=20,default="",blank=False)
   #성별
   userFullName = models.CharField(max_length=20,default="",blank=False)

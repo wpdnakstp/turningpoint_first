@@ -165,6 +165,7 @@ def signup_ok(request):
                 return render(request,'signup_ok.html',{"error":"비밀번호가 같지 않습니다."})
     return render(request, 'signup_ok.html',{"year":todayYearList})
 
+
 def password_ok(request):
     return render(request, 'password_ok.html')
 

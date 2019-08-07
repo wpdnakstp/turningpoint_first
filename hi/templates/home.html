@@ -1,117 +1,512 @@
-<!DOCTYPE html>
 {% load staticfiles %}
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link type="text/css" rel="stylesheet" href="static/css/test.css">
 
-    <title>Document</title>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/main2.css' %}">
+  <!-- <link rel="stylesheet" href="{% static '/css/main.css' %}" /> -->
+
+
+  <title>Django Calendar App</title>
+  <style>
+    <!-- 여기부터 아래 테스트용 -->
+
+    * {
+      outline:none;
+        border:none;
+        margin:0px;
+        padding:0px;
+        font-family:Courier, monospace;
+    }
+    body {
+  background-color: whitesmoke;  }
+    #paper {
+        color:black;
+        font-size:20px;
+        width: 800px;
+        margin-top: 70px;
+        margin-right: 30px;
+    }
+    #margin {
+        margin-left:-66px;
+        margin-bottom:20px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none; 
+        color: black;
+    }
+    #text {
+        width:800px;
+        height: 500px;
+        overflow:hidden;
+        background-color:#FFF;
+        color:  black;
+        font-family:Courier, monospace;
+        font-weight:normal;
+        font-size:15px;
+        resize:none;
+        line-height:30px;
+        padding-left:50px;
+        padding-right:50px;
+        padding-top:45px;
+        padding-bottom:34px;
+        <!-- background-image:url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png); -->
+        background-repeat:repeat-y, repeat; repeat-r;
+        -webkit-border-radius:12px;
+        background-image: cover;
+  
+        border-radius:12px;
+        -webkit-box-shadow: 0px 2px 14px #000;
+        box-shadow: 0px 2px 14px #000;
+        border-top:1px solid #FFF;
+        border-bottom:1px solid #FFF;
+        margin: 0 auto;
+
+    }
+    #title {
+        background-color:transparent;
+        border-bottom:3px solid #FFF;
+        color:#FFF;
+        font-size:20px;
+        font-family:Courier, monospace;
+        height:28px;
+        font-weight:bold;
+        width:220px;
+    }
+    #button {
+        cursor:pointer;
+        margin-top:5px;
+        float:right;
+        height:40px;
+        padding-left:24px;
+        padding-right:24px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:bold;
+        font-size:20px;
+        color: black;
+        text-shadow: 0px -1px 0px #000000;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        border-top:1px solid #FFF;
+        -webkit-box-shadow: 0px 2px 14px #000;
+        box-shadow: 0px 2px 14px #000;
+        background-color: white;
+        background-repeat:repeat-x;
+        padding-top: 5px;
+    }
+    #button:active {
+        zoom: 1;
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+    }
+    #button:focus {
+        zoom: 1;
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+    }
+    #wrapper {
+        width:800px;
+        height:auto;
+        margin-top:24px;
+        margin-bottom:100px;
+        margin: 24px auto 100px;
+    }
+    <!-- .navbar_data{
+      position: absolute;
+      top: 5%;
+      right: 0;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    } -->
+    .navbar ul li{
+      display: inline-block;
+      margin-right: 35.5px;
+      color: #323232;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    <!-- .navbar_link{
+        text-decoration: none;
+    } -->
+    #title{
+        display: inline-block;
+        <!-- width: 700px; -->
+        margin-left: 15px;
+        color: black;
+    }
+    .diary_title{
+        position: absolute;
+        margin: 0 auto;
+        top: 0%;
+        left: 50%;
+    }
+    #main{
+        margin-top: 100px;
+
+    }
+    body{
+     
+    }
+    .left_content{
+      <!-- margin-left: 300px; -->
+    }
+    <!-- 여까지 테스트임 -->
+    body{
+      color:brown;
+    }
+    tr th{
+      color:rgb(98, 155, 41);
+    }
+    tr td{
+      color: black;
+    }
+    table{
+      border-color: burlywood; !important
+    }
+    tbody tr{
+      border-width: 10px;
+      border-color:chocolate;
+    }
+
+
+    .menu {
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      display: inline-block;
+      cursor: pointer;
+      pointer-events: none;
+      
+    }
+    .menu:hover {
+      pointer-events: all;
+    }
+    .label {
+      margin-right:20px;
+      cursor: pointer;
+      pointer-events: all;
+    }
+    .spacer {
+      display: inline-block;
+      width: 80px;
+      margin-left: 15px;
+      margin-right: 15px;
+      vertical-align: middle;
+      cursor: pointer;
+      position: relative;
+    }
+    .spacer:before {
+      content: "";
+      position: absolute;
+      border-bottom: 1px solid #ffffff;
+      height: 1px;
+      width: 0%;
+      transition: width 0.25s ease;
+      transition-delay: 0.7s;
+    }
+    .item {
+      position: relative;
+      
+      margin-right: 30px;
+      top: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease, top 0.5s ease;
+      transition-delay: 0;
+    }
+    span {
+      transition: color 0.5s ease;
+    }
+    .item:hover span {
+      color: #ff0000;
+    }
+    .menu:hover .spacer:before {
+      width: 100%;
+      transition-delay: 0s;
+    }
+    .menu:hover .item {
+      opacity: 1;
+      top: 0px;
+    }
+    .item:nth-child(1) {
+      transition-delay: 0.45s;
+    }
+    .item:nth-child(2) {
+      transition-delay: 0.4s;
+    }
+    .item:nth-child(3) {
+      transition-delay: 0.35s;
+    }
+    .item:nth-child(4) {
+      transition-delay: 0.3s;
+    }
+    .item:nth-child(5) {
+      transition-delay: 0.25s;
+    }
+    .item:nth-child(6) {
+      transition-delay: 0.2s;
+    }
+    .item:nth-child(7) {
+      transition-delay: 0.15s;
+    }
+    .item:nth-child(8) {
+      transition-delay: 0.1s;
+    }
+    .item:nth-child(9) {
+      transition-delay: 0.05s;
+    }
+    .item:nth-child(10) {
+      transition-delay: 0s;
+    }
+    .menu:hover .item:nth-child(1) {
+      transition-delay: 0.25s;
+    }
+    .menu:hover .item:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+    .menu:hover .item:nth-child(3) {
+      transition-delay: 0.35s;
+    }
+    .menu:hover .item:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+    .menu:hover .item:nth-child(5) {
+      transition-delay: 0.45s;
+    }
+    .menu:hover .item:nth-child(6) {
+      transition-delay: 0.5s;
+    }
+    .menu:hover .item:nth-child(7) {
+      transition-delay: 0.55s;
+    }
+    .menu:hover .item:nth-child(8) {
+      transition-delay: 0.6s;
+    }
+    .menu:hover .item:nth-child(9) {
+      transition-delay: 0.65s;
+    }
+    .menu:hover .item:nth-child(10) {
+      transition-delay: 0.7s;
+    }
+    .fa-envelope:before {
+      content: none;
+  }
+  .fa-envelope{
+    padding-right: 50px;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat",sans-serif;
+    box-sizing: border-box;
+  }
+  
+  body{
+    <!-- background-image: linear-gradient(120deg,#487eb0,#fbc531); -->
+    min-height: 100vh;
+  }
+  
+  
+  .container{
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+  }
+  
+  .txtb{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #000;
+    background: none;
+    padding: 10px;
+    outline: none;
+    font-size: 18px;
+  }
+  
+  h3{
+    margin: 10px 0;
+  }
+  
+  .task{
+    width: 100%;
+    background: rgba(255,255,255,0.5);
+    padding: 18px;
+    margin: 6px 0;
+    overflow: hidden;
+  }
+  
+  .task i{
+    float: right;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .comp .task{
+    background: rgba(0,0,0,.5);
+    color: #fff;
+  }
+  
+    
+  </style>
 </head>
 <body>
-   
-    <section class="panel home" data-section-name="home" style=" background-image:url('http://www.baemin.com/img/main_02@2x.jpg');
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;">
-            <div class="inner">
-                <header>
-                        <img src="http://www.baemin.com/img/logo@2x.png" alt="배달의민족"style="
-                        position: absolute;
-                    left:0;
-                    padding-left: 30px;
-                    padding-top: 30px;
-                        ">
-                    <img src="http://www.baemin.com/img/main_text_02@2x.png" alt="따뜻한 라떼 한 잔이 생각날 때"
-                    style="
-                    position: absolute;
-                    left:0;
-                    margin-top: 150px;
-                    padding-left: 30px;">
-                    <img src="http://www.baemin.com/img/scroll@2x.png" alt="스크롤" style="
-                    max-width: 100%;
-                    height: auto;
-                    margin-top: 1000px;
-                    margin-right: 800px;">
-                    
-                <a href="#overview" class="scroll" style="margin-top: 990px;">Scroll for more</a>
-                <a href="https://twitter.com/lukehaas" target="_blank" class="twitter"><img src="https://projects.lukehaas.me/scrollify/images/me.jpeg" width="45" height="45" alt="Twitter pic"><span>Created by @lukehaas</span></a>
-            </div>
-        </section>
-        <div class="section">
-                <div class="content">
-                  <div class="cont-text">
-                    <h2 class="con-txt1 app-cont01-text"><img src="http://www.baemin.com/img/ctn01_text_02@2x.png" alt="바로 그거! 배민에 다 있다"></h2>
-                  </div>
-                  <p class="cont-desc">
-                    3천만 이상이 선택한 배달의민족,<br>
-                    업계 최다 배달가능 업소 보유 중!
-                    <span class="sub-desc">(2017년 11월 기준)</span>
-                  </p>
-                  <div class="animation">
-                    <div class="road">
-                      <img src="http://www.baemin.com/img/img-road@2x.png" alt="배달이">
-                    </div>
-                    <div class="bike">
-                      <img src="http://www.baemin.com/img/img-bike@2x.png" alt="배달이">
-                    </div>
-                  </div>
+    <div id="header">
+        
+        <div class="top">
+
+            <!-- Logo -->
+                <div id="logo">
+                    <span class="image avatar48"><img src="{% static 'img/avatar.jpg' %}" alt="" /></span>
+                    <h1 id="title">Jane Doe</h1>
+                    <p>Hyperspace Engineer</p>
                 </div>
-              </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+							<ul>
+                  <li><a href="{% url 'mypage' %}" id="top-link"><span class="icon solid fa-home">My-page</span></a></li>
+								<li><a href="{% url 'calendar' %}" id="top-link"><span class="icon solid fa-home">Calendar</span></a></li>
+								<li><a href="{% url 'todolist' %}" id="portfolio-link"><span class="icon solid fa-th">계획</span></a></li>
+								<li><a href="{% url 'diary_ok' %}" id="about-link"><span class="icon solid fa-user">diary</span></a></li>
+                
+                <li style="padding: none; position: absolute; bottom:0%; padding-left: 60px;"><a href="{% url 'book_make' %}" id=""><span class="icon solid fa-envelope">책 제본하기</span></a></li>
+                <li><div class="menu">
+                    <div class="label">Community</div>
+                    <div class="spacer"></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>자유게시판</span></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>운동게시판</span></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>자격증게시판</span></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>게시판</span></div>
+                  </div></li>
 
 
-                          <section class="panel methods" data-section-name="methods">
-                <div class="inner">
-                    <footer class="footer section fp-section fp-table active fp-completely" data-anchor="4" style="height: 969px;"><div class="fp-tableCell" style="height: 969px;">
-                        <div class="content bg_footer">
-                          <div class="footer-title">
-                            <h2 class="txt-footer" style="font-family:'배달의민족 도현','궁서체','Arial';"><img src="{% static '/img/ttest.png' %}" alt="" style="width:200px; float:right; margin-right:600px; margin-top:130px">
-                          </div>
-                          <div class="family-link" style="margin-top:100px ; margin-left:450px;">
-                            <ul class="family-link-first-line">
-                              <li><a href="http://www.woowahan.com" target="_blank"><img src="{% static '/img/wooa.png' %}" alt="우아한형제들" style="width:150px; position:relative; float:left; padding:1%;"></a></li>
-                              <li><a href="https://ceo.baemin.com" target="_blank"><img src="{% static '/img/sajang.png' %}" alt="사장님사이트" style="width:150px; position:relative; padding:1%;"></a></li>
-                              <li><a href="http://www.baeminriders.kr" target="_blank"><img src="{% static '/img/link_baera@2x.png'%}" alt="배민라이더스"></a></li>
-                            </ul>
-                            <ul class="family-link-second-line">
-                              <li><a href="http://store.baemin.com/shop/main/index.php?utm_source=baemin.com&amp;utm_medium=referral" target="_blank"><img src="{% static '/img/munbanggu.png' %}" alt="배민문방구" style="width:150px; position:relative; float:left; padding:1%;"></a></li>
-                              <li><a href="http://www.baeminriders.kr/" target="_blank"><img src="{% static '/img/rider.png' %}" alt="라이더채용" style="width:150px; position:relative; padding:1%;"></a></li>
-                            </ul>
-                          </div>
-                          <ul class="footer-sns-list" style="margin-left:450px; margin-bottom:30px">
-                            <li><a title="facebook" href="http://www.facebook.com/smartbaedal/" target="_blank"><img src="{% static '/img/face.png' %}" alt="페이스북" style="width:40px; position:relative; float:left; padding:1%;"></a></li>
-                            <li><a title="instagram" href="http://www.instagram.com/baemin_official/" target="_blank"><img src="{% static '/img/insta.png' %}" alt="인스타그램" style="width:40px; position:relative; float:left; padding:1%;"></a></li>
-                            <li><a title="naver blog" href="http://blog.naver.com/smartbaedal" target="_blank"><img src="{% static '/img/blog.png' %}" alt="네이버블로그" style="width:40px; position:relative; float:left; padding:1%;"></a></li>
-                            <li><a title="youtube" href="https://www.youtube.com/user/smartbaedal2" target="_blank"><img src="{% static '/img/youtube.png' %}" alt="유투브" style="width:40px; position:relative; padding:1%;"></a></li>
-                          </ul>
-                          <div class="company-info" style="margin-left:450px; font-size:90%">
-                            <p class="address">
-                              <span>(주)우아한형제들</span><br>
-                              <span>서울시 송파구 위례성대로 2 장은빌딩 2층</span>
-                            </p>
-                            <p class="business-info">
-                              <span>사업자번호:120-87-65763</span>
-                              <span class="link-business-info">
-                                <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1208765763" target="_blank">사업자정보확인</a>
-                              </span><br>
-                              <span>통신판매업: 서울 송파-0515</span>
-                            </p>
-                            <p class="contact">
-                              <span>전자금융분쟁처리</span><br>
-                              <span>대표전화 : 1600-0987</span><span class="ico-bar">|</span><span>팩스 : 050-6050-0400</span><br>
-                              <span class="link-mail">
-                                              <a href="mailto:help@woowahan.com">대표메일 : help@woowahan.com</a>
-                                          </span>
-                            </p>
-                          </div>
-                        </div>
-                      </div></footer>
-                </div>
-            </section>
 
-      <!-- script!! -->
-      <script src="static/js/test.js"></script>
+							</ul>
+						</nav>
+
+        </div>
+
+      
+
+    </div>
+<div class="left_content">
+
+
+<div id ="main">
+
+
+
+  <!-- 여기 변경내용넣어!!!!!!!!!!!!!!!!!!!!! -->
+  <div class="navbar">
+    <div class="diary_title">
+        <h1>To DO List</h1>
+    </div>
+    <div class="navbar_data">
+        <ul class="data_ul">
+            <li class="li_1" data-href="https://naver.com">
+                    <a class="navbar_link" href="https://naver.com">목록보기</a>
+            </li>
+
+           
+        </ul>
+
+    </div>
+</div>
+
+
+
+
+<div class="main">
+    <div class="container">
+      <input type="text" class="txtb" placeholder="Add a task">
+      <div class="notcomp">
+        <h3>Not Completed</h3>
+
+
+
+      </div>
+
+      <div class="comp">
+        <h3>Completed</h3>
+      </div>
+    </div>
+
+</div>
+
+
+    <script type="text/javascript">
+      $(".txtb").on("keyup",function(e){
+        //13  means enter button
+        if(e.keyCode == 13 && $(".txtb").val() != "")
+        {
+          var task = $("<div class='task'></div>").text($(".txtb").val());
+          var del = $("<i class='fas fa-trash-alt'></i>").click(function(){
+            var p = $(this).parent();
+            p.fadeOut(function(){
+              p.remove();
+            });
+          });
+
+          var check = $("<i class='fas fa-check'></i>").click(function(){
+            var p = $(this).parent();
+            p.fadeOut(function(){
+              $(".comp").append(p);
+              p.fadeIn();
+            });
+            $(this).remove();
+          });
+
+          task.append(del,check);
+          $(".notcomp").append(task);
+            //to clear the input
+          $(".txtb").val("");
+        }
+      });
+    </script>
+
+    <!-- 그만넣어!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+</div>
+</div>
+
+
+  
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+    <script src="{% static '/js/diary/diary.js' %}"></script>
+    <!-- Scripts -->
+          <script src="{% static '/js/jquery.min.js' %}"></script>
+          <script src="{% static '/js/jquery.scrolly.min.js' %}"></script>
+          <script src="{% static '/js/jquery.scrollex.min.js' %}"></script>
+          <script src="{% static '/js/browser.min.js' %}"></script>
+          <script src="{% static '/js/breakpoints.min.js' %}"></script>
+          <script src="{% static '/js/util.js' %}"></script>
+          <script src="{% static '/js/main.js' %}"></script>
+
+
+</div>
 </body>
 </html>

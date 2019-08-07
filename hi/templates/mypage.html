@@ -12,8 +12,13 @@
  
     <div class="main-wrapper">
 	    <section class="cta-section theme-bg-light py-5">
+			    <div class="container text-center">
+						<div class="animate three" style="font-family: 'stencil';" id="font">
+								<span>T</span> <span>U</span> <span>R</span> <span>N</span> <span>I</span> <span>N</span> <span>G</span> 
+							<span>P</span> <span>O</span> <span>I</span> <span>N</span> <span>T</span>
+						  
+						</div>
 		    <div class="container text-center">
-			    <h2 class="heading" style="font-family: 'stencil';">T u r n i n g P o i n t</h2>
 				<div class="intro" style="font-family: 'NanumBarunpen';" >군생활을 기록하다.</div>
 			
 			    <!-- <form class="signup-form form-inline justify-content-center pt-3">
@@ -82,10 +87,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-1.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">늦은 나이, 군대에서 수능공부 000합격</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post' %}">늦은 나이, 군대에서 수능공부 000합격</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 2 days ago</span><span class="time">5 min read</span><span class="comment"><a href="#">8 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -93,10 +98,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-2.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">토익 점수 올렸던 공부방법</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post' %}">토익 점수 올렸던 공부방법</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 3 months ago</span><span class="time">3 min read</span><span class="comment"><a href="#">26 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -105,10 +110,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-3.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">High Performance JavaScript</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post' %}">High Performance JavaScript</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 1 month ago</span><span class="time">8 min read</span><span class="comment"><a href="#">12 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -116,10 +121,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-4.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">Top 5 JavaScript Frameworks</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post' %}">Top 5 JavaScript Frameworks</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 2 months ago</span><span class="time">15 min read</span><span class="comment"><a href="#">3 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -128,33 +133,34 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-5.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">Learn React in 24 Hours</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post' %}">Learn React in 24 Hours</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 2 months ago</span><span class="time">10 min read</span><span class="comment"><a href="#">23 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
-			    
+			    <div class="item mb-5">
 			    <div class="item">
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-6.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">About Remote Working</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post' %}">About Remote Working</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 3 months ago</span><span class="time">2 min read</span><span class="comment"><a href="#">1 comment</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 				</div><!--//item-->
+			<div class="item mb-5">
 				<div class="item">
 						<div class="media">
 							<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-6.jpg' %}" alt="image">
 							<div class="media-body">
-								<h3 class="title mb-1"><a href="blog-post.html">About Remote Working</a></h3>
+								<h3 class="title mb-1"><a href="{% url 'post' %}">About Remote Working</a></h3>
 								<div class="meta mb-1"><span class="date">Published 3 months ago</span><span class="time">2 min read</span><span class="comment"><a href="#">1 comment</a></span></div>
 								<div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-								<a class="more-link" href="blog-post.html">Read more &rarr;</a>
+								<a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
 							</div><!--//media-body-->
 						</div><!--//media-->
 					</div><!--//item-->
@@ -182,14 +188,14 @@
         <div class="panel-inner">
             <h5 class="panel-title">Choose Colour</h5>
             <ul id="color-options" class="list-inline mb-0">
-                <li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
-                <li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
-                <li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
-                <li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
-                <li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
-                <li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
-                <li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
-                <li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
+                <li class="theme-1 active list-inline-item"><a data-style="{% static 'assets/css/theme-1.css' %}" href="#"></a></li>
+                <li class="theme-2  list-inline-item"><a data-style="{% static 'assets/css/theme-2.css' %}" href="#"></a></li>
+                <li class="theme-3  list-inline-item"><a data-style="{% static 'assets/css/theme-3.css' %}" href="#"></a></li>
+                <li class="theme-4  list-inline-item"><a data-style="{% static 'assets/css/theme-4.css' %}" href="#"></a></li>
+                <li class="theme-5  list-inline-item"><a data-style="{% static 'assets/css/theme-5.css' %}" href="#"></a></li>
+                <li class="theme-6  list-inline-item"><a data-style="{% static 'assets/css/theme-6.css' %}" href="#"></a></li>
+                <li class="theme-7  list-inline-item"><a data-style="{% static 'assets/css/theme-7.css' %}" href="#"></a></li>
+                <li class="theme-8  list-inline-item"><a data-style="{% static 'assets/css/theme-8.css' %}" href="#"></a></li>
             </ul>
             <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
         </div><!--//panel-inner-->

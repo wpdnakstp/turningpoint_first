@@ -24,9 +24,9 @@
                 <td>{{ post.id }}</td>
                 <td><a href="{% url 'noticedetail' post.id %}">{{ post.title }}</a></td>
                 <td>{{ post.tnUser }}</td>
-                <td>{{ post.pub_date }}</td>
+                <td>{{ post.pub_date|date:"Y-m-d P"}}</td>
                 <td>{{ post.postHit }}</td>
-                <td>{{ post.id }}</td>
+                <td>{{ post.totalLike }}</td>
                 </tr>
             {% endfor %}
         {% else %}
@@ -35,6 +35,11 @@
     </tbody>
 </table>
 <hr>
+
+<form action="{% url 'noticelist' %}" method="get">
+        <input type="text" name="q" value="{{ q }}">
+        <input type="submit" value="검색">
+</form>
 
 {% if posts.has_previous %}
     <a href="?page=1"><strong>&nbsp;</strong></a>

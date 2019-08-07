@@ -1,11 +1,19 @@
 <div class="container">
+        <input type="hidden" value="{{ free.update_counter }}"> <!-- 조회수 카운터 -->
         <h1>{{ free.title }}</h1>
-        <p>{{ free.pub_date }}</p>
+        <p>작성시간 : {{ free.pub_date }}</p>
+        <p>글쓴이 : {{ free.tnUser }}</p>
+        <p>추천수 : {{free.totalLike}}</p>
+        <p>조회수 : {{ free.postHit }}</p>
         <p>{{ free.body }}</p>
-        <p>{{ free.tnUser }}</p>
+        <p></p>
         <a href="{% url 'free' %}">돌아가기</a>
         <a href="{% url 'freeupdate' free.id %}"><input type="button" value="수정하기"></a>
         <a href="{% url 'freedelete' free.id %}"><input type='button' value="삭제하기"></a>
+        <form action="{% url 'freeLike' free_id=free.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="좋아요♥">
+        </form>
     
         <hr>
         <div class="comment">
@@ -26,20 +34,16 @@
         <tbody>
             {% for comment in free.comments.all %}
             <tr>
-                <td>{{ comment.commentdate }}</td>
+                <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
                 <td>{{ comment.commentbody }}</td>
                 <td>{{ comment.tnFreeCommentUser }}</td>
+                <td><a href="{% url 'freecommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
             </tr>
             {% empty %}
                 <p>댓글이 없습니다!</p>
             {% endfor %}  
         </tbody>
         </table>
-        <form action="{% url 'freeLike' free_id=free.id %}" method="POST">
-            {% csrf_token %}
-            <input type="submit" value="좋아요♥">
-        </form>
-        <h1>{{free.totalLike}}</h1>
     
     
         </div>

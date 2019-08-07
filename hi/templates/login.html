@@ -15,7 +15,7 @@
     <div class="loginform">
             <img class="user" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" alt="user"/>
           <h2>Log in here</h2>
-            <form method="POST" action="{% url 'login' %}">
+            <form method="POST" action="{% url 'userlogin' %}">
               {% csrf_token %}
               <p>ID</p>
               <input tpye="text" name="username" placeholder="Enter ID"/>

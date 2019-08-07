@@ -69,58 +69,97 @@
     
 <!--header-->
 <header>
-<ul>
-    <li style= "font-size: 1.3em;" >
-    <a class="wow fadeInDown" data-wow-duration=".5s" data-wow-delay="2s" href="#home">Home</a>
-    <a class="wow fadeInDown" data-wow-duration=".5s" data-wow-delay="2.2s" href="#about">About</a>
-    <a class="wow fadeInDown" data-wow-duration=".5s" data-wow-delay="2.4s" href="#service">Service</a>
-    <a class="wow fadeInDown" data-wow-duration=".5s" data-wow-delay="2.6s" href="#gallery">Gallery</a>
 
+        <ul style="padding:0px; margin:0px; position:absolute; right:0px; top:30px;  ">  
+                <div class="sidebar">
+                    <div class="logo"> 
+                        <img src="images/logopoint.png" alt="TuringPoint"> 
+                        </div>
+            
+                     <ul class="loge-effects">
+                        <li class="current"></li>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자유게시판</a></li>
+                        <li><a href="#">커뮤니티</a></li>
+                        <li><a href="#">home</a></li>
+                        <li><a href="#">home</a></li>
+                    </ul>
+                        <a class="wow fadeIn" data-wow-duration=".5s" data-wow-delay="3s">      
+                                <div class="logogo">
+            
+                            <button class="sidebarBtn" style="background:none;">
+                             <span></span>
+                                  
+                        </a>
+                    </div> 
+                    </button>
+                </div>
+                    
+                </div>
+                
+                <!-- 로그인시  -->
+                {% if user.is_authenticated %}    
+            
+                <ul style="padding:0px; margin:0px; position:absolute; right:20px; top:20px; ">
+                        <li>
+                            <p id="lolo" style="color: white; ">{{user.username}}님 로그인 되었습니다.</p>
+                        </li>
+                        <li>
+                                <a href="{% url 'logout' %}">logout</a>
+                            </li>
+                            
 
- <ul style="padding:0px; margin:0px; position:absolute; right:0px; top:30px;  ">  
-    <li><a class="wow fadeInDown" data-wow-duration=".5s" data-wow-delay="3s" href="#contact">
-<!-- 아래부분 없애고 그냥 login있는 게 원래폼 -->
-<button onclick="document.getElementById('modal-wrapper').style.display='block'" style="width:85px; margin-left:160px; border-radius: 50px;">
-Log in</button>
-</li></a>
-
-<div id="modal-wrapper" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php">
-        
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-     
-      <h1 style="text-align:center; font-size:1.5em; font-family:'HSBombaram';">로그인 하시지 말입니다.</h1>
-    </div>
-
-    <div class="container-login">
-      <input type="text" placeholder="터닝포인트 아이디" name="uname">
-      <input type="password" placeholder="터닝포인트 비밀번호" name="psw">        
-      <button type="submit" style="font-family: 'BBTreeGL';">로그인</button>
-      <ul id="btns" style="visibility: visible;">
-            <a class="id" href="#" style="visibility: visible;" >아이디 찾기
-            <a class="id"  href="password.html" style="visibility: visible;" >/ 비밀번호 찾기</a>
-        </ul>  
-          
-      <div class="bottom-text">
-         계정이 없으십니까?<a href="signup.html" style=" visibility: visible; color: black; margin: 0 10px; text-decoration:underline;font-family: 'BBTreeGL'; ">회원가입</a></div>
-      </ul> 
-        
-    </div>
-
-    
-  </form>
-  
-</div>
-<!-- 요까지 -->
-    </a></li>
- </ul>
-</ul>     
+                        
+                        {% else %}
 
 
 
 
+
+            <div class="loginbutton">
+                <li><a class="wow fadeIn" data-wow-duration=".5s" data-wow-delay="3.5s" >
+            
+                <button onclick="document.getElementById('modal-wrapper').style.display='block'" style="width:85px;   margin-left: -72px; border-radius: 50px;    position: fixed;">
+                Log in</button>
+                </li></a>
+                
+                <div id="modal-wrapper" class="modal">
+                  
+                  <form class="modal-content animate" action="/action_page.php">
+                        
+                    <div class="imgcontainer">
+                      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                     
+                      <h1 style="text-align:center; font-size:1.5em; font-family:'HSBombaram';">로그인 하시지 말입니다.</h1>
+                    </div>
+                    <form method="POST" action="{% url 'userlogin' %}">
+                            {% csrf_token %}
+                    <div class="container-login">
+                      <input type="text" placeholder="터닝포인트 아이디" name="username">
+                      <input type="password" placeholder="터닝포인트 비밀번호" name="password">        
+                      <button type="submit" style="font-family: 'BBTreeGL';">로그인</button>
+                      <ul id="btns">
+                            <a class="id" href="#" >아이디 찾기
+                            <a class="id"  href="{% url 'password_ok' %}" >/ 비밀번호 찾기</a>
+                        </ul>  
+                          
+                      <div class="bottom-text">
+                         계정이 없으십니까?<a href="{% url 'signup_ok' %}" style="color: black; margin: 0 10px; text-decoration:underline;font-family: 'BBTreeGL'; ">회원가입</a></div>
+                      </ul> 
+                        
+                    </div>
+                </form>
+                    
+                  </form>
+                  
+                </div>
+            </div>
+            {% endif %}
+            <!-- 요까지 -->
+                    </a></li>
+                 </ul>
+                </ul>     
+                
 
 
     
@@ -250,5 +289,10 @@ new WOW(). init();
         }
     }
     </script>
-</body>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="{% static '/js/sidebar.js' %}"></script>
+
+    
+</body>  
 </html>

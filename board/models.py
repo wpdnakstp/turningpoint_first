@@ -9,6 +9,7 @@ class Notice(models.Model):
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
     postHit=models.PositiveIntegerField(default=0) # 조회수 체크 - 정수를 인수로 받음
+    userLikeName = models.ManyToManyField(TurningUser,related_name='nlikes')
     # like_count = models.PositiveIntegerField(default=0)
     # userLike = models.CharField(max_length=30,blank=True)
     # likePoint = models.ManyToManyField(TurningUser, blank=True)
@@ -19,6 +20,10 @@ class Notice(models.Model):
     def update_counter(self):
         self.postHit = self.postHit + 1
         self.save()
+
+    @property
+    def totalLike(self):
+        return self.userLikeName.count()
 
 class Noticecomment(models.Model):
     #글의 원주인을 정해주기 위해서 ForeignKey를 사용하여 TurningUser모델의 User값을 가지고 옴
@@ -42,11 +47,16 @@ class Free(models.Model):
     body = models.TextField()
     postHit=models.PositiveIntegerField(default=0) # 조회수 체크 - 정수를 인수로 받음
     #좋아요를 알기 위해서 다대다 모델을 걸어줍니다.
-    userLikeName = models.ManyToManyField(TurningUser,related_name='likes')
+    userLikeName = models.ManyToManyField(TurningUser,related_name='flikes')
     
 
     def __str__(self):
         return self.title
+
+    @property
+    def update_counter(self):
+        self.postHit = self.postHit + 1
+        self.save()
 
     @property
     def totalLike(self):
@@ -72,9 +82,18 @@ class Develop(models.Model):
     pub_date = models.DateTimeField('date published')
     body = models.TextField()
     postHit=models.PositiveIntegerField(default=0) # 조회수 체크 - 정수를 인수로 받음
+    userLikeName = models.ManyToManyField(TurningUser,related_name='dlikes')
 
     def __str__(self):
         return self.title
+
+    def update_counter(self):
+        self.postHit = self.postHit + 1
+        self.save()
+
+    @property
+    def totalLike(self):
+        return self.userLikeName.count()
 
 class Developcomment(models.Model):
     tnDevelopCommentUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,null=True)

@@ -12,6 +12,10 @@ urlpatterns = [
     path('notice/update/<int:notice_id>', views.noticeupdate, name='noticeupdate'),
     path('notice/updatesend/<int:notice_id>', views.noticeupdatesend, name='noticeupdatesend'),
     path('notice/<int:notice_id>/commentcreate', views.noticecommentcreate, name='noticecommentcreate'),
+    path('notice/<int:notice_id>/noticeLike',views.noticeLike,name="noticeLike"),
+    path('notice/deletecomment/<int:notice_id>', views.noticecommentdelete, name='noticecommentdelete'),
+    path('notice/search', views.notice_list, name="noticelist"),
+
     # path('notice/<int:notice_id>/like', views.like, name="noticelike"),
     # path('notice/test',views.test,name="test"),
 
@@ -25,6 +29,8 @@ urlpatterns = [
     path('free/updatesend/<int:free_id>', views.freeupdatesend, name='freeupdatesend'),
     path('free/<int:free_id>/commentcreate', views.freecommentcreate, name='freecommentcreate'),
     path('free/<int:free_id>/freeLike',views.freeLike,name="freeLike"),
+    path('free/deletecomment/<int:free_id>', views.freecommentdelete, name='freecommentdelete'),
+    path('free/search', views.free_list, name="freelist"),
     
     # 자기계발게시판 - Develop
     path('develop/', views.develop, name="develop" ),
@@ -35,5 +41,8 @@ urlpatterns = [
     path('develop/update/<int:develop_id>', views.developupdate, name='developupdate'),
     path('develop/updatesend/<int:develop_id>', views.developupdatesend, name='developupdatesend'),
     path('develop/<int:develop_id>/commentcreate', views.developcommentcreate, name='developcommentcreate'),
+    path('develop/<int:develop_id>/developLike',views.developLike,name="developLike"),
+    path('develop/deletecomment/<int:develop_id>', views.developcommentdelete, name='developcommentdelete'),
+    path('develop/search', views.develop_list, name="developlist"),
 
 ]

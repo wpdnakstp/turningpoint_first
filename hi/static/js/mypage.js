@@ -32,7 +32,7 @@ $("#show-sidebar").click(function() {
 
    
    
-});
+});git
 
 /* This code is not required for the animation. This is only needed for the repeatation */
 

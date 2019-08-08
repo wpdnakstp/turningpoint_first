@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div class="container">
         <input type="hidden" value="{{ develop.update_counter }}"> <!-- 조회수 카운터 -->
         <h1>{{ develop.title }}</h1>
@@ -50,6 +50,8 @@
         </div>
     </div>
 =======
+=======
+>>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a
 
 
 
@@ -475,4 +477,56 @@
 
 
 
->>>>>>> master
+
+<div class="container">
+        <input type="hidden" value="{{ develop.update_counter }}"> <!-- 조회수 카운터 -->
+        <h1>{{ develop.title }}</h1>
+        <p>작성시간 : {{ develop.pub_date }}</p>
+        <p>글쓴이 : {{ develop.tnUser }}</p>
+        <p>추천수 : {{develop.totalLike}}</p>
+        <p>조회수 : {{ develop.postHit }}</p>
+        <p>{{ develop.body }}</p>
+        <p></p>
+        <a href="{% url 'develop' %}">돌아가기</a>
+        <a href="{% url 'developupdate' develop.id %}"><input type="button" value="수정하기"></a>
+        <a href="{% url 'developdelete' develop.id %}"><input type='button' value="삭제하기"></a>
+        <form action="{% url 'developLike' develop_id=develop.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="좋아요♥">
+        </form>
+    
+        <hr>
+        <div class="comment">
+             <form action="{% url 'developcommentcreate' develop_id=develop.id %}" method="POST"> <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
+                {% csrf_token %}
+                <input type="text" name="content" placeholder="댓글을 작성해 주세요.">
+                <input type="submit" value="작성하기">
+            </form>
+        </div>
+        <hr>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>날짜</th>
+                    <th>댓글</th>
+                    <th>작성자</th>
+            </thead>
+        <tbody>
+            {% for comment in develop.comments.all %}
+            <tr>
+                <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
+                <td>{{ comment.commentbody }}</td>
+                <td>{{ comment.tnDevelopCommentUser }}</td>
+                <td><a href="{% url 'developcommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
+            </tr>
+            {% empty %}
+                <p>댓글이 없습니다!</p>
+            {% endfor %}  
+        </tbody>
+        </table>
+    
+    
+        </div>
+    </div>
+>>>>>>> 6a72257d0df0ececf776464c8e67dd82e87e9960
+>>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a

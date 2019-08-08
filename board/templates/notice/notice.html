@@ -4,7 +4,10 @@
 {% block content %}
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a
 <table class='table'>
     <thead>
         <tr>
@@ -39,9 +42,8 @@
         <input type="text" name="q" value="{{ q }}">
         <input type="submit" value="검색">
 </form>
-
 {% if posts.has_previous %}
-    <a href="?page=1"><strong>&nbsp;</strong></a>
+    <a href="?page=1"><astrong>&nbsp;</strong></a>
     <a href="?page={{posts.previous_page_number}}"><strong><&nbsp;&nbsp;</strong></a>
 {% endif %}
 
@@ -56,6 +58,7 @@
 
 <p><a href="{% url 'noticenew' %}">글쓰기</a></p>
 <p><a href="{% url 'intro_final' %}">홈으로</a></p>
+<<<<<<< HEAD
 
 
 
@@ -70,6 +73,8 @@
 
 =======
 >>>>>>> 2e33213a0c4ec5cbc9a1c1e0dc32e6780cfc3c73
+=======
+>>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a
 
 
   <div id="main">
@@ -184,4 +189,9 @@
 
 
 
+<<<<<<< HEAD
 {% endblock %}
+=======
+{% endblock %}
+
+>>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a

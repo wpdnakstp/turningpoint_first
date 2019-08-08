@@ -21,7 +21,7 @@ body{
 
 #logo-image{
 	
-	animation: fill 0.5s ease forwards 3.5s;
+	animation: fill 0.5s ease forwards 2s;
 	-webkit-animation-name: fadeOut ;
 	animation-name: fadeOut ;
 
@@ -34,7 +34,7 @@ body{
     top: 50%;
     left:50%;
 	transform: translate(-50%, -50%);
-	animation: fill 0.5s ease forwards 3.5s;
+	animation: fill 0.5s ease forwards 2s;
 	-webkit-animation-name: fadeOut ;
 	animation-name: fadeOut ;
 	
@@ -63,37 +63,37 @@ body{
 #logo path:nth-child(3){
 	stroke-dasharray: 1055;
 	stroke-dashoffset: 1055;
-	animation:line-anim 2s ease forwards 0.4s;
+	animation:line-anim 2s ease forwards 0.3s;
 	
 }
 #logo path:nth-child(4){
 	stroke-dasharray: 813;
 	stroke-dashoffset: 813;
-	animation:line-anim 2s ease forwards 0.6s;
+	animation:line-anim 2s ease forwards 0.4s;
 	
 }
 #logo path:nth-child(5){
 	stroke-dasharray: 409;
 	stroke-dashoffset: 409;
-	animation:line-anim 2s ease forwards 0.8s;
+	animation:line-anim 2s ease forwards 0.5s;
 	
 }
 #logo path:nth-child(6){
 	stroke-dasharray: 788;
 	stroke-dashoffset: 788;
-	animation:line-anim 2s ease forwards 1s;
+	animation:line-anim 2s ease forwards 0.6s;
 	
 }
 #logo path:nth-child(7){
 	stroke-dasharray: 641;
 	stroke-dashoffset: 641;
-	animation:line-anim 2s ease forwards 1.2s;
+	animation:line-anim 2s ease forwards 0.7s;
 	
 }
 #logo path:nth-child(8){
 	stroke-dasharray: 524;
 	stroke-dashoffset: 524;
-	animation:line-anim 2s ease forwards 1.4s;
+	animation:line-anim 2s ease forwards 0.8s;
 	
 }
 

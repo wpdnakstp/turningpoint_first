@@ -4,7 +4,7 @@
 		  border:none;
 		  margin:0px;
 		  padding:0px;
-		  font-family:Courier, monospace;
+		
 	  }
 	  body {
 	background-color: whitesmoke;  }
@@ -31,7 +31,7 @@
 		  overflow:hidden;
 		  background-color:#FFF;
 		  color:  black;
-		  font-family:Courier, monospace;
+		 
 		  font-weight:normal;
 		  font-size:15px;
 		  resize:none;
@@ -58,7 +58,6 @@
 		  border-bottom:3px solid #FFF;
 		  color:#FFF;
 		  font-size:20px;
-		  font-family:Courier, monospace;
 		  height:28px;
 		  font-weight:bold;
 		  width:220px;
@@ -130,13 +129,10 @@
 		  position: absolute;
 		  margin: 0 auto;
 		  top: 0%;
-		  left: 50%;
+		  left: 44%;
 	  }
 	  #main{
 		  margin-top: 100px;
 
 	  }
-	  body{
-	   
-	  }
-
+	

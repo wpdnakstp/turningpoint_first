@@ -403,7 +403,9 @@
   /*-----------------------------chiller-theme-------------------------------------------------*/
   
   .chiller-theme .sidebar-wrapper {
-      background: #2E4057;
+
+      background: #091f35;
+>>>>>>> 5e3406c2dd0fdd1082ab2d90836af90c2670accd
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-header,
@@ -433,7 +435,9 @@
   .chiller-theme .sidebar-wrapper .sidebar-header .user-info,
   .chiller-theme .sidebar-wrapper .sidebar-brand>a:hover,
   .chiller-theme .sidebar-footer>a:hover i {
-      color: #b8bfce;
+
+      color: #ffffff;
+>>>>>>> 5e3406c2dd0fdd1082ab2d90836af90c2670accd
   }
   
   .page-wrapper.chiller-theme.toggled #close-sidebar {

@@ -20,15 +20,103 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		
+
 		<link rel="stylesheet" href="{% static '/css/pagination.css' %}" />
         <link rel="stylesheet" href="{% static '/css/main.css' %}" />  
 		<link rel="stylesheet" href="{% static '/css/sidebar.css' %}" />
+		<link rel="stylesheet" href="{% static '/css/theme-1.css' %}" />
         
-		
 
 
 
 	</head>
+	<style>
+
+	body {
+  font-family: Helvetica, sans-serif;
+}
+
+li {
+  position: relative;
+  overflow: hidden;
+  max-width: 300px;
+  transition: all 0.3s ease-out;
+  width: 100%;
+  float: left;
+
+ 
+}
+li .text {
+  color: #fff;
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+right: 0;
+margin-left: 56px;
+
+  padding: 0 10%;
+
+  transition: all 0.3s ease;
+}
+li .text h2 {
+  font-size: 1.75em;
+  border-bottom: 3px solid white;
+  margin-bottom: 0.625em;
+  color:white;
+}
+li img {
+  width: 100%;
+  height: auto;
+  max-width: 280px;
+  display: block;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+li .overlay {
+  position: absolute;
+  top: 0;
+
+  width: 280px;
+  height: 100%;
+  background: #000;
+  z-index: 10;
+  opacity: 0.4;
+  transition: opacity 0.15s ease-out;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+li:hover img, li:focus img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+li:hover .overlay, li:focus .overlay {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+li:hover .text, li:focus .text {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+a {
+  transition: all 0.2s;
+}
+.textboxlist-ul
+{
+  overflow: hidden;
+  margin: 0;
+  padding: 0 85px;
+ 
+  padding-bottom: 3px;
+}
+
+		
+		</style>
 	<body class="is-preload">
 
 		<!-- Header -->
@@ -40,7 +128,7 @@
 					<nav id="sidebar" class="sidebar-wrapper">
 					  <div class="sidebar-content">
 					  <div class="sidebar-brand">
-						<a href="#">TurningPoint</a>
+						<a href="{% url 'intro_final' %}">TurningPoint</a>
 						<div id="close-sidebar">
 						
 						</div>
@@ -83,7 +171,7 @@
 						  <li>
 							<a href="{% url 'mypage' %}">
 							<i class="fa fa-book"></i>
-							<span>home</span>
+							<span>Home</span>
 							<span class="badge badge-pill badge-primary">Beta</span>
 							</a>
 						  </li>
@@ -151,6 +239,22 @@
 			<script src="{% static '/js/util.js' %}"></script>
 			<script src="{% static '/js/main.js' %}"></script>
 			<script src="{% static '/js/mypage.js' %}"></script>
+			<script src="{% static '/assets/plugins/jquery-3.3.1.min.js' %}"></script>
+			<script src="{% static '/assets/plugins/popper.min.js' %}"></script> 
+			<script src="{% static '/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+		
+			<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+			<script src="{% static '/assets/js/demo/style-switcher.js' %}"></script> 
+			    <!-- Page Specific JS -->
+				<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
 
+				<!-- Custom JS -->
+				<script src="{% static 'assets/js/blog.js' %}"></script>
+				
+				<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+				<script src="{% static 'assets/js/demo/style-switcher.js' %}"></script> 
+				<script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js  "></script>
+
+			
 	</body>
 </html>

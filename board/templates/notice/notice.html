@@ -1,9 +1,8 @@
-{% if error %}
-<script>
-    alert("{{error}},{{tnUser}},{{nowUser}}")
-</script>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-{% endif %}
+{% block content %}
+
 
 
 <table class='table'>
@@ -69,6 +68,8 @@
 {% block content %}
 
 
+=======
+>>>>>>> 2e33213a0c4ec5cbc9a1c1e0dc32e6780cfc3c73
 
 
   <div id="main">
@@ -125,7 +126,7 @@
             </div>
 
 {% for notice in notices.all %}
- <li style="float:none;"class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee;">
+ <li class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee;">
 
 
 

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{%if error %}
+ <script>
+     alert("{{error}}")
+ </script>
+{% endif %}
 <html lang="en">
 
 <head>
@@ -19,19 +24,72 @@
     <!-- Main CSS-->
     <link href="{% static '/css/signup.css' %}" rel="stylesheet" media="all">
 </head>
-<script>
-        function checkid(){
-            var userid = document.getElementById("uid").value;
-            if(userid)
-            {
-                url = "check.php?userid="+userid;
-                    window.open(url,"chkid","width=300,height=100");
-                }else{
-                    alert("아이디를 입력하세요");
-                }
-            }
-           
-        </script>
+<script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+        // function checkid(){
+            
+        //     // // $('.input--style-6 username_check').change(function(){
+        //     // //     $('#id_check_success').hide();
+        //     // //     $('.input--style-6 validationId').show();
+        //     // //     $('..input--style-6 username_check').attr("check_result","fail");
+        //     // // })
+
+        //     // if($('.input--style-6 username_check').val()==''){
+        //     //     alert("이메일을 입력해주세요.")
+        //     //     return;
+        //     // }
+
+        //     // id_overlap_input = document.querySelector('input[name="username"]');
+
+        //     // $.ajax({
+        //     //     url: "{% url 'id_overlap_check' %}",
+        //     //     data: {
+        //     //         'username': id_overlap_input.value
+        //     //     },
+        //     //     datatype: 'json',
+        //     //     success: function(data){
+        //     //         console.log(data['overlap']);
+        //     //         if (data['overlap'] == "fail") {
+        //     //             alert("이미 존재하는 아이디 입니다.");
+        //     //             id_overlap_input.focus();
+        //     //             return;
+        //     //         } else {
+        //     //             alert("사용가능한 아이디 입니다.");
+        //     //             $('.input--style-6 username_check').attr("check_result","success");
+        //     //             $('#id_check_success').show();
+        //     //             $('.input--style-6 validationId').hide();
+        //     //             return;
+        //     //         }
+ 
+        //     //     }
+        //     // })
+
+        //     // var userid = document.getElementById("uid").value;
+        //     $.ajax({
+        //         url: "{% url 'id_overlap_check' %}",
+        //         data: {
+        //             'username': userid
+        //         },
+        //         datatype: 'json',
+        //         success: function(data) {
+        //             console.log(data['overlap']);
+        //             if(data['overlap']=="fail"){
+        //                 alert("이미 존재하는 아이디 입니다.");
+        //                 userid.focuse();
+        //                 return;
+        //             } else {
+        //                 alert("사용가능한 아이디 입니다.");
+        //                 return;
+        //             }
+        //         }
+        //     });            
+        //     if(userid){
+        //         url = "{% url 'ckid' %}";
+        //         window.open(url,"ckid","width=300,height=100");
+        //     }else{
+        //         alert("아이디를 입력하세요");
+        //     }
+        // }
+</script>
 
 <body>
     <div class="page-wrapper bg-dark p-t-100 p-b-50">
@@ -41,13 +99,33 @@
                     <h2 class="title">터닝포인트</h2>
                 </div>
                 <div class="card-body">
+                    <form method="POST" action="{% url 'ckid' %}">
+                        {% csrf_token %}
+                        아이디: <input type="text" name="test">
+                        <br>
+                        <input type="submit" value="아이디 중복확인">
+                    </form>
+                    <br>
+                    <form method="POST" action="{% url 'ckmail' %}">
+                        {% csrf_token %}
+                        이메일: <input type="email" name="testEmail">
+                        <br>
+                        <input type="submit" value="이메일 중복확인">
+                    </form>
+                    <br>
+                    <form method="POST" action="{% url 'cknick' %}">
+                        {% csrf_token %}
+                        닉네임: <input type="text" name="testNick">
+                        <br>
+                        <input type="submit" value="닉네임 중복확인">
+                    </form>
                     <form method="POST" action = "{%url 'signup_ok' %}" >
                             {% csrf_token %} <!--사이트간 위조 방지 토큰을 넣어주고-->
                         <div class="form-row">
                             <div class="name">아이디</div>
                             <div class="value">
                                 <input class="input--style-6" type="text" id="uid" name="username"style="width: 60%;">
-                                <input class="input--style-6" type="button" value="중복검사" style="width: 30%; " onclick="checkid();" />
+                                <input class="input--style-6" id="validationId" type="button" value="중복검사" style="width: 30%; " onclick="checkid();" />
                                 <input type="hidden" value="0" name="chs" />
                             </div>
                         </div>

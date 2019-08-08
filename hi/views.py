@@ -10,6 +10,7 @@ from turningaccounts.models import TurningUser
 from datetime import datetime
 #email validation check import re
 import re
+from django.http import JsonResponse, HttpResponse
 
 # Create your views here.
 
@@ -205,3 +206,58 @@ def diary_detail(request,diary_id):
 
 def base_ok(request):
     return render(request, 'base_ok.html')
+
+
+
+def ckid(request):
+    ckUserId = request.POST.get('test')
+    if ckUserId == "":
+        return render(request,'signup_ok.html',{"error":"아이디를 입력해주세요."})
+    try:
+        ckValId = TurningUser.objects.get(username=ckUserId)
+        checkIdMent = "아이디가 중복되었습니다."
+    except:
+        checkIdMent = "아이디를 사용하실 수 있습니다."
+    return HttpResponse(checkIdMent)
+
+
+def ckmail(request):
+    ckUserEmail = request.POST.get('testEmail')
+    if ckUserEmail == "":
+        return render(request,'signup_ok.html',{"error":"이메일을 입력해주세요."})
+    try:
+        ckMailValid = TurningUser.objects.get(email=ckUserEmail)
+        checkEmailMent = "이메일이 중복되었습니다."
+    except:
+        checkEmailMent = "이메일을 사용하실 수 있습니다."
+    return HttpResponse(checkEmailMent)
+
+    
+def cknick(request):
+    ckUserNick = request.POST.get('testNick')
+    if ckUserNick == "":
+        return render(request,'signup_ok.html',{"error":"닉네임을 입력해주세요."})
+    else:
+        try:
+            ckNickValid = TurningUser.objects.get(nickName=ckUserNick)
+            checkNickMent = "닉네임이 중복되었습니다."
+        except:
+            checkNickMent = "닉네임을 사용하실 수 있습니다."
+        return HttpResponse(checkNickMent)
+
+
+
+def id_overlap_check(request):
+    username = request.GET.get('username')
+    try:
+        #중복 검사 실패
+        user = TurningUser.objects.get(username=username)
+    except:
+        #중복 검사 성공
+        user = None
+    if user is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {"overlap":overlap}
+    return JsonResponse(context)

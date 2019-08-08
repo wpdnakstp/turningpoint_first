@@ -55,5 +55,11 @@
     <a href="?page={{posts.paginator.num_pages}}"><strong>>></strong></a>
 {% endif %}
 
-<p><a href="{% url 'freenew' %}">글쓰기</a></p>
+{% for free in frees.all %}
+    <div class="container">
+        <h1><a href="{% url 'freedetail' free.id %}">{{ free.title }}</a></h1>
+        <p>{{ free.pub_date }}</p>
+    </div>
+{% endfor %}
+<p><button id="creatButton" onclick="postCreat();"><a href="{% url 'freenew' %}">글쓰기</a></button></p>
 <p><a href="{% url 'intro_final' %}">홈으로</a></p>

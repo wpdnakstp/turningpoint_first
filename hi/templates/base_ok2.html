@@ -1,0 +1,515 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/main2.css' %}">
+
+  <title>Django Calendar App</title>
+  <style>
+    <!-- 여기부터 아래 테스트용 -->
+
+    * {
+      outline:none;
+        border:none;
+        margin:0px;
+        padding:0px;
+        font-family:Courier, monospace;
+    }
+    body {
+  background-color: whitesmoke;  }
+    #paper {
+        color:black;
+        font-size:20px;
+        width: 800px;
+        margin-top: 70px;
+        margin-right: 30px;
+    }
+    #margin {
+        margin-left:-66px;
+        margin-bottom:20px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none; 
+        color: black;
+    }
+    #text {
+        width:800px;
+        height: 500px;
+        overflow:hidden;
+        background-color:#FFF;
+        color:  black;
+        font-family:Courier, monospace;
+        font-weight:normal;
+        font-size:15px;
+        resize:none;
+        line-height:30px;
+        padding-left:50px;
+        padding-right:50px;
+        padding-top:45px;
+        padding-bottom:34px;
+        <!-- background-image:url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png); -->
+        background-repeat:repeat-y, repeat; repeat-r;
+        -webkit-border-radius:12px;
+        background-image: cover;
+  
+        border-radius:12px;
+        -webkit-box-shadow: 0px 2px 14px #000;
+        box-shadow: 0px 2px 14px #000;
+        border-top:1px solid #FFF;
+        border-bottom:1px solid #FFF;
+        margin: 0 auto;
+
+    }
+    #title {
+        background-color:transparent;
+        border-bottom:3px solid #FFF;
+        color:#FFF;
+        font-size:20px;
+        font-family:Courier, monospace;
+        height:28px;
+        font-weight:bold;
+        width:220px;
+    }
+    #button {
+        cursor:pointer;
+        margin-top:5px;
+        float:right;
+        height:40px;
+        padding-left:24px;
+        padding-right:24px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:bold;
+        font-size:20px;
+        color: black;
+        text-shadow: 0px -1px 0px #000000;
+        -webkit-border-radius:8px;
+        border-radius:8px;
+        border-top:1px solid #FFF;
+        -webkit-box-shadow: 0px 2px 14px #000;
+        box-shadow: 0px 2px 14px #000;
+        background-color: white;
+        background-repeat:repeat-x;
+        padding-top: 5px;
+    }
+    #button:active {
+        zoom: 1;
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+    }
+    #button:focus {
+        zoom: 1;
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+    }
+    #wrapper {
+        width:800px;
+        height:auto;
+        margin-top:24px;
+        margin-bottom:100px;
+        margin: 24px auto 100px;
+    }
+    <!-- .navbar_data{
+      position: absolute;
+      top: 5%;
+      right: 0;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    } -->
+    .navbar ul li{
+      display: inline-block;
+      margin-right: 35.5px;
+      color: #323232;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    <!-- .navbar_link{
+        text-decoration: none;
+    } -->
+    #title{
+        display: inline-block;
+        width: 700px;
+        margin-left: 15px;
+        color: black;
+    }
+    .diary_title{
+        position: absolute;
+        margin: 0 auto;
+        top: 0%;
+        left: 50%;
+    }
+    #main{
+        margin-top: 100px;
+
+    }
+    body{
+     
+    }
+    .left_content{
+      margin-left: 300px;
+    }
+    <!-- 여까지 테스트임 -->
+    body{
+      color:brown;
+    }
+    tr th{
+      color:rgb(98, 155, 41);
+    }
+    tr td{
+      color: black;
+    }
+    table{
+      border-color: burlywood; !important
+    }
+    tbody tr{
+      border-width: 10px;
+      border-color:chocolate;
+    }
+
+
+    .menu {
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      display: inline-block;
+      cursor: pointer;
+      pointer-events: none;
+      
+    }
+    .menu:hover {
+      pointer-events: all;
+    }
+    .label {
+      margin-right:20px;
+      cursor: pointer;
+      pointer-events: all;
+    }
+    .spacer {
+      display: inline-block;
+      width: 80px;
+      margin-left: 15px;
+      margin-right: 15px;
+      vertical-align: middle;
+      cursor: pointer;
+      position: relative;
+    }
+    .spacer:before {
+      content: "";
+      position: absolute;
+      border-bottom: 1px solid #ffffff;
+      height: 1px;
+      width: 0%;
+      transition: width 0.25s ease;
+      transition-delay: 0.7s;
+    }
+    .item {
+      position: relative;
+      
+      margin-right: 30px;
+      top: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease, top 0.5s ease;
+      transition-delay: 0;
+    }
+    span {
+      transition: color 0.5s ease;
+    }
+    .item:hover span {
+      color: #ff0000;
+    }
+    .menu:hover .spacer:before {
+      width: 100%;
+      transition-delay: 0s;
+    }
+    .menu:hover .item {
+      opacity: 1;
+      top: 0px;
+    }
+    .item:nth-child(1) {
+      transition-delay: 0.45s;
+    }
+    .item:nth-child(2) {
+      transition-delay: 0.4s;
+    }
+    .item:nth-child(3) {
+      transition-delay: 0.35s;
+    }
+    .item:nth-child(4) {
+      transition-delay: 0.3s;
+    }
+    .item:nth-child(5) {
+      transition-delay: 0.25s;
+    }
+    .item:nth-child(6) {
+      transition-delay: 0.2s;
+    }
+    .item:nth-child(7) {
+      transition-delay: 0.15s;
+    }
+    .item:nth-child(8) {
+      transition-delay: 0.1s;
+    }
+    .item:nth-child(9) {
+      transition-delay: 0.05s;
+    }
+    .item:nth-child(10) {
+      transition-delay: 0s;
+    }
+    .menu:hover .item:nth-child(1) {
+      transition-delay: 0.25s;
+    }
+    .menu:hover .item:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+    .menu:hover .item:nth-child(3) {
+      transition-delay: 0.35s;
+    }
+    .menu:hover .item:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+    .menu:hover .item:nth-child(5) {
+      transition-delay: 0.45s;
+    }
+    .menu:hover .item:nth-child(6) {
+      transition-delay: 0.5s;
+    }
+    .menu:hover .item:nth-child(7) {
+      transition-delay: 0.55s;
+    }
+    .menu:hover .item:nth-child(8) {
+      transition-delay: 0.6s;
+    }
+    .menu:hover .item:nth-child(9) {
+      transition-delay: 0.65s;
+    }
+    .menu:hover .item:nth-child(10) {
+      transition-delay: 0.7s;
+    }
+    
+  </style>
+</head>
+<body>
+    <div id="header">
+        
+        <div class="top">
+
+            <!-- Logo -->
+                <div id="logo">
+                    <span class="image avatar48"><img src="{% static 'img/avatar.jpg' %}" alt="" /></span>
+                    <h1 id="title">Jane Doe</h1>
+                    <p>Hyperspace Engineer</p>
+                </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+							<ul>
+                  <li><a href="{% url 'mypage' %}" id="top-link"><span class="icon solid fa-home">My-page</span></a></li>
+								<li><a href="{% url 'calendar' %}" id="top-link"><span class="icon solid fa-home">Calendar</span></a></li>
+								<li><a href="{% url 'todolist' %}" id="portfolio-link"><span class="icon solid fa-th">계획</span></a></li>
+								<li><a href="{% url 'diary_ok' %}" id="about-link"><span class="icon solid fa-user">diary</span></a></li>
+                
+                <li style="padding: none; position: absolute; bottom:0%; padding-left: 130px;"><a href="{% url 'book_make' %}" id=""><span class="icon solid fa-envelope">책 제본하기</span></a></li>
+                <li><div class="menu">
+                    <div class="label">Community</div>
+                    <div class="spacer"></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>자유게시판</span></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>운동게시판</span></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>자격증게시판</span></div>
+                    <div class="item"  onclick="location.href='{% url 'community_ok' %}'"><span>게시판</span></div>
+                  </div></li>
+
+
+
+							</ul>
+						</nav>
+
+        </div>
+
+      
+
+    </div>
+<div class="left_content">
+
+
+
+
+    <section id="top" class="one dark cover">
+        <div class="container">
+
+            <header>
+                <h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
+                site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
+                <p>Ligula scelerisque justo sem accumsan diam quis<br />
+                vitae natoque dictum sollicitudin elementum.</p>
+            </header>
+
+            <footer>
+                <a href="#portfolio" class="button scrolly">Magna Aliquam</a>
+            </footer>
+
+        </div>
+    </section>
+
+<!-- Portfolio -->
+    <section id="portfolio" class="two">
+        <div class="container">
+
+            <header>
+                <h2>Portfolio</h2>
+            </header>
+
+            <p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
+            egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
+            Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
+            fusce hendrerit lacus ridiculus.</p>
+
+            <div class="row">
+                <div class="col-4 col-12-mobile">
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'img/pic02.jpg' %}" alt="" /></a>
+                        <header>
+                            <h3>Ipsum Feugiat</h3>
+                        </header>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'img/pic03.jpg' %}" alt="" /></a>
+                        <header>
+                            <h3>Rhoncus Semper</h3>
+                        </header>
+                    </article>
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'img/pic04.jpg' %}" alt="" /></a>
+                        <header>
+                            <h3>Magna Nullam</h3>
+                        </header>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'img/pic05.jpg' %}" alt="" /></a>
+                        <header>
+                            <h3>Natoque Vitae</h3>
+                        </header>
+                    </article>
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'img/pic06.jpg' %}" alt="" /></a>
+                        <header>
+                            <h3>Dolor Penatibus</h3>
+                        </header>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'img/pic07.jpg' %}" alt="" /></a>
+                        <header>
+                            <h3>Orci Convallis</h3>
+                        </header>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<!-- About Me -->
+    <section id="about" class="three">
+        <div class="container">
+
+            <header>
+                <h2>About Me</h2>
+            </header>
+
+            <a href="#" class="image featured"><img src="{% static 'img/pic08.jpg' %}" alt="" /></a>
+
+            <p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
+            ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
+            laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
+            parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
+            dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
+            ornare iaculis.</p>
+
+        </div>
+    </section>
+
+<!-- Contact -->
+    <section id="contact" class="four">
+        <div class="container">
+
+            <header>
+                <h2>Contact</h2>
+            </header>
+
+            <p>Elementum sem parturient nulla quam placerat viverra
+            mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
+            donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
+            orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+
+            <form method="post" action="#">
+                <div class="row">
+                    <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
+                    <div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+                    <div class="col-12">
+                        <textarea name="message" placeholder="Message"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" value="Send Message" />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<div id="footer">
+
+<!-- Copyright -->
+    <ul class="copyright">
+        <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+
+</div>
+
+  
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+    <script src="{% static '/js/diary/diary.js' %}"></script>
+    <!-- Scripts -->
+          <script src="{% static '/js/jquery.min.js' %}"></script>
+          <script src="{% static '/js/jquery.scrolly.min.js' %}"></script>
+          <script src="{% static '/js/jquery.scrollex.min.js' %}"></script>
+          <script src="{% static '/js/browser.min.js' %}"></script>
+          <script src="{% static '/js/breakpoints.min.js' %}"></script>
+          <script src="{% static '/js/util.js' %}"></script>
+          <script src="{% static '/js/main.js' %}"></script>
+
+
+</div>
+</body>
+</html>

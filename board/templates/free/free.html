@@ -1,14 +1,98 @@
-{% if error %}
-    <script>
-        alert("{{error}}")
-    </script>
-{% endif %}
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-{% for free in frees.all %}
-    <div class="container">
-        <h1><a href="{% url 'freedetail' free.id %}">{{ free.title }}</a></h1>
-        <p>{{ free.pub_date }}</p>
+{% block content %}
+
+
+
+>
+  <div id="main">
+  <div id="wrapper" style="margin-left: 20%;">
+    <div class="navbar" style="border-bottom:1px solid #eee;">
+        <div class="diary_title" style: font-size:200px;>
+            <h1 style="font-size:40px;">자유게시판</h1>
+        </div>
+        <div class="navbar_data">
+            <ul class="data_ul">
+                <li class="li_1" data-href="https://naver.com" style="margin-left: 700px;">
+                        <a class="navbar_link" href="{% url 'noticenew' %}" style="margin-top:50px; margin-right:20px;">글쓰기</a>
+                        <a class="navbar_link" href="{% url 'intro_final' %}" style="margin-top:50px;">홈으로</a>
+
+                        
+                </li>
+      
+               
+            </ul>
+      
+        </div>
+        <br>
+        <br>
     </div>
-{% endfor %}
-<p><button id="creatButton" onclick="postCreat();"><a href="{% url 'freenew' %}">글쓰기</a></button></p>
-<p><a href="{% url 'intro_final' %}">홈으로</a></p>
+  <br>
+  <br>
+    <div class="wrap_content"> 
+  
+      <div id="wrapArticle" class="wrap_article"> 
+  
+  
+      
+        <div class="wrap_article_list_common"> 
+  
+          <ul class="list_article_list_common"> 
+  
+        <!-- 이 리스트부터 for문돌려야함-->
+            
+  
+                {% if error %}
+                <script>
+                    alert("{{error}}")
+                </script>
+            {% endif %}
+            
+            
+                
+            
+          
+
+                    <!-- Scripts -->
+                        
+                        <script src="{% static '/js/diary/diary.js' %}"></script>
+            </div>
+
+{% for notice in notices.all %}
+ <li class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee;">
+
+
+
+
+
+            <a href="{% url 'noticedetail' notice.id %}" class="link_post"> 
+  
+                <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+                
+                <!--  title_subject 가 제목,,,,  -->
+                <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
+              <strong class="title_subject"> {{ notice.title }}
+              </strong>
+              <div class="wrap_sub_content">
+                <em class="tit_sub"> {{ notice.pub_date }}
+                </em>
+  
+                                        </div>
+                                            </a>
+                                                </li>
+  <!-- 여기까지 for문 돌릴거 -->
+  {% endfor %}
+  
+  
+                                                     </ul>
+                                                            </div>
+                                                                    </div>
+                                                                        </div>
+                                                                    </div>
+   
+
+
+
+
+{% endblock %}

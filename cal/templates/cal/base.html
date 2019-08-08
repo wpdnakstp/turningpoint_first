@@ -233,89 +233,15 @@
   
     #calendar {
       
-      margin-right: 30px;
-      top: 10px;
-      opacity: 0;
-      transition: opacity 0.5s ease, top 0.5s ease;
-      transition-delay: 0;
-    }
-    span {
-      transition: color 0.5s ease;
-    }
-    .item:hover span {
-      color: #ff0000;
-    }
-    .menu:hover .spacer:before {
-      width: 100%;
-      transition-delay: 0s;
-    }
-    .menu:hover .item {
-      opacity: 1;
-      top: 0px;
-    }
-    .item:nth-child(1) {
-      transition-delay: 0.45s;
-    }
-    .item:nth-child(2) {
-      transition-delay: 0.4s;
-    }
-    .item:nth-child(3) {
-      transition-delay: 0.35s;
-    }
-    .item:nth-child(4) {
-      transition-delay: 0.3s;
-    }
-    .item:nth-child(5) {
-      transition-delay: 0.25s;
-    }
-    .item:nth-child(6) {
-      transition-delay: 0.2s;
-    }
-    .item:nth-child(7) {
-      transition-delay: 0.15s;
-    }
-    .item:nth-child(8) {
-      transition-delay: 0.1s;
-    }
-    .item:nth-child(9) {
-      transition-delay: 0.05s;
-    }
-    .item:nth-child(10) {
-      transition-delay: 0s;
-    }
-    .menu:hover .item:nth-child(1) {
-      transition-delay: 0.25s;
-    }
-    .menu:hover .item:nth-child(2) {
-      transition-delay: 0.3s;
-    }
-    .menu:hover .item:nth-child(3) {
-      transition-delay: 0.35s;
-    }
-    .menu:hover .item:nth-child(4) {
-      transition-delay: 0.4s;
-    }
-    .menu:hover .item:nth-child(5) {
-      transition-delay: 0.45s;
-    }
-    .menu:hover .item:nth-child(6) {
-      transition-delay: 0.5s;
-    }
-    .menu:hover .item:nth-child(7) {
-      transition-delay: 0.55s;
-    }
-    .menu:hover .item:nth-child(8) {
-      transition-delay: 0.6s;
-    }
-    .menu:hover .item:nth-child(9) {
-      transition-delay: 0.65s;
-    }
-    .menu:hover .item:nth-child(10) {
-      transition-delay: 0.7s;
-    }
-    .fa-envelope {
-      padding-right: 50px;
-  }
+          margin: 0 auto;
+      width: 1230px;
+      background-color: #FFFFFF;
+        border-radius: 6px;
+      box-shadow: 0 1px 2px #C3C3C3;
+      height: auto; 
+     
+      }
+  
   </style>
   </head>
   <body>
@@ -323,56 +249,105 @@
                   <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
                     <i class="fas fa-bars"></i>
                   </a>
-                  </li>
-                  <li>
-                    <a href="{% url 'todolist' %}">
-                    <i class="fa fa-calendar"></i>
-                    <span>Plan</span>
-                    </a>
-                    </li>
-                  <li>
-						  <li>
-							<a href="{% url 'diary_ok' %}">
-							<i class="fa fa-calendar"></i>
-							<span>Diary</span>
-							</a>
-						  </li>
-						
-						<li class="header-menu">
-						  <span>Extra</span>
-						</li>
-						<li class="sidebar-dropdown">
-							<a href="#">
-							<i class="fa fa-globe"></i>
-							<span>Community</span>
-							</a>
-							<div class="sidebar-submenu">
-							<ul>
-							  <li><a href="{% url 'community_ok' %}">자유게시판</a> </li>
-							  <li><a href="{% url 'community_ok' %}">운동게시판</a></li>
-							  <li><a href="{% url 'community_ok' %}">자격증게시판</a></li>
-							  <li><a href="{% url 'community_ok' %}">게시판</a></li>
-							</ul>
-							</div>
-						  </li>
-						</ul>
-					  </div>
-					</nav>
-				  </div>
-			  </div>
-		<!-- Main -->
-
-		
-</div>
-
-<div class="left_content">
-  <h1 class="title">{% block title %}{% endblock %}</h1>
-  <hr>
-
-  {% block content %}
-  {% endblock %}
-
-  <!-- Optional JavaScript -->
+                  <nav id="sidebar" class="sidebar-wrapper">
+                    <div class="sidebar-content">
+                      <div class="sidebar-brand">
+                        <a href="#">TurningPoint</a>
+                        <div id="close-sidebar">
+                          3
+                        </div>
+                      </div>
+                      <div class="sidebar-header">
+                        <div class="user-pic">
+                          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+                            alt="User picture">
+                        </div>
+                        <div class="user-info">
+                          <span class="user-name">Jhon
+                            <strong>Smith</strong>
+                          </span>
+                          <span class="user-role">Administrator</span>
+                          <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                          </span>
+                        </div>
+                      </div>
+                      <!-- sidebar-header  -->
+                      <div class="sidebar-search">
+                        <div>
+                          <div class="input-group">
+                            <input type="text" class="form-control search-menu" placeholder="Search...">
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- sidebar-search  -->
+                      <div class="sidebar-menu">
+                        <ul>
+                          <li class="header-menu">
+                            <span>General</span>
+                          </li>
+                            <li>
+                                <a href="#">
+                                  <i class="fa fa-book"></i>
+                                  <span>home</span>
+                                  <span class="badge badge-pill badge-primary">Beta</span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a href="#">
+                                      <i class="fa fa-calendar"></i>
+                                      <span>Plan</span>
+                                    </a>
+                                </li>
+                             <li>
+                                <a href="#">
+                                  <i class="fa fa-calendar"></i>
+                                  <span>Calendar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                  <i class="fa fa-calendar"></i>
+                                  <span>Diary</span>
+                                </a>
+                            </li>
+                          
+                          <li class="header-menu">
+                            <span>Extra</span>
+                          </li>
+                          <li class="sidebar-dropdown">
+                                <a href="#">
+                                  <i class="fa fa-globe"></i>
+                                  <span>Community</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                  <ul>
+                                    <li><a href="#">자유게시판</a> </li>
+                                    <li><a href="#">운동게시판</a></li>
+                                    <li><a href="#">자격증게시판</a></li>
+                                    <li><a href="#">게시판</a></li>
+                                  </ul>
+                                </div>
+                              </li>
+                        </ul>
+                      </div>
+                  </nav>
+        <!-- sidebar-menu  -->
+      </div>
+  <div id='wrap'>
+  
+  <div id='calendar'></div>
+  
+  <div style='clear:both'></div>
+  </div>
+  
+  <!-- page-wrapper -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

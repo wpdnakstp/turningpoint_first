@@ -65,3 +65,74 @@
 </html>
 
 
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+
+>
+  <div id="main">
+  <div id="wrapper">
+    <div class="navbar">
+        <div class="diary_title">
+            <h1>자기계발 게시판</h1>
+        </div>
+        <div class="navbar_data">
+            <ul class="data_ul">
+                <li class="li_1" data-href="https://naver.com">
+                        <a class="navbar_link" href="https://naver.com" style="margin-top:50px;">목록보기</a>
+                </li>
+      
+               
+            </ul>
+      
+        </div>
+        <br>
+        <br>
+    </div>
+  <br>
+  <br>
+    <div class="wrap_content"> 
+  
+      <div id="wrapArticle" class="wrap_article"> 
+  
+  
+      
+        <div class="wrap_article_list_common"> 
+  
+          <ul class="list_article_list_common"> 
+  
+        <!-- 이 리스트부터 for문돌려야함-->
+            <li class="list_has_image"> 
+  
+            <a href="https://www.naver.com" class="link_post"> 
+  
+                <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+                
+                <!--  title_subject 가 제목,,,,  -->
+                <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
+              <strong class="title_subject"> 제목이다dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+              </strong>
+              <div class="wrap_sub_content">
+                <em class="tit_sub"> 그래dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                </em>
+  
+                                        </div>
+                                            </a>
+                                                </li>
+  <!-- 여기까지 for문 돌릴거 -->
+  
+  
+  
+                                                     </ul>
+                                                            </div>
+                                                                    </div>
+                                                                        </div>
+   
+
+
+
+
+{% endblock %}

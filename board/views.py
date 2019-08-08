@@ -3,7 +3,11 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from .models import Notice, Noticecomment, Free, Freecomment, Develop, Developcomment
 from turningaccounts.models import TurningUser
+
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+
+
 # Create your views here.
 
 
@@ -11,11 +15,15 @@ from django.contrib.auth.decorators import login_required
 
 def notice(request):
     notices = Notice.objects
-    notices_list = Notice.objects.all().order_by('-id')
-    paginator = Paginator(notices_list,15)
+    notices_list = Notice.objects.all()
+    
+    #블로그 객체 세 개를 한 페이지로 자르기
+    paginator = Paginator(notices_list,5)
+    #request된 페이지가 뭔지를 알아내고 ( request페이지를 변수에 담아냄 )
     page = request.GET.get('page')
+    #request된 페이지를 얻어온 뒤 return 해 준다
     posts = paginator.get_page(page)
-    return render(request, 'notice/notice.html', {'notices' : notices,'posts' : posts})
+    return render(request, 'notice/notice.html',{'notices' : notices, 'posts':posts})
 
 def noticedetail(request, notice_id):
     notice_detail = get_object_or_404(Notice, pk=notice_id)

@@ -17,9 +17,13 @@ urlpatterns = [
     path('diary_list', views.diary_list, name="diary_list"),
     path('base_ok', views.base_ok, name="base_ok"),
     path('home', views.home, name="home"),
+<<<<<<< HEAD
     path('post', views.home, name="")
 
 
+=======
+    path('post', views.post, name="post"),
+>>>>>>> 5e3406c2dd0fdd1082ab2d90836af90c2670accd
 
 
 

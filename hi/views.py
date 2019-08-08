@@ -184,3 +184,6 @@ def diary_list(request):
 
 def base_ok(request):
     return render(request, 'base_ok.html')
+
+def post(request):
+    return render(request, 'blogpost.html')

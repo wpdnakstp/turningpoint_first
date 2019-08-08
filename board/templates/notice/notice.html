@@ -38,9 +38,8 @@
         <input type="text" name="q" value="{{ q }}">
         <input type="submit" value="검색">
 </form>
-
 {% if posts.has_previous %}
-    <a href="?page=1"><strong>&nbsp;</strong></a>
+    <a href="?page=1"><astrong>&nbsp;</strong></a>
     <a href="?page={{posts.previous_page_number}}"><strong><&nbsp;&nbsp;</strong></a>
 {% endif %}
 
@@ -170,3 +169,4 @@
 
 
 {% endblock %}
+

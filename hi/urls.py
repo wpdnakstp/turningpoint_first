@@ -8,19 +8,15 @@ urlpatterns = [
     path('signupTest/', views.signupTest, name="signupTest" ),
     path('intro_final/', views.intro_final, name="intro_final"),
     path('diary_ok/', views.diary_ok, name="diary_ok"),
+    path('diary_list/', views.diary_list, name="diary_list"),
+
     path('community_ok/', views.community_ok, name="community_ok"),
     path('signup_ok/', views.signup_ok, name="signup_ok"),
     path('password_ok/', views.password_ok, name="password_ok"),
     path('book_make/', views.book_make, name="book_make"),
     path('book_final/', views.book_final, name="book_final"),
     path('todolist/', views.todolist, name="todolist"),
-
-
-
-
+    path('post/', views.post, name="post"),
 ]
-
-
-
 
 

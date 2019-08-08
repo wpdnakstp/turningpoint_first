@@ -1,42 +1,145 @@
-<div class="container" style="text-align:center; border: 1px solid #eee;">
-        <h1>{{ notice.title }}</h1>
-        <p>{{ notice.pub_date }}</p>
-        <p>{{ notice.body }}</p>
-        <p>{{ notice.tnUser}}</p>
-        <a href="{% url 'notice' %}">돌아가기</a>
-        <a href="{% url 'noticeupdate' notice.id %}"><input type="button" value="수정하기"></a>
-        <a href="{% url 'noticedelete' notice.id %}"><input type='button' value="삭제하기"></a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+        /* starts here */
+.btn {
+    color: #444;
+    line-height: 1em;
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1em;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
+    border: 0.2em solid #444;
+    padding: 0.8em;
+    text-align: center;
+    transition: 0.25s box-shadow, 0.25s -webkit-transform;
+  }
+  .btn-small {
+    padding: 0.7em;
+  }
+  .btn:hover {
+    box-shadow: 0 4em 0 0 #444 inset, 0em 0em 0 0 #bbb;
+    -webkit-transform: translate(0.3em, 0.2em);
+    color: #fff;
+  }
+  .btn.disabled {
+    opacity: 0.8;
+  }
+  .btn.disabled:hover {
+    box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
+    -webkit-transform: translate(0, 0);
+    color: #444;
+  }
+  /* ends here */
+  .heavy {
+    font-weight: 700;
+  }
+  .extraheavy {
+    font-weight: 900;
+  }
+  .light {
+    font-weight: 300;
+  }
+tr th{
+    border: 1px solid #eee;
+}
+    </style>
+</head>
+<body>
     
-        <hr>
-        <div class="comment">
-             <form action="{% url 'noticecommentcreate' notice_id=notice.id %}" method="POST"> <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
-                {% csrf_token %}
-                <input type="text" name="content" placeholder="댓글을 작성해 주세요.">
-                <input type="submit" value="작성하기">
-            </form>
-        </div>
-        <hr>
-        <table class='table'>
-            <thead>
-                <tr>
-                    <th>날짜</th>
-                    <th>댓글</th>
-                    <th>작성자</th>
-            </thead>
-        <tbody>
-            {% for comment in notice.comments.all %}
-            <tr>
-                <td>{{ comment.commentdate }}</td>
-                <td>{{ comment.commentbody }}</td>
-                <td>{{ comment.noticeCommentUser}}</td>
-            </tr>
-            {% empty %}
-                <p>댓글이 없습니다!</p>
-            {% endfor %}  
-        </tbody>
-        </table>
+
     
-    
-    
-        </div>
-    </div>
+
+
+
+        <div class="container" style="text-align:center; border: 1px solid #eee;">
+                <input type="hidden" value="{{ notice.update_counter }}"> <!-- 조회수 카운터 -->
+            <div class="container" style="text-align:center; border: 1px solid #eee;">
+                    <h1 style ="height: 100px;
+                    border-bottom: 1px solid #eee;">{{ notice.title }}</h1>
+                    
+                   
+        
+                    <p style ="height: 400px;
+                    text-align: center; /* 문자들의 가운데 정렬을 해제 */  margin: 0 auto;
+        
+                    border-bottom: 1px solid #eee;"><span class="hio" style="margin-top:100px;">{{ notice.body }}</span></p>
+                    <p></p>
+        
+                    <div class="first__" style="border-bottom: 1px solid #eee; height:150px; text-align:right;">
+                            <p>작성시간 : {{ notice.pub_date }}</p>
+                            <p>글쓴이 : {{ notice.tnUser }}</p>
+                            <p>추천수 : {{notice.totalLike}}</p>
+                            <p>조회수 : {{ notice.postHit }}</p>
+                </div>
+        
+        
+                    <br><br>
+                    <a href="{% url 'notice' %}" class="btn" id="toggleweight">돌아가기</a>
+                    <a href="{% url 'noticeupdate' notice.id %}" class="btn" id="toggleweight">수정하기</a>
+                    <a href="{% url 'noticedelete' notice.id %}" class="btn" id="toggleweight">삭제하기</a>
+                    <form action="{% url 'noticeLike' notice_id=notice.id %}" method="POST" style="display:inline-block;">
+                            {% csrf_token %}
+                            <input class="btn" id="toggleweight" value="좋아요♥">
+                    </form>
+                
+                    <hr>
+                    <div class="comment">
+                         <form action="{% url 'noticecommentcreate' notice_id=notice.id %}" method="POST"> <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
+                            {% csrf_token %}
+                            <input type="text" name="content" placeholder="댓글을 작성해 주세요.">
+                            <input type="submit" value="작성하기">
+                        </form>
+                    </div>
+                    <hr>
+                    <table class='katalog'>
+                        <thead>
+                            <tr>
+                                <th>날짜</th>
+                                <th>댓글</th>
+                                <th>작성자</th>
+                        </thead>
+                    <tbody>
+                        {% for comment in notice.comments.all %}
+                        <tr>
+                            <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
+                            <td>{{ comment.commentbody }}</td>
+                            <td>{{ comment.noticeCommentUser }}</td>
+                            <td><a href="{% url 'noticecommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
+                        </tr>
+                        {% empty %}
+                            <p>댓글이 없습니다!</p>
+                        {% endfor %}  
+                    </tbody>
+                    </table>
+                
+                
+                    </div>
+                </div>
+
+
+
+                <script>
+                        var classes = ["light", "", "heavy", "extraheavy"];
+                        var i = 1;
+                        $("#toggleweight").click(function () {
+                          $(".btn").removeClass(classes[i]);
+                          i++;
+                          if (i >= classes.length) {
+                            i = 0;
+                          }
+                          $(".btn").addClass(classes[i]);
+                        });
+                </script>
+</body>
+</html>

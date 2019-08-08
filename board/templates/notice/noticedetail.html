@@ -1,11 +1,19 @@
 <div class="container">
+    <input type="hidden" value="{{ notice.update_counter }}"> <!-- 조회수 카운터 -->
         <h1>{{ notice.title }}</h1>
-        <p>{{ notice.pub_date }}</p>
+        <p>작성시간 : {{ notice.pub_date }}</p>
+        <p>글쓴이 : {{ notice.tnUser }}</p>
+        <p>추천수 : {{notice.totalLike}}</p>
+        <p>조회수 : {{ notice.postHit }}</p>
         <p>{{ notice.body }}</p>
-        <p>{{ notice.tnUser}}</p>
+        <p></p>
         <a href="{% url 'notice' %}">돌아가기</a>
         <a href="{% url 'noticeupdate' notice.id %}"><input type="button" value="수정하기"></a>
         <a href="{% url 'noticedelete' notice.id %}"><input type='button' value="삭제하기"></a>
+        <form action="{% url 'noticeLike' notice_id=notice.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="좋아요♥">
+        </form>
     
         <hr>
         <div class="comment">
@@ -26,16 +34,16 @@
         <tbody>
             {% for comment in notice.comments.all %}
             <tr>
-                <td>{{ comment.commentdate }}</td>
+                <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
                 <td>{{ comment.commentbody }}</td>
-                <td>{{ comment.noticeCommentUser}}</td>
+                <td>{{ comment.noticeCommentUser }}</td>
+                <td><a href="{% url 'noticecommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
             </tr>
             {% empty %}
                 <p>댓글이 없습니다!</p>
             {% endfor %}  
         </tbody>
         </table>
-    
     
     
         </div>

@@ -31,7 +31,8 @@ urlpatterns = [
     path('ckid',views.ckid,name="ckid"),
     path('ckmail',views.ckmail,name="ckmail"),
     path('cknick',views.cknick,name="cknick"),
-
+    #TodoList
+    path('sTD',views.saveTodoList,name="sTD"),
 
 
 

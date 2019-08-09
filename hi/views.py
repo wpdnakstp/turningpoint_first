@@ -3,7 +3,7 @@ from django.contrib.auth.models import User   # User모델을 import했어요!
 from django.contrib import auth  # auth라는 모듈도 import합니다. 서버로 넘어온 유저 데이터를 처리하는 역할을 할거에요!
 from django.core.paginator import Paginator
 from django.utils import timezone
-from .models import DiaryForm
+from .models import DiaryForm, Todolist
 from django.core.files.storage import FileSystemStorage
 #TurningUser > Model of turningaccounts > other app
 from turningaccounts.models import TurningUser
@@ -181,7 +181,8 @@ def book_final(request):
     return render(request, 'diary/book_final.html')
 
 def todolist(request):
-    return render(request, 'todolist.html')
+    printTodo = Todolist.objects.all()
+    return render(request, 'todolist.html',{"todoList":printTodo})
 
 
 
@@ -298,3 +299,11 @@ def nickOverlapCheck(request):
         overlap = "fail"
     context = {"overlap":overlap}
     return JsonResponse(context)
+
+def saveTodoList(request):
+    todo = Todolist()
+    saveTodo = request.GET.get('todoBody')
+    todo.todoBody = saveTodo
+    todo.save()
+    return redirect('todolist')
+    

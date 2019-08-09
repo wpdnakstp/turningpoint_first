@@ -185,11 +185,12 @@ def diary_create(request):
     diaryPost = DiaryForm()
     if request.method == 'POST':
         diaryPost.tnUser = request.user
-        diaryPost.diaryTitle = request.POST.get('title')
         diaryPost.diaryBody = request.POST.get('text')
-        diaryPost.diaryDate = timezone.datetime.now
+        diaryPost.diaryDate = request.POST.get('date')
         diaryPost.save()
         return redirect('diary_list')
+
+
         
 
     return render(request, 'diary/diary_list.html')

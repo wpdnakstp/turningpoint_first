@@ -5,7 +5,7 @@
 
 
    
-	<!-- Header -->
+   <!-- Header -->
    
     <link rel="stylesheet" href="{% static '/css/diary/diary.css' %}" >  
     <div id ="main">
@@ -18,7 +18,7 @@
             <div class="navbar_data">
                 <ul class="data_ul">
                     <li class="li_1" data-href="https://naver.com">
-                            <a class="navbar_link" href="https://naver.com">목록보기</a>
+                            <a class="navbar_link" href="{% url 'diary_list' %}">목록보기</a>
                     </li>
         
                    
@@ -29,17 +29,12 @@
         
     </div>
 <div id="main">
-	<div id="wrapper">
+   <div id="wrapper">
 
-        <form id="paper" method="get" action="">
-    
-            <div id="margin"><input id="title" type="text" name="title" placeholder="오늘의 날짜"></div>
-            <textarea placeholder="" id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
-            
-        <form id="paper" method="POST" action="{% url 'diary_create' %}">
+        <form id="paper" method="POST" action="{% url 'diary_create' %} ">
             {% csrf_token %}
-            <div id="margin">제목 : <input id="title" type="text" name="title"></div>
-            <textarea placeholder=""." id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
+            <div id="margin"><input id="title" type="date" name="date" placeholder="오늘의 날짜"></div>
+            <textarea placeholder="" id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
             <br>
             <input id="button" type="submit" value="기록하기">
             
@@ -47,11 +42,11 @@
     
     </div>
 
-		<!-- Scripts -->
-			
-			<script src="{% static '/js/diary/diary.js' %}"></script>
+      <!-- Scripts -->
+         
+         <script src="{% static '/js/diary/diary.js' %}"></script>
 </div>
-	</body>
+   </body>
 </html>
 
 {% endblock %}

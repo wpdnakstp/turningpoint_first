@@ -33,6 +33,7 @@ urlpatterns = [
     path('cknick',views.cknick,name="cknick"),
     #TodoList
     path('sTD',views.saveTodoList,name="sTD"),
+    path('dTD>',views.deleteTodoList,name="dTD"),
 
 
 

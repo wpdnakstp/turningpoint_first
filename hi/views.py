@@ -180,9 +180,23 @@ def book_make(request):
 def book_final(request):
     return render(request, 'diary/book_final.html')
 
+#To Do List
 def todolist(request):
     printTodo = Todolist.objects.all()
     return render(request, 'todolist.html',{"todoList":printTodo})
+
+def saveTodoList(request):
+    todo = Todolist()
+    saveTodo = request.GET.get('todoBody')
+    todo.todoBody = saveTodo
+    todo.save()
+    return redirect('todolist')
+    
+def deleteTodoList(request):
+    deleteTodoId = request.GET.get('idNumb')
+    deletTodo = get_object_or_404(Todolist, pk=deleteTodoId)
+    deletTodo.delete()
+    return redirect('todolist')
 
 
 
@@ -301,10 +315,3 @@ def nickOverlapCheck(request):
     context = {"overlap":overlap}
     return JsonResponse(context)
 
-def saveTodoList(request):
-    todo = Todolist()
-    saveTodo = request.GET.get('todoBody')
-    todo.todoBody = saveTodo
-    todo.save()
-    return redirect('todolist')
-    

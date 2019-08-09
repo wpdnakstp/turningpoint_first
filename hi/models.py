@@ -6,8 +6,7 @@ from turningaccounts.models import TurningUser
 class DiaryForm(models.Model):
   tnUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,null=True)
   diaryBody = models.TextField()
-  diaryDate = models.DateField(auto_now_add=True)
-  
+  diaryDate = models.DateField()
   def summary(self):
     return self.diaryBody[:100]
 
@@ -17,6 +16,6 @@ class Todolist(models.Model):
 
   def __str__(self):
     return self.todoBody
-  diaryDate = models.DateField()
+  
 
 

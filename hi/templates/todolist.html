@@ -233,7 +233,16 @@
       <input type="text" class="txtb" name="todoList" placeholder="계획을 적어보세요.">
       <div class="notcomp">
         <h3>Not Completed</h3>
-  
+        <div class="hiddenBox">
+          {% for i in todoList %}
+            {{i.todoBody}}
+            <br>
+            {{i.id}}
+            <input type="hidden" id="deleteid" value="{{i.id}}">
+            <br>
+            <input type="button" id="delte" value="삭제하기" onclick="return delteTodo();" >
+          {% endfor %}
+        </div>
 
 
       </div>
@@ -245,14 +254,30 @@
 
 </div>
 
-
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
+    function delteTodo(){
+      var idNumb = $("#deleteid").val();
+          console.log(idNumb);
+          $.ajax({
+            url: "{% url 'dTD' %}",
+            data: {
+              "idNumb" : idNumb
+            },
+            datatype: 'json',
+            success: function(data){
+              alert("삭제되었습니다.");
+              return;
+            }
+          });
+        }
+
       $(".txtb").on("keyup",function(e){
         //13  means enter button
         if(e.keyCode == 13 && $(".txtb").val() != ""){
         testText = $('.txtb').val();
         console.log(testText);
-        { $.ajax({
+        $.ajax({
           url : "{% url 'sTD' %}",
           data : {
             'todoBody': testText
@@ -287,7 +312,6 @@
             //to clear the input
           $(".txtb").val("");
         }
-      }
       });
     </script>
 

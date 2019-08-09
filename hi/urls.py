@@ -13,6 +13,9 @@ urlpatterns = [
     path('diary_create',views.diary_create,name="diary_create"),
     path('diary_list', views.diary_list, name="diary_list"),
     path('diary_detail/<int:diary_id>',views.diary_detail,name="diary_detail"),
+    path('diary_detail/delete/<int:diary_id>', views.diary_delete, name='diary_delete'),
+    path('diary_detail/update/<int:diary_id>', views.diary_update, name='diary_update'),
+    path('diary_detail/updatesend/<int:diary_id>', views.diary_updatesend, name='diary_updatesend'),
     #커뮤니티
     path('community_ok', views.community_ok, name="community_ok"),
     path('signup_ok', views.signup_ok, name="signup_ok"),

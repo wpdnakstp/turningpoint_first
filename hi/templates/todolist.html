@@ -239,7 +239,7 @@
         <div class="task">
           
             {{i.todoBody}}
-            <input type="hidden" id="todoId" value="{{i.id}}">
+            <input type="hidden" id="netodoId" value="{{i.pk}}">
             <i class="fas fa-trash-alt" type="button" id="delte" value="삭제하기" onclick="return delteTodo();"  >
             </i>
             <i class="fas fa-check" type="button" onclick="return checkTodo();">
@@ -260,8 +260,8 @@
         {% for i in posUserTodo %}
         <div class="task">
             {{i.todoBody}}
-            <input type="hidden" id="todoId" value="{{i.id}}">
-            <i class="fas fa-trash-alt" type="button" id="delte" value="삭제하기" onclick="return delteTodo();"  >
+            <input type="hidden" id="postodoId" value="{{i.pk}}">
+            <i class="fas fa-trash-alt" type="button" id="delte" value="삭제하기" onclick="return delteTodo2();">
             </i>
             <i class="fas fa-check" id=>
             </i>
@@ -279,7 +279,7 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
     function delteTodo(){
-      var idNumb = $("#todoId").val();
+      var idNumb = $("#netodoId").val();
           console.log(idNumb);
           $.ajax({
             url: "{% url 'dTD' %}",
@@ -293,8 +293,25 @@
             }
           });
         }
+    function delteTodo2(){
+      var idNumb = $("#postodoId").val();
+          console.log(idNumb);
+          $.ajax({
+            url: "{% url 'dTD' %}",
+            data: {
+              "idNumb" : idNumb
+            },
+            datatype: 'json',
+            success: function(data){
+              location.href ="{% url 'todolist' %}"
+            return;
+            }
+          });
+        }
+    
+
     function checkTodo(){
-      var idNumb = $("#todoId").val();
+      var idNumb = $("#netodoId").val();
       console.log(idNumb);
       $.ajax({
         url: "{% url 'cTD' %}",
@@ -327,28 +344,28 @@
           }
 
         });
-        var task = $("<div class='task'></div>").text($(".txtb").val());
-        var del = $("<i class='fas fa-trash-alt'></i>").click(function(){
-          var p = $(this).parent();
-          p.fadeOut(function(){
-            p.remove();
-          });
-        });
+        // var task = $("<div class='task'></div>").text($(".txtb").val());
+        // var del = $("<i class='fas fa-trash-alt'></i>").click(function(){
+        //   var p = $(this).parent();
+        //   p.fadeOut(function(){
+        //     p.remove();
+        //   });
+        // });
 
-        var check = $("<i class='fas fa-check'></i>").click(function(){
-          var p = $(this).parent();
-          p.fadeOut(function(){
-            $(".comp").append(p);
-            p.fadeIn();
-          });
-          $(this).remove();
-        });
+        // var check = $("<i class='fas fa-check'></i>").click(function(){
+        //   var p = $(this).parent();
+        //   p.fadeOut(function(){
+        //     $(".comp").append(p);
+        //     p.fadeIn();
+        //   });
+        //   $(this).remove();
+        // });
 
-          task.append(del,check);
-          $(".notcomp").append(task);
-            //to clear the input
-          $(".txtb").val("");
-        }
+        //   task.append(del,check);
+        //   $(".notcomp").append(task);
+        //     //to clear the input
+        //   $(".txtb").val("");
+         }
       });
     </script>
 

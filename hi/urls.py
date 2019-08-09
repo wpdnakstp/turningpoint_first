@@ -21,7 +21,10 @@ urlpatterns = [
     path('todolist', views.todolist, name="todolist"),
     path('base_ok', views.base_ok, name="base_ok"),
     path('home', views.home, name="home"),
+    #종복체크
     path('id_overlap_check', views.id_overlap_check,name="id_overlap_check"),
+    path('mailOverlapCheck', views.mailOverlapCheck,name="mailOverlapCheck"),
+    path('nickOverlapCheck', views.nickOverlapCheck,name="nickOverlapCheck"),
     #중복체크
     path('ckid',views.ckid,name="ckid"),
     path('ckmail',views.ckmail,name="ckmail"),

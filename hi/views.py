@@ -261,3 +261,29 @@ def id_overlap_check(request):
         overlap = "fail"
     context = {"overlap":overlap}
     return JsonResponse(context)
+
+def mailOverlapCheck(request):
+    usermail = request.GET.get('usermail')
+    try:
+        userEmail = TurningUser.objects.get(email=usermail)
+    except:
+        userEmail = None
+    if userEmail is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {"overlap":overlap}
+    return JsonResponse(context)
+
+def nickOverlapCheck(request):
+    userNick = request.GET.get('nickName')
+    try:
+        userNickname = TurningUser.objects.get(nickName=userNick)
+    except:
+        userNickname = None
+    if userNickname is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {"overlap":overlap}
+    return JsonResponse(context)

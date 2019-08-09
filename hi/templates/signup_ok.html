@@ -24,71 +24,74 @@
     <!-- Main CSS-->
     <link href="{% static '/css/signup.css' %}" rel="stylesheet" media="all">
 </head>
-<script "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-        // function checkid(){
-            
-        //     // // $('.input--style-6 username_check').change(function(){
-        //     // //     $('#id_check_success').hide();
-        //     // //     $('.input--style-6 validationId').show();
-        //     // //     $('..input--style-6 username_check').attr("check_result","fail");
-        //     // // })
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+        function checkid(){
+            var userid = document.getElementById("uid").value;
+            var testid = $('#uid').val();
+            $.ajax({
+                url: "{% url 'id_overlap_check' %}",
+                data: {
+                    'username': userid
+                },
+                datatype: 'json',
+                success: function(data) {
+                    console.log(data['overlap']);
+                    if(data['overlap']=="fail"){
+                        alert("이미 존재하는 아이디 입니다.");
+                        userid.focuse();
+                        return;
+                    } else {
+                        alert("사용가능한 아이디 입니다.");
+                        return;
+                    }
+                }
+            });            
+        }
 
-        //     // if($('.input--style-6 username_check').val()==''){
-        //     //     alert("이메일을 입력해주세요.")
-        //     //     return;
-        //     // }
+        function checkmail(){
+            var usermail = $('#userEmail').val();
+            $.ajax({
+                url: "{% url 'mailOverlapCheck' %}",
+                data: {
+                    'usermail': usermail
+                },
+                datatype: 'json',
+                success: function(data){
+                    console.log(data['overlap']);
+                    if(data['overlap']=="fail"){
+                        alert("이미 존재하는 이메일 입니다.");
+                        usermail.focuse();
+                        return;
+                    } else {
+                        alert("사용가능한 이메일 입니다.");
+                        return;
+                    }
+                }
+            });
+        }
 
-        //     // id_overlap_input = document.querySelector('input[name="username"]');
-
-        //     // $.ajax({
-        //     //     url: "{% url 'id_overlap_check' %}",
-        //     //     data: {
-        //     //         'username': id_overlap_input.value
-        //     //     },
-        //     //     datatype: 'json',
-        //     //     success: function(data){
-        //     //         console.log(data['overlap']);
-        //     //         if (data['overlap'] == "fail") {
-        //     //             alert("이미 존재하는 아이디 입니다.");
-        //     //             id_overlap_input.focus();
-        //     //             return;
-        //     //         } else {
-        //     //             alert("사용가능한 아이디 입니다.");
-        //     //             $('.input--style-6 username_check').attr("check_result","success");
-        //     //             $('#id_check_success').show();
-        //     //             $('.input--style-6 validationId').hide();
-        //     //             return;
-        //     //         }
- 
-        //     //     }
-        //     // })
-
-        //     // var userid = document.getElementById("uid").value;
-        //     $.ajax({
-        //         url: "{% url 'id_overlap_check' %}",
-        //         data: {
-        //             'username': userid
-        //         },
-        //         datatype: 'json',
-        //         success: function(data) {
-        //             console.log(data['overlap']);
-        //             if(data['overlap']=="fail"){
-        //                 alert("이미 존재하는 아이디 입니다.");
-        //                 userid.focuse();
-        //                 return;
-        //             } else {
-        //                 alert("사용가능한 아이디 입니다.");
-        //                 return;
-        //             }
-        //         }
-        //     });            
-        //     if(userid){
-        //         url = "{% url 'ckid' %}";
-        //         window.open(url,"ckid","width=300,height=100");
-        //     }else{
-        //         alert("아이디를 입력하세요");
-        //     }
-        // }
+        function checknick(){
+            var userNick = $('#nickName').val();
+            $.ajax({
+                url: "{% url 'nickOverlapCheck' %}",
+                data: {
+                    'nickName': userNick
+                },
+                datatype: 'json',
+                success: function(data){
+                    console.log(data['overlap']);
+                    if(data['overlap']=="fail"){
+                        alert("이미 존재하는 닉네임 입니다.");
+                        userNick.focuse();
+                        return;
+                    } else {
+                        alert("사용가능한 닉네임 입니다.");
+                        return;
+                    }
+                }
+            });
+        }
 </script>
 
 <body>
@@ -99,26 +102,6 @@
                     <h2 class="title">터닝포인트</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{% url 'ckid' %}">
-                        {% csrf_token %}
-                        아이디: <input type="text" name="test">
-                        <br>
-                        <input type="submit" value="아이디 중복확인">
-                    </form>
-                    <br>
-                    <form method="POST" action="{% url 'ckmail' %}">
-                        {% csrf_token %}
-                        이메일: <input type="email" name="testEmail">
-                        <br>
-                        <input type="submit" value="이메일 중복확인">
-                    </form>
-                    <br>
-                    <form method="POST" action="{% url 'cknick' %}">
-                        {% csrf_token %}
-                        닉네임: <input type="text" name="testNick">
-                        <br>
-                        <input type="submit" value="닉네임 중복확인">
-                    </form>
                     <form method="POST" action = "{%url 'signup_ok' %}" >
                             {% csrf_token %} <!--사이트간 위조 방지 토큰을 넣어주고-->
                         <div class="form-row">
@@ -256,8 +239,8 @@
                         <div class="form-row">
                             <div class="name">닉네임</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="nickName" style="width: 60%;">
-                                <input class="input--style-6" type="button" value="중복검사" id="uid1" style="width: 30%; " onclick="checkid(1);" />
+                                <input class="input--style-6" type="text" id = "nickName" name="nickName" style="width: 60%;">
+                                <input class="input--style-6" type="button" value="중복검사" id="uid1" style="width: 30%;" onclick="return checknick();" />
 
                             </div>
                         </div>
@@ -265,8 +248,8 @@
                             <div class="name">이메일</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com" style="width: 60%;">
-                                    <input class="input--style-6" type="button" value="중복검사"  id="uid2"style="width: 30%; " onclick="checkid(2);" />
+                                    <input class="input--style-6" id="userEmail" type="email" name="email" placeholder="example@email.com" style="width: 60%;">
+                                    <input class="input--style-6" type="button" value="중복검사"  id="uid2"style="width: 30%; " onclick="return checkmail();" />
 
                                 </div>
                             </div>

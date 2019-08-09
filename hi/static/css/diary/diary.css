@@ -141,3 +141,9 @@
  	
 
 input::-webkit-input-placeholder { font-size: 15px; font-family: 'WONBatang';  }
+
+#title_1 {    display: inline-block;
+    width: 180px;
+    margin-left: 108px;
+    color: #0000008c;
+    font-family: 'KOMACON';}

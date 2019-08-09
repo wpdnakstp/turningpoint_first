@@ -3,95 +3,123 @@
 
 {% block content %}
 
-<div id="main">
-    <div id="wrapper" style="margin-left: 20%;">
-      <div class="navbar" style="border-bottom:1px solid #eee;">
-          <div class="diary_title" style: font-size:200px;>
 
-    <div class="navbar">
-        <div class="diary_title">
-            <h1>일기장</h1>
+
+
+  <div id="main">
+  <div id="wrapper" style="margin-left: 20%;">
+    <div class="navbar" style="border-bottom:1px solid #eee;">
+        <div class="diary_title" style: font-size:200px;>
+            <h1 style="font-size:40px;">내가 쓴 일기</h1>
         </div>
         <div class="navbar_data">
             <ul class="data_ul">
-                <li class="li_1" data-href="#">
-                        <a class="navbar_link" href="{% url 'diary_ok' %}" style="margin-top:50px;">글쓰기</a>
-                </li>
+                <li class="li_1" data-href="https://naver.com" style="margin-left: 700px; max-width:500px;">
+                        <a class="navbar_link" href="{% url 'diary_ok' %}" style="margin-top:50px; margin-right:20px;">글쓰기</a>
+                        <a class="navbar_link" href="{% url 'intro_final' %}" style="margin-top:50px;">홈으로</a>
 
+                        
+                </li>
+      
                
             </ul>
-
+      
         </div>
+        <br>
+        <br>
     </div>
-<div id="main">
-	<div id="wrapper">
+  <br>
+  <br>
+    <div class="wrap_content"> 
+  
+      <div id="wrapArticle" class="wrap_article"> 
+  
+  
+      
+        <div class="wrap_article_list_common"> 
+  
+          <ul class="list_article_list_common"> 
+  
+        <!-- 이 리스트부터 for문돌려야함-->
+            
+  
+                {% if error %}
+                <script>
+                    alert("{{error}}")
+                </script>
+            {% endif %}
+            
+            
+                
+            
+          
 
-    
-				<div class="wrap_content"> 
+                    <!-- Scripts -->
+                        
+                        <script src="{% static '/js/diary/diary.js' %}"></script>
+            </div>
 
-					<div id="wrapArticle" class="wrap_article"> 
-
-
-					
-						<div class="wrap_article_list_common"> 
-			
-							<ul class="list_article_list_common"> 
-                {% for dy in diary %}
-						<!-- 이 리스트부터 for문돌려야함-->
-								<li class="list_has_image"> 
-
-								<a href="{% url 'diary_detail' dy.id %}" class="link_post"> 
-
-                    <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
-                    <strong class="title_subject">{{dy.diaryDate|date:"Y년 m월 d일"}}</strong>
-                    <!--  title_subject 가 제목,,,,  -->
-                    <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
-									  <div class="wrap_sub_content">
-										<em class="tit_sub"> {{dy.summary}}		</em> <!-- 100자까지 출력 -->
-
-                                            </div>
-                                                </a>
-                                                    </li>
-<!-- 여기까지 for문 돌릴거 -->
-                  {% endfor %}
+{% for dy in diary %}
+ <li class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee; float:none; max-width:900px;">
 
 
-                                                         </ul>
-                                                                </div>
+
+
+
+            <a href="{% url 'diary_detail' dy.id %}" class="link_post"> 
+  
+                <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+                
+                <!--  title_subject 가 제목,,,,  -->
+                <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
+              <strong class="title_subject"> {{dy.diaryDate|date:"Y년 m월 d일"}}
+              </strong>
+
+              <strong class="title_subject" style="padding-left:20px;"> - {{ notice.tnUser }}
+              </strong>
+
+<div class="sentence_2" style="display:inline-block;">
+              <div class="wrap_sub_content" >
+                <em class="tit_sub">  {{dy.summary}}     <span class="hihihi" style="padding-left:400px;">  조회수 - {{ notice.postHit }}           좋아요 - {{ notice.totalLike }}</span>
+                </em>
+  
+                                        </div>
+
+</div>
+
+                                            </a>
+                                                </li>
+  <!-- 여기까지 for문 돌릴거 -->
+  {% endfor %}
+  
+  
+                                                     </ul>
+                                                            </div>
+                                                                    </div>
                                                                         </div>
-                                                                            </div>
-				<!-- 커뮤니티 글 리스트만들 때 - 일단 리스트 글 다 묵은 div(wrap_contents), 그다음 wrap article로 묶어주고(너비설정), 그 다음에 div(wrap_article_list) 넣어주고, 이건 overflow:hidden;, float:left; 설정해주고,그 안에 ul class설정(list_article_list_common)설정(list-style: none;), 이제 그 안에 li data 넣고, class="list_has 어디어디"넣어 거따가 이제 a href class넣는거야 클릭하자마자 이동할 수 있도록, (ex-  a href="" class="link_post") 그 담에 a 태그 내부에 div class 제목,본문 묶어주는 class하나 파주고 그 안에다가 이제 띄바 복잡하네 바로 본문제목 넣어주고, div 하나 더 파서 본문내용 넣어주는거야 ㅇㅋ?  -->
-    
-    
 
 
-		<!-- Scripts -->
-			<!-- bootstrap4 js관련 CDN 부분 -->
-				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-					crossorigin="anonymous"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-					crossorigin="anonymous"></script>
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-					crossorigin="anonymous"></script>
-			<script src="{% static '/js/diary.js' %}"></script>
-</div>
-</div>
-    
-		<!-- Scripts -->
-			
-			<script src="{% static '/js/diary/diary.js' %}"></script>
-</div>
-	</body>
-</html>
+                                                                        
 
+                                                                        <div class="demo">
+                                                                          <nav class="pagination" style="display:inline;">
+                                                                            {% if posts.has_previous %}
+                                                                              <a href="?page=1" class="r-link pagination__control pagination__control_prev">First</a>
 
+                                                                            <a href="?page={{posts.previous_page_number}}" class="r-link pagination__control pagination__control_prev" style="margin-left:1300px;">prev</a>
+                                                                            {%endif %}
+                                                                            
+                                                                            {%if posts.has_next%}
+                                                                                    <a href="?page={{posts.next_page_number}}" class="r-link pagination__control pagination__control_next">Next</a>
+                                                                                    <a href="?page={{posts.paginator.num_pages}}" class="r-link pagination__control pagination__control_next" style="margin-left:1300px;">Last</a>
+                                                                                    {%endif%} 
+                                                                            <!-- <a href="#0" class="r-link pagination__control pagination__control_next">next</a> -->
+                                                                          </nav>
+                                                                        </div>
+                                                                    </div>
+   
 
 
 
 
 {% endblock %}
-
-
-
-
-

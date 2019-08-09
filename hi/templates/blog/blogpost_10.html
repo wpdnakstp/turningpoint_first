@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-{% extends 'base.html' %}
+<!DOCTYPE HTML>
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    <title>MYPAGE</title>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MYPAGE</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -32,70 +31,102 @@
 
 
 
+	</head>
+	<style>
 
-    <style>
+		body {
+			font-family: Helvetica, sans-serif;
+		  }
+		  
+		  li {
+			position: relative;
+			overflow: hidden;
+			max-width: 300px;
+			transition: all 0.3s ease-out;
+			width: 100%;
+			float: left;
+		  
+		   
+		  }
+		  li .text {
+			color: #fff;
+			margin: 0;
+			position: absolute;
+			top: 30%;
+			text-align: center;
+			text-transform: uppercase;
+			z-index: 20;
+			bottom: 0;
+			left: 0;
+		  right: 0;
+		  margin-left: 56px;
+		  
+			padding: 0 10%;
+		  
+			transition: all 0.3s ease;
+		  }
+		  li .text h2 {
+			font-size: 1.75em;
+			border-bottom: 3px solid white;
+			margin-bottom: 0.625em;
+			color:white;
+		  }
+		  li img {
+			width: 100%;
+			height: auto;
+			max-width: 280px;
+			display: block;
+			vertical-align: middle;
+			transition: all 0.2s ease;
+		  }
+		  li .overlay {
+			position: absolute;
+			top: 0;
+		  
+			width: 280px;
+			height: 100%;
+			background: #000;
+			z-index: 10;
+			opacity: 0.4;
+			transition: opacity 0.15s ease-out;
+			-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+		  }
+		  li:hover img, li:focus img {
+			-webkit-transform: scale(1.2);
+					transform: scale(1.2);
+		  }
+		  li:hover .overlay, li:focus .overlay {
+			opacity: 0;
+			filter: alpha(opacity=0);
+		  }
+		  li:hover .text, li:focus .text {
+			opacity: 0;
+			filter: alpha(opacity=0);
+		  }
+		  
+		  a {
+			transition: all 0.2s;
+		  }
+		  .textboxlist-ul
+		  {
+			overflow: hidden;
+			margin: 0;
+			padding: 0 85px;
+		   
+			padding-bottom: 3px;
+		  }
 
-        /* starts here */
-.btn {
-    color: #444;
-    line-height: 1em;
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-    margin: 1em;
-    border-radius: 4px;
-    background-color: #fff;
-    border: 0.1em solid #444;
-    padding: 0.8em;
-    text-align: center;
-    transition: 0.25s box-shadow, 0.25s -webkit-transform;
-  }
-  .btn-small {
-    padding: 0.7em;
-  }
-  .btn:hover {
-    box-shadow: 0 4em 0 0 #444 inset, 0em 0em 0 0 #bbb;
-    -webkit-transform: translate(0.3em, 0.2em);
-    color: #fff;
-  }
-  .btn.disabled {
-    opacity: 0.8;
-  }
-  .btn.disabled:hover {
-    box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
-    -webkit-transform: translate(0, 0);
-    color: #444;
-  }
-  /* ends here */
-  .heavy {
-    font-weight: 700;
-  }
-  .extraheavy {
-    font-weight: 900;
-  }
-  .light {
-    font-weight: 300;
-  }
-tr th{
-    border: 1px solid #eee;
-}
-#togglewheight{
-	color:black;
-	background-color:white;
-}
-    </style>
-</head>
-<body>
-    
-
-    
-  <body class="is-preload">
+		
+		</style>
+	<body class="is-preload">
 
 		<!-- Header -->
-		<div id="header" style="    font-family: Helvetica, sans-serif;">
+		<div id="header">
 				<div class="page-wrapper chiller-theme toggled">
-					  <!-- <i class="fas fa-bars"></i> -->
-					
+					<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+					  <i class="fas fa-bars"></i>
+					</a>
 					<nav id="sidebar" class="sidebar-wrapper">
 					  <div class="sidebar-content">
 					  <div class="sidebar-brand">
@@ -110,17 +141,17 @@ tr th{
 						  alt="User picture">
 						</div>
 						<div class="user-info">
-						<span class="user-name">
-						  <strong>{{user.username}}</strong>
+						<span class="user-name">Jhon
+						  <strong>Smith</strong>
 						</span>
-						<span class="user-role">{{user.userArmyName}}</span>
+						<span class="user-role">Administrator</span>
 						<span class="user-status">
 						  <i class="fa fa-circle"></i>
 						  <span>Online</span>
 						</span>
 						</div>
 					  </div>
-				  <!-- sidebar-header  -->
+					  <!-- sidebar-header  -->
 					  <div class="sidebar-search">
 						<div>
 						<div class="input-group">
@@ -141,27 +172,27 @@ tr th{
 						</li>
 						  <li>
 							<a href="{% url 'mypage' %}">
-							<i class="fa fa-home"></i>
-							<span>홈</span>
+							<i class="fa fa-book"></i>
+							<span>Home</span>
 							<span class="badge badge-pill badge-primary">Beta</span>
 							</a>
 						  </li>
 						   <li>
 							<a href="{% url 'calendar' %}">
 							<i class="fa fa-calendar"></i>
-							<span>캘린더</span>
+							<span>Calendar</span>
 							</a>
 						  </li>
 						  <li>
 								<a href="{% url 'todolist' %}">
-								<i class="fa fa-edit"></i>
-								<span>계획</span>
+								<i class="fa fa-calendar"></i>
+								<span>Plan</span>
 								</a>
 							  </li>
 						  <li>
 							<a href="{% url 'diary_ok' %}">
-							<i class="fa fa-book"></i>							
-							<span>일기</span>
+							<i class="fa fa-calendar"></i>
+							<span>Diary</span>
 							</a>
 						  </li>
 						
@@ -170,24 +201,18 @@ tr th{
 						</li>
 						<li class="sidebar-dropdown">
 							<a href="#">
-							<i class="fa fa-list-alt"></i>
-							<span>커뮤니티</span>
+							<i class="fa fa-globe"></i>
+							<span>Community</span>
 							</a>
 							<div class="sidebar-submenu">
 							<ul>
 							  <li><a href="{% url 'notice' %}">공지게시판</a> </li>
 							  <li><a href="{% url 'free' %}">자유게시판</a></li>
 							  <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
+							  <!-- <li><a href="{% url 'community_ok' %}">게시판</a></li> -->
 							</ul>
-							<li>
-									<a href="{% url 'book_make' %}">
-									<i class="fa fa-print"></i>
-									<span>제본하기</span>
-									</a>
-								  </li>
 							</div>
 						  </li>
-						  
 						</ul>
 					  </div>
 					</nav>
@@ -199,76 +224,8 @@ tr th{
             </div>
             
 
-      
-
-			<div class="container" style="text-align:center; border: 1px solid #eee; padding-left: 300px;">
-				<input type="hidden" value="{{ notice.update_counter }}"> <!-- 조회수 카운터 -->
-			<div class="container" style="text-align:center; border: 1px solid #eee;">
-					<h1 style ="height: 100px;
-					border-bottom: 1px solid #eee;">{{ notice.title }}</h1>
-             
-  
-              <p style ="height: 400px;
-              text-align: center; /* 문자들의 가운데 정렬을 해제 */  margin: 0 auto;
-  
-              border-bottom: 1px solid #eee;"><span class="hio" style="margin-top:100px;">{{ develop.body }}</span></p>
-              <p></p>
-  
-              <div class="first__" style="border-bottom: 1px solid #eee; height:150px; text-align:right;">
-                      <p>작성시간 : {{ develop.pub_date }}</p>
-                      <p>글쓴이 : {{ develop.tnUser }}</p>
-                      <p>추천수 : {{develop.totalLike}}</p>
-                      <p>조회수 : {{ develop.postHit }}</p>
-          </div>
-  
-  
-              <br><br>
-              <a href="{% url 'develop' %}" class="btn" id="toggleweight">돌아가기</a>
-              <a href="{% url 'developupdate' develop.id %}" class="btn" id="toggleweight">수정하기</a>
-              <a href="{% url 'developdelete' develop.id %}" class="btn" id="toggleweight">삭제하기</a>
-              <form action="{% url 'developLike' develop_id=develop.id %}" method="POST" style="display:inline-block;">
-                      {% csrf_token %}
-                      <input class="btn" id="toggleweight" value="좋아요♥">
-              </form>
-          
-              <hr>
-              <div class="comment">
-                   <form action="{% url 'developcommentcreate' develop_id=develop.id %}" method="POST"> <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
-                      {% csrf_token %}
-                      <input type="text" name="content" placeholder="댓글을 작성해 주세요.">
-                      <input type="submit" value="작성하기">
-                  </form>
-              </div>
-              <hr>
-              <table class='katalog' style="color:white;">
-                  <thead>
-                      <tr>
-						 <th>작성자</th>
-                          <th>날짜</th>
-                          <th>댓글</th>
-                        
-                  </thead>
-              <tbody>
-                  {% for comment in develop.comments.all %}
-                  <tr>
-                      <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
-                      <td>{{ comment.commentbody }}</td>
-                      <td>{{ comment.tnDevelopCommentUser }}</td>
-                      <td><a href="{% url 'developcommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
-                  </tr>
-                  {% empty %}
-                      <p>댓글이 없습니다!</p>
-                  {% endfor %}  
-              </tbody>
-              </table>
-          
-          
-              </div>
-          </div>
-
-
-
-       
+        {% block content %}
+        {% endblock %}
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -300,29 +257,104 @@ tr th{
 				<script src="{% static 'assets/js/demo/style-switcher.js' %}"></script> 
 				<script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js  "></script>
 
-
-
-
-
-
-
-
-
-        
-
-
-
-                <script>
-                        var classes = ["light", "", "heavy", "extraheavy"];
-                        var i = 1;
-                        $("#toggleweight").click(function () {
-                          $(".btn").removeClass(classes[i]);
-                          i++;
-                          if (i >= classes.length) {
-                            i = 0;
-                          }
-                          $(".btn").addClass(classes[i]);
-                        });
-                </script>
-</body>
+			
+	</body>
 </html>
+
+
+
+<div class="page-wrapper chiller-theme toggled">
+		<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+		  <i class="fas fa-bars"></i>
+		</a>
+		<nav id="sidebar" class="sidebar-wrapper">
+		  <div class="sidebar-content">
+			<div class="sidebar-brand">
+			  <a href="{% url 'intro_final' %}">TurningPoint</a>
+			  <div id="close-sidebar">
+			  </div>
+			</div>
+			<div class="sidebar-header">
+			  <div class="user-pic">
+				<img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+				  alt="User picture">
+			  </div>
+			  <div class="user-info">
+				<span class="user-name">Jhon
+				  <strong>Smith</strong>
+				</span>
+				<span class="user-role">Administrator</span>
+				<span class="user-status">
+				  <i class="fa fa-circle"></i>
+				  <span>Online</span>
+				</span>
+			  </div>
+			</div>
+			<div class="sidebar-search">
+					<div>
+					<div class="input-group">
+					  <input type="text" class="form-control search-menu" placeholder="Search..." style="background:white;">
+					  <div class="input-group-append">
+					  <span class="input-group-text">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					  </span>
+					  </div>
+					</div>
+					</div>
+				  </div>
+				  <!-- sidebar-search  -->
+				  <div class="sidebar-menu">
+					<ul>
+					<li class="header-menu">
+					  <span>General</span>
+					</li>
+					  <li>
+						<a href="{% url 'mypage' %}">
+						<i class="fa fa-book"></i>
+
+						
+						<span>Home</span>
+
+						<!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+						</a>
+					  </li>
+					   <li>
+						<a href="{% url 'calendar' %}">
+						<i class="fa fa-calendar"></i>
+						<span>Calendar</span>
+						</a>
+					  </li>
+					  <li>
+							<a href="{% url 'todolist' %}">
+							<i class="fa fa-calendar"></i>
+							<span>Plan</span>
+							</a>
+						  </li>
+					  <li>
+						<a href="{% url 'diary_ok' %}">
+						<i class="fa fa-calendar"></i>
+						<span>Diary</span>
+						</a>
+					  </li>
+					
+					<li class="header-menu">
+					  <span>Extra</span>
+					</li>
+					<li class="sidebar-dropdown">
+						<a href="#">
+						<i class="fa fa-globe"></i>
+						<span>Community</span>
+						</a>
+						<div class="sidebar-submenu">
+						<ul>
+							<li><a href="{% url 'notice' %}">공지게시판</a> </li>
+							<li><a href="{% url 'free' %}">자유게시판</a></li>
+							<li><a href="{% url 'develop' %}">자기계발게시판</a></li>
+						</ul>
+						</div>
+					  </li>
+					</ul>
+				  </div>
+				</nav>
+			  </div>
+		  </div>

@@ -271,8 +271,9 @@ html .fc,
 	}
 	 
 .fc-event {
-	border: 1px solid #FFF; /* default BORDER color */
-	background-color: #FFF; /* default BACKGROUND color */
+	border : transparent;
+	border: 1px solid gainsboro; /* default BORDER color */
+	background-color: gainsboro; /* default BACKGROUND color */
 	color: #919191;               /* default TEXT color */
 	font-size: 12px;
 	cursor: default;

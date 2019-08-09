@@ -1,14 +1,52 @@
-<br>
-<div class="container">
-	<form action="{% url 'freecreate' %}">
-	  <h4>제목: </h4>
-	  <input type="text" name="title">
-	  <br>
-	  <br>
-	  <h4>본문: </h4>
-	  <textarea cols=40 rows=10 name="body"></textarea>
-	  <br>
-	  <br>
-	  <input type="submit" value="제출하기">
-  </form>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+   
+	<!-- Header -->
+   
+    <link rel="stylesheet" href="{% static '/css/diary/diary.css' %}" >  
+    <div id ="main">
+  
+    <div class="navbar">
+            <div class="diary_title">
+                <h1 style="text-align:center;  font-family: 'KOMACON'; font-weight: 400; "> 자유게시판</h1>
+            <p style="margin-top:15px; margin-left:5px;" >자유롭게 써주시지 말입니다?</p>
+            </div>
+            <div class="navbar_data">
+                <ul class="data_ul">
+                    <li class="li_1" data-href="https://naver.com">
+                            <a class="navbar_link" href="https://naver.com">목록보기</a>
+                    </li>
+        
+                   
+                </ul>
+        
+            </div>
+        </div>
+        
+    </div>
+<div id="main">
+	<div id="wrapper">
+
+        <form id="paper" method="get" action="{% url 'freecreate' %}">
+    
+            <div id="margin"><input id="title" type="text" name="title" placeholder="제목써주시지말입니다"></div>
+            <textarea placeholder="" id="text" name="body" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
+            <br>
+            <input id="button" type="submit" value="기록하기">
+            
+        </form>
+    
+    </div>
+
+		<!-- Scripts -->
+			
+			<script src="{% static '/js/diary/diary.js' %}"></script>
 </div>
+	</body>
+</html>
+
+{% endblock %}

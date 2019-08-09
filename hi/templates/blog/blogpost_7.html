@@ -1,0 +1,902 @@
+
+
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MYPAGE</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">   
+   		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+
+		<link rel="stylesheet" href="{% static '/css/pagination.css' %}" />
+		<link rel="stylesheet" href="{% static '/css/main.css' %}" />  
+		
+		<link rel="stylesheet" href="{% static '/css/theme-1.css' %}" />
+		<link rel="stylesheet" href="{% static '/css/sidebar.css' %}" />
+		
+        
+
+
+
+	</head>
+	<style>
+
+		body {
+			font-family: Helvetica, sans-serif;
+		  }
+		  
+		  li {
+			position: relative;
+			overflow: hidden;
+			max-width: 300px;
+			transition: all 0.3s ease-out;
+			width: 100%;
+			float: left;
+		  
+		   
+		  }
+		  li .text {
+			color: #fff;
+			margin: 0;
+			position: absolute;
+			top: 30%;
+			text-align: center;
+			text-transform: uppercase;
+			z-index: 20;
+			bottom: 0;
+			left: 0;
+		  right: 0;
+		  margin-left: 56px;
+		  
+			padding: 0 10%;
+		  
+			transition: all 0.3s ease;
+		  }
+		  li .text h2 {
+			font-size: 1.75em;
+			border-bottom: 3px solid white;
+			margin-bottom: 0.625em;
+			color:white;
+		  }
+		  li img {
+			width: 100%;
+			height: auto;
+			max-width: 280px;
+			display: block;
+			vertical-align: middle;
+			transition: all 0.2s ease;
+		  }
+		  li .overlay {
+			position: absolute;
+			top: 0;
+		  
+			width: 280px;
+			height: 100%;
+			background: #000;
+			z-index: 10;
+			opacity: 0.4;
+			transition: opacity 0.15s ease-out;
+			-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+		  }
+		  li:hover img, li:focus img {
+			-webkit-transform: scale(1.2);
+					transform: scale(1.2);
+		  }
+		  li:hover .overlay, li:focus .overlay {
+			opacity: 0;
+			filter: alpha(opacity=0);
+		  }
+		  li:hover .text, li:focus .text {
+			opacity: 0;
+			filter: alpha(opacity=0);
+		  }
+		  
+		  a {
+			transition: all 0.2s;
+		  }
+		  .textboxlist-ul
+		  {
+			overflow: hidden;
+			margin: 0;
+			padding: 0 85px;
+		   
+			padding-bottom: 3px;
+		  }
+
+		  * {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		a {
+			color: #03658c;
+			text-decoration: none;
+		}
+		
+		ul {
+		   list-style-type: none;
+		}
+		
+		body {
+		   font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+		   background: #dee1e3;
+		}
+		
+		.comments-container {
+		   margin: 60px auto 15px;
+		   width: 768px;
+		   height: 1194px;
+		}
+		}
+		
+		.comments-container h1 {
+		   font-size: 36px;
+		   color: #283035;
+		   font-weight: 400;
+		}
+		
+		.comments-container h1 a {
+		   font-size: 18px;
+		   font-weight: 700;
+		}
+		
+		.comments-list {
+		   margin-top: 30px;
+		   position: relative;
+		}
+		
+		.comments-list:before {
+		   content: '';
+		   width: 2px;
+		   height: 100%;
+		   background: #c7cacb;
+		   position: absolute;
+		   left: 32px;
+		   top: 0;
+		}
+		
+		.comments-list:after {
+		   content: '';
+		   position: absolute;
+		   background: #c7cacb;
+		   bottom: 0;
+		   left: 27px;
+		   width: 7px;
+		   height: 7px;
+		   border: 3px solid #dee1e3;
+		   -webkit-border-radius: 50%;
+		   -moz-border-radius: 50%;
+		   border-radius: 50%;
+		}
+		
+		.reply-list:before, .reply-list:after {display: none;}
+		.reply-list li:before {
+		   content: '';
+		   width: 60px;
+		   height: 2px;
+		   background: #c7cacb;
+		   position: absolute;
+		   top: 25px;
+		   left: -55px;
+		}
+		
+		
+		.comments-list li {
+		   margin-bottom: 15px;
+		   display: block;
+		   position: relative;
+		   max-width: none;
+		}
+		
+		.comments-list li:after {
+		   content: '';
+		   display: block;
+		   clear: both;
+		   height: 0;
+		   width: 0;
+		}
+		
+		.reply-list {
+		   padding-left: 88px;
+		   clear: both;
+		   margin-top: 15px;
+		}
+		
+		.comments-list .comment-avatar {
+		   width: 65px;
+		   height: 65px;
+		   position: relative;
+		   z-index: 99;
+		   float: left;
+		   border: 3px solid #FFF;
+		   -webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		   border-radius: 4px;
+		   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+		   -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+		   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+		   overflow: hidden;
+		}
+		
+		.comments-list .comment-avatar img {
+		   width: 100%;
+		   height: 100%;
+		}
+		
+		.reply-list .comment-avatar {
+		   width: 50px;
+		   height: 50px;
+		}
+		
+		.comment-main-level:after {
+		   content: '';
+		   width: 0;
+		   height: 0;
+		   display: block;
+		   clear: both;
+		}
+		
+		.comments-list .comment-box {
+		   width: 680px;
+		   float: right;
+		   position: relative;
+		   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+		   -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+		   box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+		   background-color: #FFF;
+		}
+		
+		.comments-list .comment-box:before, .comments-list .comment-box:after {
+		   content: '';
+		   height: 0;
+		   width: 0;
+		   position: absolute;
+		   display: block;
+		   border-width: 10px 12px 10px 0;
+		   border-style: solid;
+		   border-color: transparent #FCFCFC;
+		   top: 8px;
+		   left: -11px;
+		}
+		
+		.comments-list .comment-box:before {
+		   border-width: 11px 13px 11px 0;
+		   border-color: transparent rgba(0,0,0,0.05);
+		   left: -12px;
+		}
+		
+		.reply-list .comment-box {
+		   width: 610px;
+		}
+		.comment-box .comment-head {
+		   background: #FCFCFC;
+		   padding: 10px 12px;
+		   border-bottom: 1px solid #E5E5E5;
+		   overflow: hidden;
+		   -webkit-border-radius: 4px 4px 0 0;
+		   -moz-border-radius: 4px 4px 0 0;
+		   border-radius: 4px 4px 0 0;
+		}
+		
+		.comment-box .comment-head i {
+		   float: right;
+		   margin-left: 14px;
+		   position: relative;
+		   top: 2px;
+		   color: #A6A6A6;
+		   cursor: pointer;
+		   -webkit-transition: color 0.3s ease;
+		   -o-transition: color 0.3s ease;
+		   transition: color 0.3s ease;
+		}
+		
+		.comment-box .comment-head i:hover {
+		   color: #03658c;
+		}
+		
+		.comment-box .comment-name {
+		   color: #283035;
+		   font-size: 14px;
+		   font-weight: 700;
+		   float: left;
+		   margin-right: 10px;
+		}
+		
+		.comment-box .comment-name a {
+		   color: #283035;
+		}
+		
+		.comment-box .comment-head span {
+		   float: left;
+		   color: #999;
+		   font-size: 13px;
+		   position: relative;
+		   top: 1px;
+		}
+		
+		.comment-box .comment-content {
+		   background: #FFF;
+		   padding: 12px;
+		   font-size: 15px;
+		   color: #595959;
+		   -webkit-border-radius: 0 0 0px 0px;
+		   -moz-border-radius: 0 0 0px 0px;
+		   border-radius: 0 0 0px 0px;
+		   border-bottom: .5px solid #e5e5e5;
+		}
+		
+		.comment-box .comment-footer {
+		   border-radius: 0 0 4px 4px;
+		   padding: 12px;
+		   width: 100%;
+		   background: #fff none repeat scroll 0 0;
+		}
+		.comment-box .comment-footer textarea {
+		   resize: none;
+		   width: 100%;
+		   border-radius: 4px;
+		   padding: 1%;
+		}
+		.comment-box .send-button, .comment-box .comment-open {
+		   padding: 12px;
+		   background: #fff none repeat scroll 0 0;
+		}
+		.comment-box .send-button .btn-send, .comment-box .comment-open .btn-send {
+		   background-color: #03658c;
+		   border-color: #03658c;
+		   color: #fff;
+		   padding: 6px 12px;
+		   text-align: center;
+		   vertical-align: middle;
+		   cursor: pointer;
+		}
+		.comment-box .send-button .btn-send, .comment-box .comment-open .btn-send {
+		   text-decoration: none;
+		}
+		.comment-box .btn-reply {
+		   cursor: pointer;
+		}
+		.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+		.comment-box .comment-name.by-author:after {
+		   /*content: '';*/
+		   background: #03658c;
+		   color: #FFF;
+		   font-size: 12px;
+		   padding: 3px 5px;
+		   font-weight: 700;
+		   margin-left: 10px;
+		   -webkit-border-radius: 3px;
+		   -moz-border-radius: 3px;
+		   border-radius: 3px;
+		}
+		.comment-box .posted-time {
+		   margin-top: 8px;
+		}
+		
+		.comment-box .comment-footer {
+		   display: none;
+		}
+		@media only screen and (max-width: 766px) {
+		.comments-container {
+		   width: 480px;
+		}
+		
+		.comments-list .comment-box {
+		   width: 390px;
+		}
+		
+		.reply-list .comment-box {
+		   width: 320px;
+		}
+		}
+		</style>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<div id="header">
+				<div class="page-wrapper chiller-theme toggled">
+					<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+					  <i class="fas fa-bars"></i>
+					</a>
+					<nav id="sidebar" class="sidebar-wrapper">
+					  <div class="sidebar-content">
+					  <div class="sidebar-brand">
+						<a href="{% url 'intro_final' %}">TurningPoint</a>
+						<div id="close-sidebar">
+						
+						</div>
+					  </div>
+					  <div class="sidebar-header">
+						<div class="user-pic">
+						<img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+						  alt="User picture">
+						</div>
+						<div class="user-info">
+						<span class="user-name">Jhon
+						  <strong>Smith</strong>
+						</span>
+						<span class="user-role">Administrator</span>
+						<span class="user-status">
+						  <i class="fa fa-circle"></i>
+						  <span>Online</span>
+						</span>
+						</div>
+					  </div>
+					  <!-- sidebar-header  -->
+					  <div class="sidebar-search">
+						<div>
+						<div class="input-group">
+						  <input type="text" class="form-control search-menu" placeholder="Search..." style="background:white;">
+						  <div class="input-group-append">
+						  <span class="input-group-text">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						  </span>
+						  </div>
+						</div>
+						</div>
+					  </div>
+					  <!-- sidebar-search  -->
+					  <div class="sidebar-menu">
+						<ul>
+						<li class="header-menu">
+						  <span>General</span>
+						</li>
+						  <li>
+							<a href="{% url 'mypage' %}">
+							<i class="fa fa-book"></i>
+							<span>Home</span>
+							<span class="badge badge-pill badge-primary">Beta</span>
+							</a>
+						  </li>
+						   <li>
+							<a href="{% url 'calendar' %}">
+							<i class="fa fa-calendar"></i>
+							<span>Calendar</span>
+							</a>
+						  </li>
+						  <li>
+								<a href="{% url 'todolist' %}">
+								<i class="fa fa-calendar"></i>
+								<span>Plan</span>
+								</a>
+							  </li>
+						  <li>
+							<a href="{% url 'diary_ok' %}">
+							<i class="fa fa-calendar"></i>
+							<span>Diary</span>
+							</a>
+						  </li>
+						
+						<li class="header-menu">
+						  <span>Extra</span>
+						</li>
+						<li class="sidebar-dropdown">
+							<a href="#">
+							<i class="fa fa-globe"></i>
+							<span>Community</span>
+							</a>
+							<div class="sidebar-submenu">
+							<ul>
+							  <li><a href="{% url 'notice' %}">공지게시판</a> </li>
+							  <li><a href="{% url 'free' %}">자유게시판</a></li>
+							  <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
+							  <!-- <li><a href="{% url 'community_ok' %}">게시판</a></li> -->
+							</ul>
+							</div>
+						  </li>
+						</ul>
+					  </div>
+					</nav>
+				  </div>
+			  </div>
+		<!-- Main -->
+
+		
+            </div>
+            
+
+       
+		<div class="main-wrapper" style="padding-left: 200px;">
+	    
+				<article class="blog-post px-3 py-5 p-md-5">
+					<div class="container">
+						<header class="blog-post-header">
+							<h2 class="title mb-2">Why Every Developer Should Have A Blog</h2>
+							<div class="meta mb-3"><span class="date">Published 3 months ago</span><span class="time">5 min read</span><span class="comment"><a href="#">4 comments</a></span></div>
+						</header>
+						
+						<div class="blog-post-body">
+							<figure class="blog-banner">
+								<a href="https://made4dev.com"><img class="img-fluid" src="assets/images/blog/blog-post-banner.jpg" alt="image"></a>
+								<figcaption class="mt-2 text-center image-caption">Image Credit: <a href="https://made4dev.com?ref=devblog" target="_blank">made4dev.com (Premium Programming T-shirts)</a></figcaption>
+							</figure>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
+							
+							<h3 class="mt-5 mb-3">Code Block Example</h3>
+							<p>You can get more info at <a href="https://highlightjs.org/" target="_blank">https://highlightjs.org/</a>. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
+							<pre>
+								<code>
+		function $initHighlight(block, cls) {
+		  try {
+			if (cls.search(/\bno\-highlight\b/) != -1)
+			  return process(block, true, 0x0F) +
+					 ` class="${cls}"`;
+		  } catch (e) {
+			/* handle exception */
+		  }
+		  for (var i = 0 / 2; i < classes.length; i++) {
+			if (checkCondition(classes[i]) === undefined)
+			  console.log('undefined');
+		  }
+		}
+		
+		export  $initHighlight;
+								</code>
+							</pre>
+							<h3 class="mt-5 mb-3">Typography</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+							<h5 class="my-3">Bullet Points:</h5>
+							<ul class="mb-5">
+							  <li class="mb-2">Lorem ipsum dolor sit amet consectetuer.</li>
+							  <li class="mb-2">Aenean commodo ligula eget dolor.</li>
+							  <li class="mb-2">Aenean massa cum sociis natoque penatibus.</li>
+							</ul>
+							<ol class="mb-5">
+							  <li class="mb-2">Lorem ipsum dolor sit amet consectetuer.</li>
+							  <li class="mb-2">Aenean commodo ligula eget dolor.</li>
+							  <li class="mb-2">Aenean massa cum sociis natoque penatibus.</li>
+							</ol>
+							<h5 class="my-3">Quote Example:</h5>
+							<blockquote class="blockquote m-lg-5 py-3 pl-4 px-lg-5">
+								<p class="mb-2">You might not think that programmers are artists, but programming is an extremely creative profession. It's logic-based creativity.</p>
+								<footer class="blockquote-footer">John Romero</footer>
+							</blockquote>
+							
+							<h5 class="my-3">Table Example:</h5>
+							<table class="table table-striped my-5">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">First</th>
+										<th scope="col">Last</th>
+										<th scope="col">Handle</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">1</th>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>@mdo</td>
+									</tr>
+									<tr>
+										<th scope="row">2</th>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+									</tr>
+									<tr>
+										<th scope="row">3</th>
+										<td>Larry</td>
+										<td>the Bird</td>
+										<td>@twitter</td>
+									</tr>
+								</tbody>
+							</table>
+							
+				
+		
+		
+							
+
+						
+		
+						<div class="comments-container">
+							<h1>User Comments</h1>
+					
+							<ul id="comments-list" class="comments-list">
+								<li style="	max-width: none; padding-left:0;">
+									<div class="comment-main-level">
+										<!-- Avatar -->
+										<div class="comment-avatar"><img src="http://dummyimage.com/60" alt=""></div>
+										<!-- Contenedor del Comentario -->
+										<div class="comment-box">
+											<div class="comment-head">
+												<h6 class="comment-name by-author"><a href="#">User Name</a></h6>
+												<span class="posted-time">Posted on 10-FEB-2015 12:00</span>
+												<i class="fa fa-reply"></i>
+												<i class="fa fa-heart"></i>
+											</div>
+											<div class="comment-content">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+												<div class="comment-open">
+													<a class="btn-reply">
+														<i class="fa fa-reply"></i>
+													</a>
+												</div>
+											</div>
+											<div class="comment-footer">
+												<div class="comment-form">
+													<textarea class="form-control" name="" id=""></textarea>
+													<div class="pull-right send-button">
+														<a class="btn-send">send</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+					
+									
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+		
+						
+		
+				</article>
+
+				<script>
+							$(document).on('click', '.btn-reply', function(eve){	
+			eve.preventDefault();
+			$(this).parent().parent().siblings('.comment-footer').slideToggle();
+			eve.stopImmediatePropagation();
+			console.log($(this));
+		});
+		
+		$(document).on('click', '.btn-send', function(eve){
+			var targetObject = $(this).parent().parent().parent().parent().parent();
+			//console.log(targetObject);
+			var reply_text = $(this).parent().siblings('textarea').val();
+
+			if($.trim(reply_text) == " " || $.trim(reply_text) == ""){
+				alert("insert comment");
+			} else {
+			if($(targetObject).hasClass("comment-main-level"))
+				{	
+					if($(targetObject).siblings('.comments-list.reply-list')) {
+						element_prepend = '<li> <div class="comment-avatar"><img alt="" src="http://dummyimage.com/60"></div><div class="comment-box"> <div class="comment-head"> <h6 class="comment-name"><a href="#">Lorena Rojero</a></h6> <span class="posted-time">Posted on DD-MM-YYYY HH:MM</span> <i class="fa fa-reply"></i> <i class="fa fa-heart"></i> </div> <div class="comment-content">'+ reply_text +' <div class="comment-open"> <a class="btn-reply"> <i class="fa fa-reply"></i> </a> </div> </div> <div class="comment-footer"> <div class="comment-form"> <textarea id="" name="" class="form-control"></textarea> <div class="pull-right send-button"> <a class="btn-send">send</a> </div> </div> </div> </div> </li>';
+						 $(targetObject).siblings('.comments-list.reply-list').prepend(element_prepend);
+					}
+				}
+			}	
+		});
+				</script>
+
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+				crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+				crossorigin="anonymous"></script>
+		<!-- Scripts -->
+			<script src="{% static '/js/jquery.min.js' %}"></script>
+			<script src="{% static '/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static '/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static '/js/browser.min.js' %}"></script>
+			<script src="{% static '/js/breakpoints.min.js' %}"></script>
+			<script src="{% static '/js/util.js' %}"></script>
+			<script src="{% static '/js/main.js' %}"></script>
+			<script src="{% static '/js/mypage.js' %}"></script>
+			<script src="{% static '/assets/plugins/jquery-3.3.1.min.js' %}"></script>
+			<script src="{% static '/assets/plugins/popper.min.js' %}"></script> 
+			<script src="{% static '/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+		
+			<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+			<script src="{% static '/assets/js/demo/style-switcher.js' %}"></script> 
+			    <!-- Page Specific JS -->
+				<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+				<!-- Custom JS -->
+				<script src="{% static 'assets/js/blog.js' %}"></script>
+				
+				<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+				<script src="{% static 'assets/js/demo/style-switcher.js' %}"></script> 
+				<script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js  "></script>
+
+			
+	</body>
+</html>
+
+    
+       
+
+
+
+	
+
+
+
+
+
+
+<div class="comments-container">
+		<h1>User Comments</h1>
+
+		<ul id="comments-list" class="comments-list">
+			<li style="	max-width: none; padding-left:0;">
+				<div class="comment-main-level">
+					<!-- Avatar -->
+					<div class="comment-avatar"><img src="http://dummyimage.com/60" alt=""></div>
+					<!-- Contenedor del Comentario -->
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name by-author"><a href="#">User Name</a></h6>
+							<span class="posted-time">Posted on 10-FEB-2015 12:00</span>
+							<i class="fa fa-reply"></i>
+							<i class="fa fa-heart"></i>
+						</div>
+						<div class="comment-content">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+							<div class="comment-open">
+								<a class="btn-reply">
+									<i class="fa fa-reply"></i>
+								</a>
+							</div>
+						</div>
+						<div class="comment-footer">
+							<div class="comment-form">
+								<textarea class="form-control" name="" id=""></textarea>
+								<div class="pull-right send-button">
+									<a class="btn-send">send</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<ul class="comments-list reply-list">
+					<li >
+
+						<div class="comment-avatar"><img src="http://dummyimage.com/60" alt=""></div>
+
+						<div class="comment-box">
+							<div class="comment-head">
+								<h6 class="comment-name"><a href="#">Lorena Rojero</a></h6>
+								<span class="posted-time">Posted on DD-MM-YYYY HH:MM</span>
+								<i class="fa fa-reply"></i>
+								<i class="fa fa-heart"></i>
+							</div>
+							<div class="comment-content">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+								<div class="comment-open">
+									<a class="btn-reply">
+										<i class="fa fa-reply"></i>
+									</a>
+								</div>
+							</div>
+							<div class="comment-footer">
+							<div class="comment-form">
+								<textarea class="form-control" name="" id=""></textarea>
+								<div class="pull-right send-button">
+									<a class="btn-send">send</a>
+								</div>
+							</div>
+						</div>
+						</div>
+					</li>
+
+					<li>
+
+						<div class="comment-avatar"><img src="http://dummyimage.com/60" alt=""></div>
+
+						<div class="comment-box">
+							<div class="comment-head">
+								<h6 class="comment-name by-author"><a href="#">User Name</a></h6>
+								<span class="posted-time">Posted on DD-MM-YYYY HH:MM</span>
+								<i class="fa fa-reply"></i>
+								<i class="fa fa-heart"></i>
+							</div>
+							<div class="comment-content">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+								<div class="comment-open">
+									<a class="btn-reply">
+										<i class="fa fa-reply"></i>
+									</a>
+								</div>
+							</div>
+							<div class="comment-footer">
+							<div class="comment-form">
+								<textarea class="form-control" name="" id=""></textarea>
+								<div class="pull-right send-button">
+									<a class="btn-send">send</a>
+								</div>
+							</div>
+						</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+
+			<li>
+				<div class="comment-main-level">
+
+					<div class="comment-avatar"><img src="http://dummyimage.com/60" alt=""></div>
+
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name"><a href="#">Lorena Rojero</a></h6>
+							<span class="posted-time">Posted on DD-MM-YYYY HH:MM</span>
+							<i class="fa fa-reply"></i>
+							<i class="fa fa-heart"></i>
+						</div>
+						<div class="comment-content" textarea  name="text" rows="500">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?</textarea>
+							<div class="comment-open">
+								<a class="btn-reply">
+									<i class="fa fa-reply"></i>
+								</a>
+							</div>
+						</div>
+						<div class="comment-footer">
+							<div class="comment-form">
+								<textarea class="form-control" name="" id=""></textarea>
+								<div class="pull-right send-button">
+									<a class="btn-send">send</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	
+
+</article>
+
+<script>
+		$(document).on('click', '.btn-reply', function(eve){	
+eve.preventDefault();
+$(this).parent().parent().siblings('.comment-footer').slideToggle();
+eve.stopImmediatePropagation();
+console.log($(this));
+});
+
+$(document).on('click', '.btn-send', function(eve){
+var targetObject = $(this).parent().parent().parent().parent().parent();
+//console.log(targetObject);
+var reply_text = $(this).parent().siblings('textarea').val();
+
+if($.trim(reply_text) == " " || $.trim(reply_text) == ""){
+alert("insert comment");
+} else {
+if($(targetObject).hasClass("comment-main-level"))
+{	
+if($(targetObject).siblings('.comments-list.reply-list')) {
+	element_prepend = '<li> <div class="comment-avatar"><img alt="" src="http://dummyimage.com/60"></div><div class="comment-box"> <div class="comment-head"> <h6 class="comment-name"><a href="#">Lorena Rojero</a></h6> <span class="posted-time">Posted on DD-MM-YYYY HH:MM</span> <i class="fa fa-reply"></i> <i class="fa fa-heart"></i> </div> <div class="comment-content">'+ reply_text +' <div class="comment-open"> <a class="btn-reply"> <i class="fa fa-reply"></i> </a> </div> </div> <div class="comment-footer"> <div class="comment-form"> <textarea id="" name="" class="form-control"></textarea> <div class="pull-right send-button"> <a class="btn-send">send</a> </div> </div> </div> </div> </li>';
+	 $(targetObject).siblings('.comments-list.reply-list').prepend(element_prepend);
+}
+}
+}	
+});
+</script>
+
+
+
+
+
+
+
+{% endblock %}

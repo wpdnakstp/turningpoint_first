@@ -183,11 +183,14 @@ def book_final(request):
 #To Do List
 def todolist(request):
     printTodo = Todolist.objects.all()
-    userTodo = printTodo.filter(tnUser=request.user)
-    posUserTodo = userTodo.filter(checkTodo=True)
-    neUserTodo = userTodo.filter(checkTodo=False)
-    checkTodo = printTodo.filter(checkTodo=True)
-    return render(request, 'todolist.html',{"neUserTodo":neUserTodo,"posUserTodo":posUserTodo})
+    if request.user.is_authenticated:
+        userTodo = printTodo.filter(tnUser=request.user)
+        posUserTodo = userTodo.filter(checkTodo=True)
+        neUserTodo = userTodo.filter(checkTodo=False)
+        checkTodo = printTodo.filter(checkTodo=True)
+        return render(request, 'todolist.html',{"neUserTodo":neUserTodo,"posUserTodo":posUserTodo})
+    else:
+        return render(request,'mypage.html',{"error":"로그인이 필요합니다."})
 
 def saveTodoList(request):
     if request.user:

@@ -5,6 +5,11 @@
 		<!-- Header -->
 		{% block content %}
 		<!-- Main -->
+		{% if error %}
+			<script>
+				alert('{{error}}')
+			</script>
+		{% endif %}
 
 			<div id="main">
 

@@ -35,6 +35,11 @@
     
             <div id="margin"><input id="title" type="text" name="title" placeholder="오늘의 날짜"></div>
             <textarea placeholder="" id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
+            
+        <form id="paper" method="POST" action="{% url 'diary_create' %}">
+            {% csrf_token %}
+            <div id="margin">제목 : <input id="title" type="text" name="title"></div>
+            <textarea placeholder=""." id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
             <br>
             <input id="button" type="submit" value="기록하기">
             

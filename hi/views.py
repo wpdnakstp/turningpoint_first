@@ -3,12 +3,14 @@ from django.contrib.auth.models import User   # User모델을 import했어요!
 from django.contrib import auth  # auth라는 모듈도 import합니다. 서버로 넘어온 유저 데이터를 처리하는 역할을 할거에요!
 from django.core.paginator import Paginator
 from django.utils import timezone
+from .models import DiaryForm
 from django.core.files.storage import FileSystemStorage
 #TurningUser > Model of turningaccounts > other app
 from turningaccounts.models import TurningUser
 from datetime import datetime
 #email validation check import re
 import re
+from django.http import JsonResponse, HttpResponse
 
 # Create your views here.
 
@@ -106,10 +108,6 @@ def mypage(request):
 def intro_final(request):
     return render(request, 'intro_final.html')
 
-
-def diary_ok(request):
-    return render(request, 'diary/diary_ok.html')
-
 def community_ok(request):
     return render(request, 'community/community_ok.html')
 
@@ -178,11 +176,117 @@ def todolist(request):
     return render(request, 'todolist.html')
 
 
-def diary_list(request):
+
+#일기쓰기 views.py 함수들
+def diary_ok(request):
+    return render(request, 'diary/diary_ok.html')
+
+def diary_create(request):
+    diaryPost = DiaryForm()
+    if request.method == 'POST':
+        diaryPost.tnUser = request.user
+        diaryPost.diaryTitle = request.POST.get('title')
+        diaryPost.diaryBody = request.POST.get('text')
+        diaryPost.diaryDate = timezone.datetime.now
+        diaryPost.save()
+        return redirect('diary_list')
+        
+
     return render(request, 'diary/diary_list.html')
+
+
+def diary_list(request):
+    allDiary = DiaryForm.objects.all()
+    return render(request, 'diary/diary_list.html',{"diary":allDiary})
+
+def diary_detail(request,diary_id):
+    diaryDetail = get_object_or_404(DiaryForm,pk=diary_id)
+    return render(request, 'diary/diary_detail.html',{'diaryDetail':diaryDetail})
 
 def base_ok(request):
     return render(request, 'base_ok.html')
 
 def post(request):
     return render(request, 'blogpost.html')
+
+
+def ckid(request):
+    ckUserId = request.POST.get('test')
+    if ckUserId == "":
+        return render(request,'signup_ok.html',{"error":"아이디를 입력해주세요."})
+    try:
+        ckValId = TurningUser.objects.get(username=ckUserId)
+        checkIdMent = "아이디가 중복되었습니다."
+    except:
+        checkIdMent = "아이디를 사용하실 수 있습니다."
+    return HttpResponse(checkIdMent)
+
+
+def ckmail(request):
+    ckUserEmail = request.POST.get('testEmail')
+    if ckUserEmail == "":
+        return render(request,'signup_ok.html',{"error":"이메일을 입력해주세요."})
+    try:
+        ckMailValid = TurningUser.objects.get(email=ckUserEmail)
+        checkEmailMent = "이메일이 중복되었습니다."
+    except:
+        checkEmailMent = "이메일을 사용하실 수 있습니다."
+    return HttpResponse(checkEmailMent)
+
+    
+def cknick(request):
+    ckUserNick = request.POST.get('testNick')
+    if ckUserNick == "":
+        return render(request,'signup_ok.html',{"error":"닉네임을 입력해주세요."})
+    else:
+        try:
+            ckNickValid = TurningUser.objects.get(nickName=ckUserNick)
+            checkNickMent = "닉네임이 중복되었습니다."
+        except:
+            checkNickMent = "닉네임을 사용하실 수 있습니다."
+        return HttpResponse(checkNickMent)
+
+
+# 아이디 중복검사 시작
+
+
+def id_overlap_check(request):
+    username = request.GET.get('username')
+    try:
+        #중복 검사 실패
+        user = TurningUser.objects.get(username=username)
+    except:
+        #중복 검사 성공
+        user = None
+    if user is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {"overlap":overlap}
+    return JsonResponse(context)
+
+def mailOverlapCheck(request):
+    usermail = request.GET.get('usermail')
+    try:
+        userEmail = TurningUser.objects.get(email=usermail)
+    except:
+        userEmail = None
+    if userEmail is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {"overlap":overlap}
+    return JsonResponse(context)
+
+def nickOverlapCheck(request):
+    userNick = request.GET.get('nickName')
+    try:
+        userNickname = TurningUser.objects.get(nickName=userNick)
+    except:
+        userNickname = None
+    if userNickname is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {"overlap":overlap}
+    return JsonResponse(context)

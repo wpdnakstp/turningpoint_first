@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{%if error %}
+ <script>
+     alert("{{error}}")
+ </script>
+{% endif %}
 <html lang="en">
 
 <head>
@@ -19,19 +24,75 @@
     <!-- Main CSS-->
     <link href="{% static '/css/signup.css' %}" rel="stylesheet" media="all">
 </head>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
         function checkid(){
             var userid = document.getElementById("uid").value;
-            if(userid)
-            {
-                url = "check.php?userid="+userid;
-                    window.open(url,"chkid","width=300,height=100");
-                }else{
-                    alert("아이디를 입력하세요");
+            var testid = $('#uid').val();
+            $.ajax({
+                url: "{% url 'id_overlap_check' %}",
+                data: {
+                    'username': userid
+                },
+                datatype: 'json',
+                success: function(data) {
+                    console.log(data['overlap']);
+                    if(data['overlap']=="fail"){
+                        alert("이미 존재하는 아이디 입니다.");
+                        userid.focuse();
+                        return;
+                    } else {
+                        alert("사용가능한 아이디 입니다.");
+                        return;
+                    }
                 }
-            }
-           
-        </script>
+            });            
+        }
+
+        function checkmail(){
+            var usermail = $('#userEmail').val();
+            $.ajax({
+                url: "{% url 'mailOverlapCheck' %}",
+                data: {
+                    'usermail': usermail
+                },
+                datatype: 'json',
+                success: function(data){
+                    console.log(data['overlap']);
+                    if(data['overlap']=="fail"){
+                        alert("이미 존재하는 이메일 입니다.");
+                        usermail.focuse();
+                        return;
+                    } else {
+                        alert("사용가능한 이메일 입니다.");
+                        return;
+                    }
+                }
+            });
+        }
+
+        function checknick(){
+            var userNick = $('#nickName').val();
+            $.ajax({
+                url: "{% url 'nickOverlapCheck' %}",
+                data: {
+                    'nickName': userNick
+                },
+                datatype: 'json',
+                success: function(data){
+                    console.log(data['overlap']);
+                    if(data['overlap']=="fail"){
+                        alert("이미 존재하는 닉네임 입니다.");
+                        userNick.focuse();
+                        return;
+                    } else {
+                        alert("사용가능한 닉네임 입니다.");
+                        return;
+                    }
+                }
+            });
+        }
+</script>
 
 <body>
     <div class="page-wrapper bg-dark p-t-100 p-b-50">
@@ -47,7 +108,7 @@
                             <div class="name">아이디</div>
                             <div class="value">
                                 <input class="input--style-6" type="text" id="uid" name="username"style="width: 60%;">
-                                <input class="input--style-6" type="button" value="중복검사" style="width: 30%; " onclick="checkid();" />
+                                <input class="input--style-6" id="validationId" type="button" value="중복검사" style="width: 30%; " onclick="checkid();" />
                                 <input type="hidden" value="0" name="chs" />
                             </div>
                         </div>
@@ -178,8 +239,8 @@
                         <div class="form-row">
                             <div class="name">닉네임</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="nickName" style="width: 60%;">
-                                <input class="input--style-6" type="button" value="중복검사" id="uid1" style="width: 30%; " onclick="checkid(1);" />
+                                <input class="input--style-6" type="text" id = "nickName" name="nickName" style="width: 60%;">
+                                <input class="input--style-6" type="button" value="중복검사" id="uid1" style="width: 30%;" onclick="return checknick();" />
 
                             </div>
                         </div>
@@ -187,8 +248,8 @@
                             <div class="name">이메일</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com" style="width: 60%;">
-                                    <input class="input--style-6" type="button" value="중복검사"  id="uid2"style="width: 30%; " onclick="checkid(2);" />
+                                    <input class="input--style-6" id="userEmail" type="email" name="email" placeholder="example@email.com" style="width: 60%;">
+                                    <input class="input--style-6" type="button" value="중복검사"  id="uid2"style="width: 30%; " onclick="return checkmail();" />
 
                                 </div>
                             </div>

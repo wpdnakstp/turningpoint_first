@@ -355,8 +355,8 @@
         </div>
         <div class="navbar_data">
             <ul class="data_ul">
-                <li class="li_1" data-href="https://naver.com">
-                        <a class="navbar_link" href="https://naver.com" style="margin-top:50px;">목록보기</a>
+                <li class="li_1" data-href="#">
+                        <a class="navbar_link" href="#" style="margin-top:50px;">목록보기</a>
                 </li>
 
                
@@ -377,27 +377,25 @@
 						<div class="wrap_article_list_common"> 
 			
 							<ul class="list_article_list_common"> 
-
+                {% for dy in diary %}
 						<!-- 이 리스트부터 for문돌려야함-->
 								<li class="list_has_image"> 
 
-								<a href="https://www.naver.com" class="link_post"> 
+								<a href="{% url 'diary_detail' dy.id %}" class="link_post"> 
 
                     <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
-                    
+                    {{dy.diaryDate}}
                     <!--  title_subject 가 제목,,,,  -->
                     <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
-									<strong class="title_subject"> 제목이다dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-									</strong>
+									<strong class="title_subject"> {{dy.diaryTitle}}	</strong>
 									<div class="wrap_sub_content">
-										<em class="tit_sub"> 그래dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-										</em>
+										<em class="tit_sub"> {{dy.diaryBody}}		</em>
 
                                             </div>
                                                 </a>
                                                     </li>
 <!-- 여기까지 for문 돌릴거 -->
-
+                  {% endfor %}
 
 
                                                          </ul>

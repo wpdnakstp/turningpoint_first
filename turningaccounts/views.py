@@ -14,11 +14,11 @@ def fpw(request):
 
 
 #아이디 찾기 알고리즘
-# def searchid(request):
-#   realUserId = TurningUser.objects.all()
-#   realUserId = realUserId.filter(username=request.POST.get("findName")) 
-#   realUserId = realUserId.filter(email=request.POST.get("findEmail"))
-#   return render(request,"searchid.html",{"testQuerySet":realUserId})
+def searchid(request):
+  realUserId = TurningUser.objects.all()
+  realUserId = realUserId.filter(username=request.POST.get("findName")) 
+  realUserId = realUserId.filter(email=request.POST.get("findEmail"))
+  return render(request,"searchid.html",{"testQuerySet":realUserId})
 
 
 # def test(request):

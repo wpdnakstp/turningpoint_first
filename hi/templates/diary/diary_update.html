@@ -1,3 +1,8 @@
+
+
+
+
+
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en">
@@ -44,8 +49,8 @@
     margin: 1em;
     border-radius: 4px;
     background-color: #fff;
-
-    border: 0.1em solid #444;
+    box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
+    border: 0.2em solid #444;
     padding: 0.8em;
     text-align: center;
     transition: 0.25s box-shadow, 0.25s -webkit-transform;
@@ -84,13 +89,6 @@ tr th{
 thead tr th{
 	color:white;
 }
-
-#togglewheight{
-	color:black;
-	background-color:white;
-}
-
-
     </style>
 </head>
 <body>
@@ -100,8 +98,11 @@ thead tr th{
   <body class="is-preload">
 
 		<!-- Header -->
-		<div id="header" style="    font-family: Helvetica, sans-serif;">
+		<div id="header">
 				<div class="page-wrapper chiller-theme toggled">
+					<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+					  <i class="fas fa-bars"></i>
+					</a>
 					<nav id="sidebar" class="sidebar-wrapper">
 					  <div class="sidebar-content">
 					  <div class="sidebar-brand">
@@ -119,14 +120,14 @@ thead tr th{
 						<span class="user-name">
 						  <strong>{{user.username}}</strong>
 						</span>
-						<span class="user-role">{{user.userArmyName}}</span>
+						<span class="user-role">{{user.userArmyname}}</span>
 						<span class="user-status">
 						  <i class="fa fa-circle"></i>
 						  <span>Online</span>
 						</span>
 						</div>
 					  </div>
-				  <!-- sidebar-header  -->
+					  <!-- sidebar-header  -->
 					  <div class="sidebar-search">
 						<div>
 						<div class="input-group">
@@ -147,27 +148,27 @@ thead tr th{
 						</li>
 						  <li>
 							<a href="{% url 'mypage' %}">
-							<i class="fa fa-home"></i>
-							<span>홈</span>
+							<i class="fa fa-book"></i>
+							<span>Home</span>
 							<span class="badge badge-pill badge-primary">Beta</span>
 							</a>
 						  </li>
 						   <li>
 							<a href="{% url 'calendar' %}">
 							<i class="fa fa-calendar"></i>
-							<span>캘린더</span>
+							<span>Calendar</span>
 							</a>
 						  </li>
 						  <li>
 								<a href="{% url 'todolist' %}">
-								<i class="fa fa-edit"></i>
-								<span>계획</span>
+								<i class="fa fa-calendar"></i>
+								<span>Plan</span>
 								</a>
 							  </li>
 						  <li>
 							<a href="{% url 'diary_ok' %}">
-							<i class="fa fa-book"></i>							
-							<span>일기</span>
+							<i class="fa fa-calendar"></i>
+							<span>Diary</span>
 							</a>
 						  </li>
 						
@@ -176,25 +177,18 @@ thead tr th{
 						</li>
 						<li class="sidebar-dropdown">
 							<a href="#">
-							<i class="fa fa-list-alt"></i>
-							<span>커뮤니티</span>
+							<i class="fa fa-globe"></i>
+							<span>Community</span>
 							</a>
 							<div class="sidebar-submenu">
 							<ul>
 							  <li><a href="{% url 'notice' %}">공지게시판</a> </li>
 							  <li><a href="{% url 'free' %}">자유게시판</a></li>
 							  <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
-							  <li><a href="{% url 'community_ok' %}">게시판</a></li>							  
+							  <li><a href="{% url 'community_ok' %}">게시판</a></li>
 							</ul>
-							<li>
-									<a href="{% url 'book_make' %}">
-									<i class="fa fa-print"></i>
-									<span>제본하기</span>
-									</a>
-								  </li>
 							</div>
 						  </li>
-						  
 						</ul>
 					  </div>
 					</nav>
@@ -210,65 +204,33 @@ thead tr th{
 
 
         <div class="container" style="text-align:center; border: 1px solid #eee;">
-          <input type="hidden" value="{{ notice.update_counter }}"> <!-- 조회수 카운터 -->
+          <input type="hidden" value="{{ diary.update_counter }}"> <!-- 조회수 카운터 -->
       <div class="container" style="text-align:center; border: 1px solid #eee;">
+
+            <form action="{% url 'diary_updatesend' diary_update.id %}"  method="POST">
+                    {% csrf_token %}
+                    
+                    
+                   
+               
+
+                <h4>날짜 :</h4>
               <h1 style ="height: 100px;
-              border-bottom: 1px solid #eee;">{{ notice.title }}</h1>
+              border-bottom: 1px solid #eee;" name="updatedate">
+              <input type="text" value="{{diary_update.diaryDate|date:'Y-m-d'}}" name="updatedate">
+            </h1>
               
              
-  
-              <p style ="height: 400px;
+              <h4>본문: </h4>
+              <p name="updatebody" style ="height: 400px;
               text-align: center; /* 문자들의 가운데 정렬을 해제 */  margin: 0 auto;
   
-              border-bottom: 1px solid #eee;"><span class="hio" style="margin-top:100px;">{{ notice.body }}</span></p>
-              <p></p>
-  
-              <div class="first__" style="border-bottom: 1px solid #eee; height:150px; text-align:right;">
-                      <p>작성시간 : {{ notice.pub_date }}</p>
-                      <p>글쓴이 : {{ notice.tnUser }}</p>
-                      <p>추천수 : {{notice.totalLike}}</p>
-                      <p>조회수 : {{ notice.postHit }}</p>
-          </div>
+              border-bottom: 1px solid #eee;"><span class="hio" style="margin-top:100px;"> <textarea cols=40 rows=10 name="updatebody">{{diary_update.diaryBody}}</textarea></span></p>
+              
+   <input type="submit" value="수정하기">
+               </form>
   
   
-              <br><br>
-              <a href="{% url 'notice' %}" class="btn" id="toggleweight">돌아가기</a>
-              <a href="{% url 'noticeupdate' notice.id %}" class="btn" id="toggleweight">수정하기</a>
-              <a href="{% url 'noticedelete' notice.id %}" class="btn" id="toggleweight">삭제하기</a>
-              <form action="{% url 'noticeLike' notice_id=notice.id %}" method="POST" style="display:inline-block;">
-                      {% csrf_token %}
-                      <input class="btn" id="toggleweight" value="좋아요♥">
-              </form>
-          
-              <hr>
-              <div class="comment">
-                   <form action="{% url 'noticecommentcreate' notice_id=notice.id %}" method="POST"> <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
-                      {% csrf_token %}
-                      <input type="text" name="content" placeholder="댓글을 작성해 주세요.">
-                      <input type="submit" value="작성하기">
-                  </form>
-              </div>
-              <hr>
-              <table class='katalog'  style="color:white;">
-                  <thead>
-                      <tr>
-                          <th>날짜</th>
-                          <th>댓글</th>
-                          <th>작성자</th>
-                  </thead>
-              <tbody>
-                  {% for comment in notice.comments.all %}
-                  <tr>
-                      <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
-                      <td>{{ comment.commentbody }}</td>
-                      <td>{{ comment.noticeCommentUser }}</td>
-                      <td><a href="{% url 'noticecommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
-                  </tr>
-                  {% empty %}
-                      <p>댓글이 없습니다!</p>
-                  {% endfor %}  
-              </tbody>
-              </table>
           
           
               </div>
@@ -334,3 +296,7 @@ thead tr th{
                 </script>
 </body>
 </html>
+
+
+
+

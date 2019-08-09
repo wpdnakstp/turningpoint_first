@@ -206,12 +206,49 @@ def diary_create(request):
 
 
 def diary_list(request):
-    allDiary = DiaryForm.objects.all()
+    allDiary = DiaryForm.objects.filter(tnUser=request.user)
     return render(request, 'diary/diary_list.html',{"diary":allDiary})
 
 def diary_detail(request,diary_id):
     diaryDetail = get_object_or_404(DiaryForm,pk=diary_id)
     return render(request, 'diary/diary_detail.html',{'diaryDetail':diaryDetail})
+
+
+
+def diary_delete(request, diary_id):
+    diary_delete = get_object_or_404(DiaryForm,pk=diary_id)
+    #진짜 글 소유주 유저값 > 유저 값 queryset pk값을 꼭 참고하도록
+    realUser = diary_delete.tnUser
+    #현재 로그인되어있는 user값
+    nowUser = request.user
+    #유저 값이 같을 때 삭제할 수 있도록
+    if nowUser == realUser:
+      diary_delete.delete()
+      return redirect('/hi/diary_list/')
+    else:
+      return redirect('/hi/diary_detail/'+str(diary_id))
+      # return render(request,'notice/notice.html',{"error":"id값이 다릅니다."} )
+
+
+def diary_update(request,diary_id):
+    diary_update=get_object_or_404(DiaryForm,pk=diary_id)
+    nowUser = request.user
+    realUser = diary_update.tnUser
+    #유저의 아이디값이 같아야 수정할 수 있도록 바꿈
+    if nowUser == realUser:
+      return render(request,'diary/diary_update.html',{"diary_update":diary_update})
+    else:
+      return redirect('/hi/diary_detail/'+str(diary_id))
+      # return render(request,'/board/notice/'+str(notice_id),{"error":"수정권한이 없습니다."})
+
+def diary_updatesend(request, diary_id):
+    diary_updatesend=get_object_or_404(DiaryForm,pk=diary_id)
+    diary_updatesend.diaryDate=request.POST['updatedate']
+    diary_updatesend.diaryBody=request.POST['updatebody']
+    diary_updatesend.save()
+    return redirect('/hi/diary_detail/' + str(diary_updatesend.id))
+
+
 
 def base_ok(request):
     return render(request, 'base_ok.html')

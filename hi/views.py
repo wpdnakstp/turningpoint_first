@@ -378,3 +378,54 @@ def saveTodoList(request):
     return redirect('todolist')
     
 
+def develop_list(request):
+    qs = Develop.objects.all().order_by('-id')
+    q = request.GET.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+    if q: # q가 있으면
+        qs = qs.filter(title__icontains=q) # 제목에 q가 포함되어 있는 레코드만 필터링
+
+    paginator = Paginator(qs,15)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+
+    return render(request, 'develop/developsearch.html', {
+        'post_list' : qs,
+        'q' : q,
+        'posts' : posts,
+    })
+
+
+    def free_list(request):
+        qs = Free.objects.all().order_by('-id')
+        q = request.GET.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+        if q: # q가 있으면
+            qs = qs.filter(title__icontains=q) # 제목에 q가 포함되어 있는 레코드만 필터링
+    
+        paginator = Paginator(qs,15)
+        page = request.GET.get('page')
+        posts = paginator.get_page(page)
+    
+    
+        return render(request, 'free/freesearch.html', {
+            'post_list' : qs,
+            'q' : q,
+            'posts' : posts,
+        })
+
+        def notice_list(request):
+            qs = Notice.objects.all().order_by('-id')
+            q = request.GET.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+            if q: # q가 있으면
+                qs = qs.filter(title__icontains=q) # 제목에 q가 포함되어 있는 레코드만 필터링
+        
+            paginator = Paginator(qs,15)
+            page = request.GET.get('page')
+            posts = paginator.get_page(page)
+        
+        
+            return render(request, 'notice/noticesearch.html', {
+                'post_list' : qs,
+                'q' : q,
+                'posts' : posts,
+            })

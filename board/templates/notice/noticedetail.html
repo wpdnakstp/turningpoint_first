@@ -38,7 +38,7 @@
 .btn {
     color: #444;
     line-height: 1em;
-    color: inherit;
+    color: #444;
     text-decoration: none;
     display: inline-block;
     margin: 1em;
@@ -89,7 +89,9 @@ thead tr th{
 	color:black;
 	background-color:white;
 }
-
+#hihi{
+	pading-left:70px;
+}
 
     </style>
 </head>
@@ -184,7 +186,6 @@ thead tr th{
 							  <li><a href="{% url 'notice' %}">공지게시판</a> </li>
 							  <li><a href="{% url 'free' %}">자유게시판</a></li>
 							  <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
-							  <li><a href="{% url 'community_ok' %}">게시판</a></li>							  
 							</ul>
 							<li>
 									<a href="{% url 'book_make' %}">
@@ -209,11 +210,11 @@ thead tr th{
       
 
 
-        <div class="container" style="text-align:center; border: 1px solid #eee;">
-          <input type="hidden" value="{{ notice.update_counter }}"> <!-- 조회수 카운터 -->
-      <div class="container" style="text-align:center; border: 1px solid #eee;">
-              <h1 style ="height: 100px;
-              border-bottom: 1px solid #eee;">{{ notice.title }}</h1>
+			<div class="container" style="text-align:center; border: 1px solid #eee; padding-left: 300px;">
+				<input type="hidden" value="{{ notice.update_counter }}"> <!-- 조회수 카운터 -->
+			<div class="container" style="text-align:center; border: 1px solid #eee;">
+					<h1 style ="height: 100px;
+					border-bottom: 1px solid #eee;">{{ notice.title }}</h1>
               
              
   
@@ -252,9 +253,10 @@ thead tr th{
               <table class='katalog'  style="color:white;">
                   <thead>
                       <tr>
+							<th>작성자</th>
                           <th>날짜</th>
-                          <th>댓글</th>
-                          <th>작성자</th>
+                          <th >      댓글</th>
+                          
                   </thead>
               <tbody>
                   {% for comment in notice.comments.all %}

@@ -22,6 +22,8 @@
 		
 		<link rel="stylesheet" href="{% static '/css/theme-1.css' %}" />
 		<link rel="stylesheet" href="{% static '/css/sidebar.css' %}" />
+		<link rel="stylesheet" href="{% static '/css/aa.css' %}" />
+
 		
         
 
@@ -168,27 +170,27 @@
 						</li>
 						  <li>
 							<a href="{% url 'mypage' %}">
-							<i class="fa fa-book"></i>
-							<span>Home</span>
+							<i class="fa fa-home"></i>
+							<span>홈</span>
 							<span class="badge badge-pill badge-primary">Beta</span>
 							</a>
 						  </li>
 						   <li>
 							<a href="{% url 'calendar' %}">
 							<i class="fa fa-calendar"></i>
-							<span>Calendar</span>
+							<span>캘린더</span>
 							</a>
 						  </li>
 						  <li>
 								<a href="{% url 'todolist' %}">
-								<i class="fa fa-calendar"></i>
-								<span>Plan</span>
+								<i class="fa fa-edit"></i>
+								<span>계획</span>
 								</a>
 							  </li>
 						  <li>
 							<a href="{% url 'diary_ok' %}">
-							<i class="fa fa-calendar"></i>
-							<span>Diary</span>
+							<i class="fa fa-book"></i>							
+							<span>일기</span>
 							</a>
 						  </li>
 						
@@ -197,18 +199,25 @@
 						</li>
 						<li class="sidebar-dropdown">
 							<a href="#">
-							<i class="fa fa-globe"></i>
-							<span>Community</span>
+							<i class="fa fa-list-alt"></i>
+							<span>커뮤니티</span>
 							</a>
 							<div class="sidebar-submenu">
 							<ul>
 							  <li><a href="{% url 'notice' %}">공지게시판</a> </li>
 							  <li><a href="{% url 'free' %}">자유게시판</a></li>
 							  <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
-							  <li><a href="{% url 'community_ok' %}">게시판</a></li>
+							  <li><a href="{% url 'community_ok' %}">게시판</a></li>							  
 							</ul>
+							<li>
+									<a href="{% url 'book_make' %}">
+									<i class="fa fa-print"></i>
+									<span>제본하기</span>
+									</a>
+								  </li>
 							</div>
 						  </li>
+						  
 						</ul>
 					  </div>
 					</nav>
@@ -230,7 +239,7 @@
 				crossorigin="anonymous"></script>
 		<!-- Scripts -->
 			<script src="{% static '/js/jquery.min.js' %}"></script>
-			<script src="{% static '/js/	W99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999jquery.scrolly.min.js' %}"></script>
+			<script src="{% static '/js/jquery.scrolly.min.js' %}"></script>
 			<script src="{% static '/js/jquery.scrollex.min.js' %}"></script>
 			<script src="{% static '/js/browser.min.js' %}"></script>
 			<script src="{% static '/js/breakpoints.min.js' %}"></script>
@@ -244,14 +253,14 @@
 			<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
 			<script src="{% static '/assets/js/demo/style-switcher.js' %}"></script> 
 			    <!-- Page Specific JS -->
-				<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
 
 				<!-- Custom JS -->
-				<script src="{% static 'assets/js/blog.js' %}"></script>
+			<script src="{% static 'assets/js/blog.js' %}"></script>
 				
 				<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-				<script src="{% static 'assets/js/demo/style-switcher.js' %}"></script> 
-				<script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js  "></script>
+			<script src="{% static 'assets/js/demo/style-switcher.js' %}"></script> 
+			<script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js  "></script>
 
 			
 	</body>

@@ -17,6 +17,7 @@ urlpatterns = [
     path('book_final/', views.book_final, name="book_final"),
     path('todolist/', views.todolist, name="todolist"),
     path('post/', views.post, name="post"),
+    path('bloglist/',views.bloglist, name="bloglist"),
 ]
 
 

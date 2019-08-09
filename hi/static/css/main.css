@@ -1714,7 +1714,7 @@ input, select, textarea {
 
 /* Sections/Article */
 
-	section, article {
+	section{
 		margin-bottom: 3em;
 	}
 

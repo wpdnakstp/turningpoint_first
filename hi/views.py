@@ -185,3 +185,6 @@ def base_ok(request):
 
 def post(request):
     return render(request, 'blogpost.html')
+
+def bloglist(request):
+    return render(request, 'blog-list.html')

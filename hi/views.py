@@ -213,7 +213,7 @@ def diary_delete(request, diary_id):
       diary_delete.delete()
       return redirect('/hi/diary_list/')
     else:
-      return redirect('/hi/diary_list/'+str(diary_id))
+      return redirect('/hi/diary_detail/'+str(diary_id))
       # return render(request,'notice/notice.html',{"error":"id값이 다릅니다."} )
 
 
@@ -225,7 +225,7 @@ def diary_update(request,diary_id):
     if nowUser == realUser:
       return render(request,'diary/diary_update.html',{"diary_update":diary_update})
     else:
-      return redirect('/hi/diary_list/'+str(diary_id))
+      return redirect('/hi/diary_detail/'+str(diary_id))
       # return render(request,'/board/notice/'+str(notice_id),{"error":"수정권한이 없습니다."})
 
 def diary_updatesend(request, diary_id):

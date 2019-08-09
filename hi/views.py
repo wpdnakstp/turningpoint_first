@@ -167,7 +167,15 @@ def password_ok(request):
     return render(request, 'password_ok.html')
 
 def book_make(request):
-    return render(request, 'diary/book_make.html')
+    if request.user != None:
+        userDiary = DiaryForm.objects.count()
+        pageNumb = userDiary
+        pagePortion = (pageNumb-100)//50
+        if pagePortion < 2:
+            pagePrice = 10000
+        else:
+            pagePrice = 10000 + pagePortion*5000
+    return render(request, 'diary/book_make.html',{"allDiary":userDiary,"pagePrice":pagePrice})
 
 def book_final(request):
     return render(request, 'diary/book_final.html')

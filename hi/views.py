@@ -185,5 +185,34 @@ def diary_list(request):
 def base_ok(request):
     return render(request, 'base_ok.html')
 
-def post(request):
-    return render(request, 'blogpost.html')
+def post_1(request):
+    return render(request, 'blog/blogpost_1.html')
+
+def post_2(request):
+    return render(request, 'blog/blogpost_2.html')
+
+def post_3(request):
+    return render(request, 'blog/blogpost_3.html')
+
+def post_4(request):
+    return render(request, 'blog/blogpost_4.html')
+
+def post_5(request):
+    return render(request, 'blog/blogpost_5.html')
+
+
+def post_6(request):
+    return render(request, 'blog/blogpost_6.html')
+
+def post_7(request):
+    return render(request, 'blog/blogpost_7.html')
+
+
+def post_8(request):
+    return render(request, 'blog/blogpost_8.html')
+
+def post_9(request):
+    return render(request, 'blog/blogpost_9.html')
+
+def post_10(request):
+    return render(request, 'blog/blogpost_10.html')

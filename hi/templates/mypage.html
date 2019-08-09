@@ -34,7 +34,7 @@
 		<div class="textboxlist" id="mydivTextBox">
 			<ul class="textboxlist-ul" id="myListbox"> 
 				<li style="padding-left:53px;">
-				  <a href="#">
+				  <a href="{% url 'post_2' %}">
 					<div class="text">
 					  <h2>공부</h2>
 					  <p style="	font-family: 'NanumBarunpen';" >토익,공무원,수능 비법들이 궁금하십니까?</p>
@@ -44,7 +44,7 @@
 				  </a>
 				</li>
 				<li style="padding-left:53px;">
-				  <a href="#">
+				  <a href="{% url 'post_3' %}">
 					<div class="text">
 					  <h2>꿀팁</h2>
 					  <p>군대 꿀팁 알려주죠.</p>
@@ -54,7 +54,7 @@
 				  </a>
 				</li>
 				<li style="padding-left:53px;">
-				  <a href="#">
+				  <a href="{% url 'post_4' %}">
 					<div class="text">
 					  <h2>운동</h2>
 					  <p>몸을 어떻게 만들까?</p>
@@ -64,7 +64,7 @@
 				</a>
 				</li>
 				<li style="padding-left:53px;">
-						<a href="#">
+						<a href="{% url 'post_2' %}">
 						  <div class="text">
 							<h2>자격증</h2>
 							<p>자격증 공부비법!</p>
@@ -87,10 +87,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-1.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="{% url 'post' %}">늦은 나이, 군대에서 수능공부 000합격</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post_1' %}">늦은 나이, 군대에서 수능공부 000합격</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 2 days ago</span><span class="time">5 min read</span><span class="comment"><a href="#">8 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post_1' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -98,10 +98,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-2.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="{% url 'post' %}">토익 점수 올렸던 공부방법</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post_5' %}">토익 점수 올렸던 공부방법</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 3 months ago</span><span class="time">3 min read</span><span class="comment"><a href="#">26 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post_5' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -110,10 +110,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-3.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="{% url 'post' %}">High Performance JavaScript</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post_6' %}">High Performance JavaScript</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 1 month ago</span><span class="time">8 min read</span><span class="comment"><a href="#">12 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post_6' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -121,10 +121,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-4.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="{% url 'post' %}">Top 5 JavaScript Frameworks</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post_7' %}">Top 5 JavaScript Frameworks</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 2 months ago</span><span class="time">15 min read</span><span class="comment"><a href="#">3 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post_7' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -133,10 +133,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-5.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="{% url 'post' %}">Learn React in 24 Hours</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post_8' %}">Learn React in 24 Hours</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 2 months ago</span><span class="time">10 min read</span><span class="comment"><a href="#">23 comments</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post_8' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 			    </div><!--//item-->
@@ -145,10 +145,10 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-6.jpg' %}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="{% url 'post' %}">About Remote Working</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'post_9' %}">About Remote Working</a></h3>
 						    <div class="meta mb-1"><span class="date">Published 3 months ago</span><span class="time">2 min read</span><span class="comment"><a href="#">1 comment</a></span></div>
 						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
+						    <a class="more-link" href="{% url 'post_9' %}">Read more &rarr;</a>
 					    </div><!--//media-body-->
 				    </div><!--//media-->
 				</div><!--//item-->
@@ -157,10 +157,10 @@
 						<div class="media">
 							<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'assets/images/blog/blog-post-thumb-6.jpg' %}" alt="image">
 							<div class="media-body">
-								<h3 class="title mb-1"><a href="{% url 'post' %}">About Remote Working</a></h3>
+								<h3 class="title mb-1"><a href="{% url 'post_10' %}">About Remote Working</a></h3>
 								<div class="meta mb-1"><span class="date">Published 3 months ago</span><span class="time">2 min read</span><span class="comment"><a href="#">1 comment</a></span></div>
 								<div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-								<a class="more-link" href="{% url 'post' %}">Read more &rarr;</a>
+								<a class="more-link" href="{% url 'post_10' %}">Read more &rarr;</a>
 							</div><!--//media-body-->
 						</div><!--//media-->
 					</div><!--//item-->

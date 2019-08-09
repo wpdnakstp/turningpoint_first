@@ -12,7 +12,9 @@ class DiaryForm(models.Model):
 
 
 class Todolist(models.Model):
+  tnUser = models.ForeignKey(TurningUser,on_delete=models.CASCADE,null=True)
   todoBody = models.TextField()
+  checkTodo = models.BooleanField(default=False)
 
   def __str__(self):
     return self.todoBody

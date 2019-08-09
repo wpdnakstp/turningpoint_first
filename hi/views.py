@@ -183,21 +183,38 @@ def book_final(request):
 #To Do List
 def todolist(request):
     printTodo = Todolist.objects.all()
-    return render(request, 'todolist.html',{"todoList":printTodo})
+    userTodo = printTodo.filter(tnUser=request.user)
+    posUserTodo = userTodo.filter(checkTodo=True)
+    neUserTodo = userTodo.filter(checkTodo=False)
+    checkTodo = printTodo.filter(checkTodo=True)
+    return render(request, 'todolist.html',{"neUserTodo":neUserTodo,"posUserTodo":posUserTodo})
 
 def saveTodoList(request):
-    todo = Todolist()
-    saveTodo = request.GET.get('todoBody')
-    todo.todoBody = saveTodo
-    todo.save()
-    return redirect('todolist')
+    if request.user:
+        todo = Todolist()
+        saveTodo = request.GET.get('todoBody')
+        todo.tnUser = request.user
+        todo.todoBody = saveTodo
+        todo.save()
+        return redirect('todolist')
+    else:
+        return redirect('todolist')
     
 def deleteTodoList(request):
     deleteTodoId = request.GET.get('idNumb')
     deletTodo = get_object_or_404(Todolist, pk=deleteTodoId)
-    deletTodo.delete()
-    return redirect('todolist/')
+    if request.user == deletTodo.tnUser:
+        deletTodo.delete()
+        return redirect('todolist')
+    else:
+        return redirect('todolist')
 
+def checkTodoList(request):
+    checkTodoId = request.GET.get('idNumb')
+    checkTodo = get_object_or_404(Todolist,pk=checkTodoId)
+    checkTodo.checkTodo = True
+    checkTodo.save()
+    return redirect('todolist')
 
 
 #일기쓰기 views.py 함수들

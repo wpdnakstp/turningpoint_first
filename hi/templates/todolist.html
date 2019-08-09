@@ -234,14 +234,15 @@
       
       <div class="notcomp">
         <h3>Not Completed</h3>
-        {% for i in todoList %}
+        {% if user.is_authenticated %}
+        {% for i in neUserTodo %}
         <div class="task">
           
             {{i.todoBody}}
-            <input type="hidden" id="deleteid" value="{{i.id}}">
+            <input type="hidden" id="todoId" value="{{i.id}}">
             <i class="fas fa-trash-alt" type="button" id="delte" value="삭제하기" onclick="return delteTodo();"  >
             </i>
-            <i class="fas fa-check">
+            <i class="fas fa-check" type="button" onclick="return checkTodo();">
             </i>
             <br>
             <!-- <input  > -->
@@ -249,30 +250,36 @@
 
         </div>
         {% endfor %}
+        {% endif %}
 
       </div>
 
       <div class="comp">
         <h3>Completed</h3>
-        {% for i in todoList %}
+        {% if user.is_authenticated %}
+        {% for i in posUserTodo %}
         <div class="task">
             {{i.todoBody}}
-            <input type="hidden" id="deleteid" value="{{i.id}}">
+            <input type="hidden" id="todoId" value="{{i.id}}">
             <i class="fas fa-trash-alt" type="button" id="delte" value="삭제하기" onclick="return delteTodo();"  >
             </i>
-            <i class="fas fa-check">
+            <i class="fas fa-check" id=>
             </i>
             <br>
+            <!-- <input  > -->
+          
+
         </div>
+        {% endfor %}
+        {% endif %}
       </div>
-      {% endfor %}
 
 </div>
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
     function delteTodo(){
-      var idNumb = $("#deleteid").val();
+      var idNumb = $("#todoId").val();
           console.log(idNumb);
           $.ajax({
             url: "{% url 'dTD' %}",
@@ -281,11 +288,27 @@
             },
             datatype: 'json',
             success: function(data){
-               alert("삭제되었습니다.");
+              location.href ="{% url 'todolist' %}"
             return;
             }
           });
         }
+    function checkTodo(){
+      var idNumb = $("#todoId").val();
+      console.log(idNumb);
+      $.ajax({
+        url: "{% url 'cTD' %}",
+        data: {
+          "idNumb":idNumb
+        },
+        datatype:'json',
+        success: function(data){
+          location.href ="{% url 'todolist' %}"
+          return
+        }
+
+      });
+    }
 
       $(".txtb").on("keyup",function(e){
         //13  means enter button
@@ -299,8 +322,7 @@
           },
           datatype:  'json',
           success: function(data){
-            alert("저장되었습니다.");
-            testText.focus();
+            location.href ="{% url 'todolist' %}"
             return;
           }
 

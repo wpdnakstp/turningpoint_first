@@ -90,10 +90,10 @@
             
                 <ul style="padding:0px; margin:0px; position:absolute; right:20px; top:20px; ">
                         <li>
-                            <p id="lolo" style="color: white; ">{{user.username}}님 로그인 되었습니다.</p>
+                            <p id="lolo" style="color: white; font-family:'NanumBarunpen'; ">{{user.username}}님</p>
                         </li>
                         <li>
-                                <a href="{% url 'logout' %}">logout</a>
+                                <a style="font-family:'NanumBarunpen';" href="{% url 'logout' %}">logout</a>
                             </li>
                         {% else %}
             <div class="loginbutton">

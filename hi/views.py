@@ -216,7 +216,7 @@ def diary_detail(request,diary_id):
 def base_ok(request):
     return render(request, 'base_ok.html')
 
-<<<<<<< HEAD
+
 def post_1(request):
     return render(request, 'blog/blogpost_1.html')
 

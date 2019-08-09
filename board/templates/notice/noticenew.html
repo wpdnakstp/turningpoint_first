@@ -1,14 +1,56 @@
-<br>
-<div class="container">
-	<form action="{% url 'noticecreate' %}">
-	  <h4>제목: </h4>
-	  <input type="text" name="title">
-	  <br>
-	  <br>
-	  <h4>본문: </h4>
-	  <textarea cols=40 rows=10 name="body"></textarea>
-	  <br>
-	  <br>
-	  <input type="submit" value="제출하기">
-  </form>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+   
+	<!-- Header -->
+   
+    <link rel="stylesheet" href="{% static '/css/diary/diary.css' %}" >  
+    <div id ="main">
+  
+    <div class="navbar">
+            <div class="diary_title">
+                <h1 style="text-align:center;  font-family: 'KOMACON'; font-weight: 400; "> 일기</h1>
+            <p >날마다 그날그날 겪은 일이나 생각을 기록해보세요.</p>
+            </div>
+            <div class="navbar_data">
+                <ul class="data_ul">
+                    <li class="li_1" data-href="https://naver.com">
+                            <a class="navbar_link" href="https://naver.com">목록보기</a>
+                    </li>
+        
+                   
+                </ul>
+        
+            </div>
+        </div>
+        
+    </div>
+<div id="main">
+	<div id="wrapper">
+
+        <form id="paper" method="get" action="{% url 'noticecreate' %}">
+    
+            <div id="margin"><input id="title" type="text" name="title" placeholder="오늘의 날짜"></div>
+            <textarea placeholder="" id="text" name="text" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
+            <br>
+            <input id="button" type="submit" value="기록하기">
+            
+        </form>
+    
+    </div>
+
+		<!-- Scripts -->
+			
+			<script src="{% static '/js/diary/diary.js' %}"></script>
 </div>
+	</body>
+</html>
+
+{% endblock %}
+
+
+
+

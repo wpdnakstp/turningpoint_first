@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 	@font-face { font-family: 'WONBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
+=======
+@font-face { font-family: 'WONBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
+>>>>>>> b10e1427128b01506b01efdc1880ce704ef8a4ef
 	@font-face { font-family: 'NIXGONM-Vb'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff'); font-weight: normal; font-style: normal; }
 	* {
 		outline:none;

@@ -64,7 +64,7 @@
         </div>
         <div class="navbar_data">
             <ul class="data_ul">
-                <li class="li_1" data-href="https://naver.com" style="margin-left: 700px;">
+                <li class="li_1" data-href="https://naver.com" style="margin-left: 700px; max-width:500px;">
                         <a class="navbar_link" href="{% url 'noticenew' %}" style="margin-top:50px; margin-right:20px;">글쓰기</a>
                         <a class="navbar_link" href="{% url 'intro_final' %}" style="margin-top:50px;">홈으로</a>
 
@@ -109,8 +109,8 @@
                         <script src="{% static '/js/diary/diary.js' %}"></script>
             </div>
 
-{% for notice in notices.all %}
- <li class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee;">
+{% for notice in posts %}
+ <li class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee; float:none; max-width:900px;">
 
 
 
@@ -124,11 +124,19 @@
                 <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
               <strong class="title_subject"> {{ notice.title }}
               </strong>
-              <div class="wrap_sub_content">
-                <em class="tit_sub"> {{ notice.pub_date }}
+
+              <strong class="title_subject" style="padding-left:20px;"> - {{ notice.tnUser }}
+              </strong>
+
+<div class="sentence_2" style="display:inline-block;">
+              <div class="wrap_sub_content" >
+                <em class="tit_sub"> {{ notice.pub_date }}     <span class="hihihi" style="padding-left:400px;">  조회수 - {{ notice.postHit }}           좋아요 - {{ notice.totalLike }}</span>
                 </em>
   
                                         </div>
+
+</div>
+
                                             </a>
                                                 </li>
   <!-- 여기까지 for문 돌릴거 -->
@@ -144,22 +152,18 @@
                                                                         
 
                                                                         <div class="demo">
-                                                                          <nav class="pagination">
+                                                                          <nav class="pagination" style="display:inline;">
                                                                             {% if posts.has_previous %}
                                                                               <a href="?page=1" class="r-link pagination__control pagination__control_prev">First</a>
 
-                                                                            <a href="?page={{posts.previous_page_number}}" class="r-link pagination__control pagination__control_prev">prev</a>
+                                                                            <a href="?page={{posts.previous_page_number}}" class="r-link pagination__control pagination__control_prev" style="margin-left:1300px;">prev</a>
                                                                             {%endif %}
-                                                                            <ol class="r-list pagination__list">
-                                                                              <li class="pagination__group"><a href="#0" class="r-link pagination__point">1</a></li>
-                                                                              <li class="pagination__group"><span class="pagination__point" aria-current="page">2</span></li>
-                                                                              <li class="pagination__group"><a href="#0" class="r-link pagination__point">3</a></li>
-                                                                            </ol>
+                                                                            
                                                                             {%if posts.has_next%}
                                                                                     <a href="?page={{posts.next_page_number}}" class="r-link pagination__control pagination__control_next">Next</a>
-                                                                                    <a href="?page={{posts.paginator.num_pages}}" class="r-link pagination__control pagination__control_next">Last</a>
+                                                                                    <a href="?page={{posts.paginator.num_pages}}" class="r-link pagination__control pagination__control_next" style="margin-left:1300px;">Last</a>
                                                                                     {%endif%} 
-                                                                            <a href="#0" class="r-link pagination__control pagination__control_next">next</a>
+                                                                            <!-- <a href="#0" class="r-link pagination__control pagination__control_next">next</a> -->
                                                                           </nav>
                                                                         </div>
                                                                     </div>

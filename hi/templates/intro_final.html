@@ -62,11 +62,15 @@
             
                      <ul class="loge-effects">
                         <li class="current"></li>
+                        <li><a href="{% url 'mypage' %}">마이페이지</a></li>
                         <li><a href="{% url 'notice' %}">공지사항</a></li>
+                        <li><a href="{% url 'calendar' %}">캘린더작성</a></li>
+                        <li><a href="{% url 'diary_ok' %}">일기작성</a></li>
+                        
                         <li><a href="{% url 'free' %}">자유게시판</a></li>
-                        <li><a href="{% url 'community_ok' %}">커뮤니티</a></li>
-                        <li><a href="#">home</a></li>
-                        <li><a href="#">home</a></li>
+                        <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
+                        
+                        <!-- <li><a href="#">home</a></li> -->
                     </ul>
                         <a class="wow fadeIn" data-wow-duration=".5s" data-wow-delay="3s">      
                                 <div class="logogo">

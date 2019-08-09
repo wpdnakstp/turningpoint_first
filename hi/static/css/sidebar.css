@@ -403,7 +403,9 @@
   /*-----------------------------chiller-theme-------------------------------------------------*/
   
   .chiller-theme .sidebar-wrapper {
+
       background: #091f35;
+
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-header,
@@ -433,7 +435,9 @@
   .chiller-theme .sidebar-wrapper .sidebar-header .user-info,
   .chiller-theme .sidebar-wrapper .sidebar-brand>a:hover,
   .chiller-theme .sidebar-footer>a:hover i {
+
       color: #ffffff;
+>>>>>>> b10e1427128b01506b01efdc1880ce704ef8a4ef
   }
   
   .page-wrapper.chiller-theme.toggled #close-sidebar {
@@ -477,3 +481,6 @@
       border-right: none;
   }
   
+a{
+  color: #6c7b88;
+}

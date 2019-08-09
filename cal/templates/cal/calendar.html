@@ -18,11 +18,16 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+  <link rel="stylesheet" href="{% static 'cal/css/main2.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/sidebar.css' %}" />
+
+  
+
    <link rel="stylesheet" href="{% static 'cal/css/main2.css' %}" />
 <link rel="stylesheet" href="{% static 'css/main.css' %}" />
   <link rel="stylesheet" href="{% static '/css/sidebar.css' %}" />
 
-  
 
   <title>Django Calendar App</title>
 
@@ -253,7 +258,7 @@
                 <nav id="sidebar" class="sidebar-wrapper">
                   <div class="sidebar-content">
                     <div class="sidebar-brand">
-                      <a href="#">TurningPoint</a>
+                      <a href="{% url 'intro_final' %}">TurningPoint</a>
                       <div id="close-sidebar">
                       </div>
                     </div>
@@ -294,8 +299,11 @@
 							  <li>
 								<a href="{% url 'mypage' %}">
 								<i class="fa fa-book"></i>
+
+								
 								<span>Home</span>
-								<span class="badge badge-pill badge-primary">Beta</span>
+
+								<!-- <span class="badge badge-pill badge-primary">Beta</span> -->
 								</a>
 							  </li>
 							   <li>

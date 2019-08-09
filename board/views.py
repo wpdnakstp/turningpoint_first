@@ -150,7 +150,7 @@ def notice_list(request):
 def free(request):
     frees = Free.objects
     frees_list = Free.objects.all().order_by('-id')
-    paginator = Paginator(frees_list,15)
+    paginator = Paginator(frees_list,5)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     return render(request, 'free/free.html',{'frees' : frees,'posts':posts})
@@ -276,7 +276,7 @@ def free_list(request):
 def develop(request):
     develops = Develop.objects
     develops_list = Develop.objects.all().order_by('-id')
-    paginator = Paginator(develops_list,15)
+    paginator = Paginator(develops_list,5)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     return render(request, 'develop/develop.html',{'develops' : develops, 'posts':posts})
@@ -350,7 +350,6 @@ def developcommentdelete(request, develop_id):
     else:
       return redirect('/board/develop/'+str(post_id))
 
-
 #좋아요 기능 구현
 def developLike(request,develop_id):
   #POST 형식일 때
@@ -413,4 +412,3 @@ def develop_list(request):
 
 # def test(request):
 #   return render(request,'notice/test.html')
-

@@ -3,88 +3,32 @@
 
 {% block content %}
 
-{% if error %}
-<script>
-    alert("{{error}},{{tnUser}},{{nowUser}}")
-</script>
 
-{% endif %}
-
-
-<table class='table'>
-    <thead>
-        <tr>
-            <th>No.</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>날짜</th>
-            <th>조회수</th>
-            <th>추천</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if notices %}
-            {% for post in posts %}
-                <tr>
-                <td>{{ post.id }}</td>
-                <td><a href="{% url 'noticedetail' post.id %}">{{ post.title }}</a></td>
-                <td>{{ post.tnUser }}</td>
-                <td>{{ post.pub_date|date:"Y-m-d P"}}</td>
-                <td>{{ post.postHit }}</td>
-                <td>{{ post.totalLike }}</td>
-                </tr>
-            {% endfor %}
-        {% else %}
-            <p>글이 존재하지 않습니다!</p>
-        {% endif %}
-    </tbody>
-</table>
-<hr>
-
-<form action="{% url 'noticelist' %}" method="get">
-        <input type="text" name="q" value="{{ q }}">
-        <input type="submit" value="검색">
-</form>
-{% if posts.has_previous %}
-    <a href="?page=1"><astrong>&nbsp;</strong></a>
-    <a href="?page={{posts.previous_page_number}}"><strong><&nbsp;&nbsp;</strong></a>
-{% endif %}
-
-<span>{{posts.number}}</span>
-<span>of</span>
-<span>{{posts.paginator.num_pages}}&nbsp;&nbsp;</span>
-
-{% if posts.has_next %}
-    <a href="?page={{posts.next_page_number}}"><strong>>&nbsp;</strong></a>
-    <a href="?page={{posts.paginator.num_pages}}"><strong>>></strong></a>
-{% endif %}
-
-<p><a href="{% url 'noticenew' %}">글쓰기</a></p>
-<p><a href="{% url 'intro_final' %}">홈으로</a></p>
-
-
-  <div id="main">
-  <div id="wrapper" style="margin-left: 20%;">
-    <div class="navbar" style="border-bottom:1px solid #eee;">
-        <div class="diary_title" style: font-size:200px;>
-            <h1 style="font-size:40px;">공지게시판</h1>
-        </div>
-        <div class="navbar_data">
-            <ul class="data_ul">
-                <li class="li_1" data-href="https://naver.com" style="margin-left: 700px;">
-                        <a class="navbar_link" href="{% url 'noticenew' %}" style="margin-top:50px; margin-right:20px;">글쓰기</a>
-                        <a class="navbar_link" href="{% url 'intro_final' %}" style="margin-top:50px;">홈으로</a>
-
-                        
-                </li>
+<div id="main">
+        <div id="wrapper" style="margin-left: 20%;">
+          <div class="navbar" style="border-bottom:1px solid #eee;">
+              <div class="diary_title" style: font-size:200px;>
+                  <h1 style="font-size:40px;">공지사항</h1>
+              </div>
+              <div class="navbar_data">
+                  <ul class="data_ul">
+                      <li class="li_1" data-href="https://naver.com" style="margin-left: 700px; max-width:500px;">
+                              <a class="navbar_link" href="{% url 'freenew' %}" style="margin-top:50px; margin-right:20px;">글쓰기</a>
+                              <a class="navbar_link" href="{% url 'intro_final' %}" style="margin-top:50px;">홈으로</a>
       
-               
-            </ul>
-      
-        </div>
+                              
+                      </li>
+            
+                     
+                  </ul>
+            
+              </div>
+              <br>
+              <br>
+          </div>
         <br>
         <br>
-    </div>
+
   <br>
   <br>
     <div class="wrap_content"> 
@@ -116,8 +60,8 @@
                         <script src="{% static '/js/diary/diary.js' %}"></script>
             </div>
 
-{% for notice in notices.all %}
- <li class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee;">
+{% for notice in posts %}
+ <li class="list_has_image" style="padding: 3%; border-bottom: 1px solid #eee; float:none; max-width:900px;">
 
 
 
@@ -131,11 +75,19 @@
                 <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
               <strong class="title_subject"> {{ notice.title }}
               </strong>
-              <div class="wrap_sub_content">
-                <em class="tit_sub"> {{ notice.pub_date }}
+
+              <strong class="title_subject" style="padding-left:20px;"> - {{ notice.tnUser }}
+              </strong>
+
+<div class="sentence_2" style="display:inline-block;">
+              <div class="wrap_sub_content" >
+                <em class="tit_sub"> {{ notice.pub_date }}     <span class="hihihi" style="padding-left:400px;">  조회수 - {{ notice.postHit }}           좋아요 - {{ notice.totalLike }}</span>
                 </em>
   
                                         </div>
+
+</div>
+
                                             </a>
                                                 </li>
   <!-- 여기까지 for문 돌릴거 -->
@@ -151,22 +103,18 @@
                                                                         
 
                                                                         <div class="demo">
-                                                                          <nav class="pagination">
+                                                                          <nav class="pagination" style="display:inline;">
                                                                             {% if posts.has_previous %}
                                                                               <a href="?page=1" class="r-link pagination__control pagination__control_prev">First</a>
 
-                                                                            <a href="?page={{posts.previous_page_number}}" class="r-link pagination__control pagination__control_prev">prev</a>
+                                                                            <a href="?page={{posts.previous_page_number}}" class="r-link pagination__control pagination__control_prev" style="margin-left:1300px;">prev</a>
                                                                             {%endif %}
-                                                                            <ol class="r-list pagination__list">
-                                                                              <li class="pagination__group"><a href="#0" class="r-link pagination__point">1</a></li>
-                                                                              <li class="pagination__group"><span class="pagination__point" aria-current="page">2</span></li>
-                                                                              <li class="pagination__group"><a href="#0" class="r-link pagination__point">3</a></li>
-                                                                            </ol>
+                                                                            
                                                                             {%if posts.has_next%}
                                                                                     <a href="?page={{posts.next_page_number}}" class="r-link pagination__control pagination__control_next">Next</a>
-                                                                                    <a href="?page={{posts.paginator.num_pages}}" class="r-link pagination__control pagination__control_next">Last</a>
+                                                                                    <a href="?page={{posts.paginator.num_pages}}" class="r-link pagination__control pagination__control_next" style="margin-left:1300px;">Last</a>
                                                                                     {%endif%} 
-                                                                            <a href="#0" class="r-link pagination__control pagination__control_next">next</a>
+                                                                            <!-- <a href="#0" class="r-link pagination__control pagination__control_next">next</a> -->
                                                                           </nav>
                                                                         </div>
                                                                     </div>

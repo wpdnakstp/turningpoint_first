@@ -44,8 +44,7 @@
     margin: 1em;
     border-radius: 4px;
     background-color: #fff;
-    box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
-    border: 0.2em solid #444;
+    border: 0.1em solid #444;
     padding: 0.8em;
     text-align: center;
     transition: 0.25s box-shadow, 0.25s -webkit-transform;
@@ -79,6 +78,15 @@
 tr th{
     border: 1px solid #eee;
 }
+#togglewheight{
+	color:black;
+	background-color:white;
+}
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -88,11 +96,10 @@ tr th{
   <body class="is-preload">
 
 		<!-- Header -->
-		<div id="header">
+		<div id="header" style="    font-family: Helvetica, sans-serif;">
 				<div class="page-wrapper chiller-theme toggled">
-					<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-					  <i class="fas fa-bars"></i>
-					</a>
+					
+					
 					<nav id="sidebar" class="sidebar-wrapper">
 					  <div class="sidebar-content">
 					  <div class="sidebar-brand">
@@ -107,17 +114,17 @@ tr th{
 						  alt="User picture">
 						</div>
 						<div class="user-info">
-						<span class="user-name">Jhon
-						  <strong>Smith</strong>
+						<span class="user-name">
+						  <strong>{{user.username}}</strong>
 						</span>
-						<span class="user-role">Administrator</span>
+						<span class="user-role">{{user.userArmyName}}</span>
 						<span class="user-status">
 						  <i class="fa fa-circle"></i>
 						  <span>Online</span>
 						</span>
 						</div>
 					  </div>
-					  <!-- sidebar-header  -->
+				  <!-- sidebar-header  -->
 					  <div class="sidebar-search">
 						<div>
 						<div class="input-group">
@@ -138,27 +145,27 @@ tr th{
 						</li>
 						  <li>
 							<a href="{% url 'mypage' %}">
-							<i class="fa fa-book"></i>
-							<span>Home</span>
+							<i class="fa fa-home"></i>
+							<span>홈</span>
 							<span class="badge badge-pill badge-primary">Beta</span>
 							</a>
 						  </li>
 						   <li>
 							<a href="{% url 'calendar' %}">
 							<i class="fa fa-calendar"></i>
-							<span>Calendar</span>
+							<span>캘린더</span>
 							</a>
 						  </li>
 						  <li>
 								<a href="{% url 'todolist' %}">
-								<i class="fa fa-calendar"></i>
-								<span>Plan</span>
+								<i class="fa fa-edit"></i>
+								<span>계획</span>
 								</a>
 							  </li>
 						  <li>
 							<a href="{% url 'diary_ok' %}">
-							<i class="fa fa-calendar"></i>
-							<span>Diary</span>
+							<i class="fa fa-book"></i>							
+							<span>일기</span>
 							</a>
 						  </li>
 						
@@ -167,18 +174,24 @@ tr th{
 						</li>
 						<li class="sidebar-dropdown">
 							<a href="#">
-							<i class="fa fa-globe"></i>
-							<span>Community</span>
+							<i class="fa fa-list-alt"></i>
+							<span>커뮤니티</span>
 							</a>
 							<div class="sidebar-submenu">
 							<ul>
 							  <li><a href="{% url 'notice' %}">공지게시판</a> </li>
 							  <li><a href="{% url 'free' %}">자유게시판</a></li>
 							  <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
-							  <li><a href="{% url 'community_ok' %}">게시판</a></li>
 							</ul>
+							<li>
+									<a href="{% url 'book_make' %}">
+									<i class="fa fa-print"></i>
+									<span>제본하기</span>
+									</a>
+								  </li>
 							</div>
 						  </li>
+						  
 						</ul>
 					  </div>
 					</nav>
@@ -192,12 +205,11 @@ tr th{
 
       
 
-
-        <div class="container" style="text-align:center; border: 1px solid #eee;">
-          <input type="hidden" value="{{ free.update_counter }}"> <!-- 조회수 카운터 -->
-      <div class="container" style="text-align:center; border: 1px solid #eee;">
-              <h1 style ="height: 100px;
-              border-bottom: 1px solid #eee;">{{ free.title }}</h1>
+			<div class="container" style="text-align:center; border: 1px solid #eee; padding-left: 300px;">
+				<input type="hidden" value="{{ notice.update_counter }}"> <!-- 조회수 카운터 -->
+			<div class="container" style="text-align:center; border: 1px solid #eee;">
+					<h1 style ="height: 100px;
+					border-bottom: 1px solid #eee;">{{ notice.title }}</h1>
               
              
   
@@ -226,25 +238,29 @@ tr th{
           
               <hr>
               <div class="comment">
-                   <form action="{% url 'freecommentcreate' free_id=free.id %}" method="POST"> <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
+                   <form action="{% url 'freecommentcreate' free_id=free.id %}" method="POST" > <!-- path convertor로 보내주기 위해서 pci를 사용한다. -->
                       {% csrf_token %}
                       <input type="text" name="content" placeholder="댓글을 작성해 주세요.">
-                      <input type="submit" value="작성하기">
+                      <input type="submit" value="작성하기" style="margin-left:1000px; padding-bottom:-100px;">
                   </form>
               </div>
               <hr>
-              <table class='katalog'>
+              <table class='katalog' style="color:white;">
                   <thead>
                       <tr>
+						  <th>댓글</th>
                           <th>날짜</th>
-                          <th>댓글</th>
+                          
                           <th>작성자</th>
                   </thead>
               <tbody>
                   {% for comment in free.comments.all %}
                   <tr>
+
+
+						<td>{{ comment.commentbody }}</td>
                       <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
-                      <td>{{ comment.commentbody }}</td>
+                      
                       <td>{{ comment.tnFreeCommentUser }}</td>
                       <td><a href="{% url 'freecommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
                   </tr>
@@ -254,7 +270,8 @@ tr th{
               </tbody>
               </table>
           
-          
+		 
+
               </div>
           </div>
 

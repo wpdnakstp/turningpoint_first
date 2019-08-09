@@ -1,22 +1,61 @@
+<<<<<<< HEAD
+=======
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+   
+	<!-- Header -->
+   
+    <link rel="stylesheet" href="{% static '/css/diary/diary.css' %}" >  
+    <div id ="main">
+  
+    <div class="navbar">
+            <div class="diary_title">
+                <h1 style="text-align:center;  font-family: 'KOMACON'; font-weight: 400; ">자기계발게시판</h1>
+            <p style="margin-top:15px; margin-left:5px;">자기계발과 관련된 내용을 써주시지말입니다.</p>
+            </div>
+            <div class="navbar_data">
+                <ul class="data_ul">
+                    <li class="li_1" data-href="https://naver.com">
+                            <a class="navbar_link" href="https://naver.com">목록보기</a>
+                    </li>
+        
+                   
+                </ul>
+        
+            </div>
+        </div>
+        
+    </div>
+>>>>>>> 1afc7f2ef6c37a917ada7968c4092f68abd53a8f
 <div id="main">
-		<br>
-		<div class="container">
-			<form action="{% url 'developcreate' %}">
-			  <h4>제목: </h4>
-			  <input type="text" name="title">
-			  <br>
-			  <br>
-			  <h4>본문: </h4>
-			  <textarea cols=40 rows=10 name="body"></textarea>
-			  <br>
-			  <br>
-			  <input type="submit" value="제출하기">
-		  </form>
-		</div>
-		
-<p><a href="{% url 'developnew' %}">글쓰기</a></p>
-<p><a href="{% url 'intro_final' %}">홈으로</a></p>
+	<div id="wrapper">
+
+        <form id="paper" method="get" action="{% url 'developcreate' %}">
+    
+            <div id="margin"><input id="title" type="text" name="title" placeholder="제목쓰시지말입니다"></div>
+            <textarea placeholder="" id="text" name="body" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; "></textarea>  
+            <br>
+            <input id="button" type="submit" value="기록하기">
+            
+        </form>
+    
+    </div>
+
+<<<<<<< HEAD
 
 
 
+=======
+		<!-- Scripts -->
+			
+			<script src="{% static '/js/diary/diary.js' %}"></script>
+</div>
+	</body>
+</html>
 
+{% endblock %}
+>>>>>>> 1afc7f2ef6c37a917ada7968c4092f68abd53a8f

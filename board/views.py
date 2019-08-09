@@ -162,6 +162,7 @@ def freedetail(request, free_id):
 def freenew(request):
     #User 로그인이 안되었을 경우에, 글쓰기 버튼을 누르면 error 처리
     if request.user.is_authenticated:
+      
       return render(request, 'free/freenew.html')
     else:
       return render(request,"free/free.html",{"error":"로그인이 필요합니다."})

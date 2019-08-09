@@ -1,51 +1,302 @@
-{% extends 'base.html' %}
+
+
+
+
+
+<!DOCTYPE html>
 {% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 
-{% block content %}
+    <title>MYPAGE</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">   
+   		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+
+		<link rel="stylesheet" href="{% static '/css/pagination.css' %}" />
+		<link rel="stylesheet" href="{% static '/css/main.css' %}" />  
+		
+		<link rel="stylesheet" href="{% static '/css/theme-1.css' %}" />
+		<link rel="stylesheet" href="{% static '/css/sidebar.css' %}" />
+		
+        
 
 
-   
-   <!-- Header -->
-   
-<link rel="stylesheet" href="{% static '/css/diary/diary.css' %}" >  
-<div id ="main">
 
-<div class="navbar">
-        <div class="diary_title">
-            <h1 style="text-align:center;  font-family: 'KOMACON'; font-weight: 400; "> 일기</h1>
-        <p >날마다 그날그날 겪은 일이나 생각을 기록해보세요.</p>
-        </div>
-        <div class="navbar_data">
-            <ul class="data_ul">
-                <li class="li_1" data-href="https://naver.com">
-                        <a class="navbar_link" href="{% url 'diary_list' %}">목록보기</a>
-                </li>
+
+    <style>
+
+        /* starts here */
+.btn {
+    color: #444;
+    line-height: 1em;
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1em;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
+    border: 0.2em solid #444;
+    padding: 0.8em;
+    text-align: center;
+    transition: 0.25s box-shadow, 0.25s -webkit-transform;
+  }
+  .btn-small {
+    padding: 0.7em;
+  }
+  .btn:hover {
+    box-shadow: 0 4em 0 0 #444 inset, 0em 0em 0 0 #bbb;
+    -webkit-transform: translate(0.3em, 0.2em);
+    color: #fff;
+  }
+  .btn.disabled {
+    opacity: 0.8;
+  }
+  .btn.disabled:hover {
+    box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
+    -webkit-transform: translate(0, 0);
+    color: #444;
+  }
+  /* ends here */
+  .heavy {
+    font-weight: 700;
+  }
+  .extraheavy {
+    font-weight: 900;
+  }
+  .light {
+    font-weight: 300;
+  }
+tr th{
+	border: 1px solid #eee;
+	color: white;
+}
+
+thead tr th{
+	color:white;
+}
+    </style>
+</head>
+<body>
     
+
+    
+  <body class="is-preload">
+
+		<!-- Header -->
+		<div id="header">
+				<div class="page-wrapper chiller-theme toggled">
+					<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+					  <i class="fas fa-bars"></i>
+					</a>
+					<nav id="sidebar" class="sidebar-wrapper">
+					  <div class="sidebar-content">
+					  <div class="sidebar-brand">
+						<a href="{% url 'intro_final' %}">TurningPoint</a>
+						<div id="close-sidebar">
+						
+						</div>
+					  </div>
+					  <div class="sidebar-header">
+						<div class="user-pic">
+						<img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+						  alt="User picture">
+						</div>
+						<div class="user-info">
+						<span class="user-name">
+						  <strong>{{user.username}}</strong>
+						</span>
+						<span class="user-role">{{user.userArmyname}}</span>
+						<span class="user-status">
+						  <i class="fa fa-circle"></i>
+						  <span>Online</span>
+						</span>
+						</div>
+					  </div>
+					  <!-- sidebar-header  -->
+					  <div class="sidebar-search">
+						<div>
+						<div class="input-group">
+						  <input type="text" class="form-control search-menu" placeholder="Search..." style="background:white;">
+						  <div class="input-group-append">
+						  <span class="input-group-text">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						  </span>
+						  </div>
+						</div>
+						</div>
+					  </div>
+					  <!-- sidebar-search  -->
+					  <div class="sidebar-menu">
+						<ul>
+						<li class="header-menu">
+						  <span>General</span>
+						</li>
+						  <li>
+							<a href="{% url 'mypage' %}">
+							<i class="fa fa-book"></i>
+							<span>Home</span>
+							<span class="badge badge-pill badge-primary">Beta</span>
+							</a>
+						  </li>
+						   <li>
+							<a href="{% url 'calendar' %}">
+							<i class="fa fa-calendar"></i>
+							<span>Calendar</span>
+							</a>
+						  </li>
+						  <li>
+								<a href="{% url 'todolist' %}">
+								<i class="fa fa-calendar"></i>
+								<span>Plan</span>
+								</a>
+							  </li>
+						  <li>
+							<a href="{% url 'diary_ok' %}">
+							<i class="fa fa-calendar"></i>
+							<span>Diary</span>
+							</a>
+						  </li>
+						
+						<li class="header-menu">
+						  <span>Extra</span>
+						</li>
+						<li class="sidebar-dropdown">
+							<a href="#">
+							<i class="fa fa-globe"></i>
+							<span>Community</span>
+							</a>
+							<div class="sidebar-submenu">
+							<ul>
+							  <li><a href="{% url 'notice' %}">공지게시판</a> </li>
+							  <li><a href="{% url 'free' %}">자유게시판</a></li>
+							  <li><a href="{% url 'develop' %}">자기계발게시판</a></li>
+							  <li><a href="{% url 'community_ok' %}">게시판</a></li>
+							</ul>
+							</div>
+						  </li>
+						</ul>
+					  </div>
+					</nav>
+				  </div>
+			  </div>
+		<!-- Main -->
+
+		
+            </div>
+            
+
+      
+
+
+        <div class="container" style="text-align:center; border: 1px solid #eee;">
+          <input type="hidden" value="{{ diary.update_counter }}"> <!-- 조회수 카운터 -->
+      <div class="container" style="text-align:center; border: 1px solid #eee;">
+
+            <form action="{% url 'diary_updatesend' diary_update.id %}"  method="POST">
+                    {% csrf_token %}
+                    
+                    
+                   
                
-            </ul>
-    
-        </div>
-    </div>
-    
-</div>
-<div id="main">
-        <div id="wrapper">
-     
-             <form id="paper" method="POST" action="{% url 'diary_updatesend' diary_update.id %} ">
-                 {% csrf_token %}
-                 <div id="margin"><input id="title" type="date" name="updatedate" value="{{diary_update.diaryDate|date:'Y-m-d'}}"></div>
-                 <textarea name="updatebody" rows="500" style="overflow: auto; word-wrap: break-word; resize: none; height: 1000px; ">{{diary_update.diaryBody}}</textarea>  
-                 <br>
-                 <input id="button" type="submit" value="기록하기">
-                 
-             </form>
-         
-         </div>
-     
-           <!-- Scripts -->
+
+                <h4>날짜 :</h4>
+              <h1 style ="height: 100px;
+              border-bottom: 1px solid #eee;" name="updatedate">
+              <input type="text" value="{{diary_update.diaryDate|date:'Y-m-d'}}" name="updatedate">
+            </h1>
               
-              <script src="{% static '/js/diary/diary.js' %}"></script>
-     </div>
+             
+              <h4>본문: </h4>
+              <p name="updatebody" style ="height: 400px;
+              text-align: center; /* 문자들의 가운데 정렬을 해제 */  margin: 0 auto;
+  
+              border-bottom: 1px solid #eee;"><span class="hio" style="margin-top:100px;"> <textarea cols=40 rows=10 name="updatebody">{{diary_update.diaryBody}}</textarea></span></p>
+              
+   <input type="submit" value="수정하기">
+               </form>
+  
+  
+          
+          
+              </div>
+          </div>
 
 
-{% endblock %}
+
+       
+
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+				crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+				crossorigin="anonymous"></script>
+		<!-- Scripts -->
+			<script src="{% static '/js/jquery.min.js' %}"></script>
+			<script src="{% static '/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static '/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static '/js/browser.min.js' %}"></script>
+			<script src="{% static '/js/breakpoints.min.js' %}"></script>
+			<script src="{% static '/js/util.js' %}"></script>
+			<script src="{% static '/js/main.js' %}"></script>
+			<script src="{% static '/js/mypage.js' %}"></script>
+			<script src="{% static '/assets/plugins/jquery-3.3.1.min.js' %}"></script>
+			<script src="{% static '/assets/plugins/popper.min.js' %}"></script> 
+			<script src="{% static '/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+		
+			<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+			<script src="{% static '/assets/js/demo/style-switcher.js' %}"></script> 
+			    <!-- Page Specific JS -->
+				<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+				<!-- Custom JS -->
+				<script src="{% static 'assets/js/blog.js' %}"></script>
+				
+				<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+				<script src="{% static 'assets/js/demo/style-switcher.js' %}"></script> 
+				<script src="	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js  "></script>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+                <script>
+                        var classes = ["light", "", "heavy", "extraheavy"];
+                        var i = 1;
+                        $("#toggleweight").click(function () {
+                          $(".btn").removeClass(classes[i]);
+                          i++;
+                          if (i >= classes.length) {
+                            i = 0;
+                          }
+                          $(".btn").addClass(classes[i]);
+                        });
+                </script>
+</body>
+</html>
+
+
+
+

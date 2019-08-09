@@ -277,14 +277,43 @@ def diary_updatesend(request, diary_id):
 
 
 
-
-
-
 def base_ok(request):
     return render(request, 'base_ok.html')
 
-def post(request):
-    return render(request, 'blogpost.html')
+
+def post_1(request):
+    return render(request, 'blog/blogpost_1.html')
+
+def post_2(request):
+    return render(request, 'blog/blogpost_2.html')
+
+def post_3(request):
+    return render(request, 'blog/blogpost_3.html')
+
+def post_4(request):
+    return render(request, 'blog/blogpost_4.html')
+
+def post_5(request):
+    return render(request, 'blog/blogpost_5.html')
+
+
+def post_6(request):
+    return render(request, 'blog/blogpost_6.html')
+
+def post_7(request):
+    return render(request, 'blog/blogpost_7.html')
+
+
+def post_8(request):
+    return render(request, 'blog/blogpost_8.html')
+
+def post_9(request):
+    return render(request, 'blog/blogpost_9.html')
+
+def post_10(request):
+    return render(request, 'blog/blogpost_10.html')
+
+
 
 
 def ckid(request):
@@ -368,3 +397,62 @@ def nickOverlapCheck(request):
     context = {"overlap":overlap}
     return JsonResponse(context)
 
+def saveTodoList(request):
+    todo = Todolist()
+    saveTodo = request.GET.get('todoBody')
+    todo.todoBody = saveTodo
+    todo.save()
+    return redirect('todolist')
+    
+
+def develop_list(request):
+    qs = Develop.objects.all().order_by('-id')
+    q = request.GET.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+    if q: # q가 있으면
+        qs = qs.filter(title__icontains=q) # 제목에 q가 포함되어 있는 레코드만 필터링
+
+    paginator = Paginator(qs,15)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+
+    return render(request, 'develop/developsearch.html', {
+        'post_list' : qs,
+        'q' : q,
+        'posts' : posts,
+    })
+
+
+    def free_list(request):
+        qs = Free.objects.all().order_by('-id')
+        q = request.GET.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+        if q: # q가 있으면
+            qs = qs.filter(title__icontains=q) # 제목에 q가 포함되어 있는 레코드만 필터링
+    
+        paginator = Paginator(qs,15)
+        page = request.GET.get('page')
+        posts = paginator.get_page(page)
+    
+    
+        return render(request, 'free/freesearch.html', {
+            'post_list' : qs,
+            'q' : q,
+            'posts' : posts,
+        })
+
+        def notice_list(request):
+            qs = Notice.objects.all().order_by('-id')
+            q = request.GET.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+            if q: # q가 있으면
+                qs = qs.filter(title__icontains=q) # 제목에 q가 포함되어 있는 레코드만 필터링
+        
+            paginator = Paginator(qs,15)
+            page = request.GET.get('page')
+            posts = paginator.get_page(page)
+        
+        
+            return render(request, 'notice/noticesearch.html', {
+                'post_list' : qs,
+                'q' : q,
+                'posts' : posts,
+            })

@@ -271,8 +271,8 @@ html .fc,
 	}
 	 
 .fc-event {
-	border: 1px solid #FFF; /* default BORDER color */
-	background-color: #FFF; /* default BACKGROUND color */
+	border: 1px solid gray; /* default BORDER color */
+	background-color: brown; /* default BACKGROUND color */
 	color: #919191;               /* default TEXT color */
 	font-size: 12px;
 	cursor: default;

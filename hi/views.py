@@ -194,7 +194,7 @@ def diary_create(request):
 
 
 def diary_list(request):
-    allDiary = DiaryForm.objects.all()
+    allDiary = DiaryForm.objects.filter(tnUser=request.user)
     return render(request, 'diary/diary_list.html',{"diary":allDiary})
 
 def diary_detail(request,diary_id):

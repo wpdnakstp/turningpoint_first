@@ -227,7 +227,7 @@ tr th{
               <a href="{% url 'freedelete' free.id %}" class="btn" id="toggleweight">삭제하기</a>
               <form action="{% url 'freeLike' free_id=free.id %}" method="POST" style="display:inline-block;">
                       {% csrf_token %}
-                      <input class="btn" id="toggleweight" value="좋아요♥">
+                      <input type="submit" class="btn" id="toggleweight" value="좋아요♥">
               </form>
           
               <hr>
@@ -251,7 +251,7 @@ tr th{
                   <tr>
                       <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
                       <td>{{ comment.commentbody }}</td>
-                      <td>{{ comment.freeCommentUser }}</td>
+                      <td>{{ comment.tnFreeCommentUser }}</td>
                       <td><a href="{% url 'freecommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
                   </tr>
                   {% empty %}

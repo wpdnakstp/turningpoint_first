@@ -54,6 +54,7 @@
             
           
 
+
                     <!-- Scripts -->
                         
                         <script src="{% static '/js/diary/diary.js' %}"></script>
@@ -64,6 +65,30 @@
 
 
 
+
+
+					
+						<div class="wrap_article_list_common"> 
+			
+							<ul class="list_article_list_common"> 
+                {% for dy in diary %}
+						<!-- 이 리스트부터 for문돌려야함-->
+								<li class="list_has_image"> 
+
+								<a href="{% url 'diary_detail' dy.id %}" class="link_post"> 
+
+                    <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
+                    <strong class="title_subject">{{dy.diaryDate|date:"Y년 m월 d일"}}</strong>
+                    <!--  title_subject 가 제목,,,,  -->
+                    <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
+									  <div class="wrap_sub_content">
+										<em class="tit_sub"> {{dy.summary}}		</em> <!-- 100자까지 출력 -->
+
+                                            </div>
+                                                </a>
+                                                    </li>
+<!-- 여기까지 for문 돌릴거 -->
+                  {% endfor %}
 
 
             <a href="{% url 'noticedetail' notice.id %}" class="link_post"> 
@@ -99,12 +124,16 @@
                                                                         </div>
 
 
+
                                                                         
 
                                                                         <div class="demo">
                                                                           <nav class="pagination" style="display:inline;">
                                                                             {% if posts.has_previous %}
                                                                               <a href="?page=1" class="r-link pagination__control pagination__control_prev">First</a>
+
+{% endblock %}
+
 
                                                                             <a href="?page={{posts.previous_page_number}}" class="r-link pagination__control pagination__control_prev" style="margin-left:1300px;">prev</a>
                                                                             {%endif %}

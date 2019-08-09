@@ -403,9 +403,13 @@
   /*-----------------------------chiller-theme-------------------------------------------------*/
   
   .chiller-theme .sidebar-wrapper {
+<<<<<<< HEAD
+      background: #091f35;
+=======
 
       background: #091f35;
 >>>>>>> 5e3406c2dd0fdd1082ab2d90836af90c2670accd
+>>>>>>> b10e1427128b01506b01efdc1880ce704ef8a4ef
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-header,
@@ -435,9 +439,13 @@
   .chiller-theme .sidebar-wrapper .sidebar-header .user-info,
   .chiller-theme .sidebar-wrapper .sidebar-brand>a:hover,
   .chiller-theme .sidebar-footer>a:hover i {
+<<<<<<< HEAD
+      color: #ffffff;
+=======
 
       color: #ffffff;
 >>>>>>> 5e3406c2dd0fdd1082ab2d90836af90c2670accd
+>>>>>>> b10e1427128b01506b01efdc1880ce704ef8a4ef
   }
   
   .page-wrapper.chiller-theme.toggled #close-sidebar {

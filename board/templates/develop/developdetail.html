@@ -245,7 +245,7 @@ tr th{
                   <tr>
                       <td>{{ comment.commentdate|date:"Y-m-d P" }}</td>
                       <td>{{ comment.commentbody }}</td>
-                      <td>{{ comment.developCommentUser }}</td>
+                      <td>{{ comment.tnDevelopCommentUser }}</td>
                       <td><a href="{% url 'developcommentdelete' comment.id %}"><input type='button' value="삭제하기"></a></td>
                   </tr>
                   {% empty %}

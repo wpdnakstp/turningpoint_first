@@ -15,15 +15,11 @@ from django.core.paginator import Paginator
 
 def notice(request):
     notices = Notice.objects
-    notices_list = Notice.objects.all()
-    
-    #블로그 객체 세 개를 한 페이지로 자르기
-    paginator = Paginator(notices_list,5)
-    #request된 페이지가 뭔지를 알아내고 ( request페이지를 변수에 담아냄 )
+    notices_list = Notice.objects.all().order_by('-id')
+    paginator = Paginator(notices_list,15)
     page = request.GET.get('page')
-    #request된 페이지를 얻어온 뒤 return 해 준다
     posts = paginator.get_page(page)
-    return render(request, 'notice/notice.html',{'notices' : notices, 'posts':posts})
+    return render(request, 'notice/notice.html', {'notices' : notices,'posts' : posts})
 
 def noticedetail(request, notice_id):
     notice_detail = get_object_or_404(Notice, pk=notice_id)
@@ -93,16 +89,17 @@ def noticecommentcreate(request, notice_id):
 
 def noticecommentdelete(request, notice_id):
     notice_delete = get_object_or_404(Noticecomment,pk=notice_id)
+    post_id = notice_delete.notice.pk
     #진짜 글 소유주 유저값 > 유저 값 queryset pk값을 꼭 참고하도록
-    realUser = notice_delete.tnUser
+    realUser = notice_delete.noticeCommentUser
     #현재 로그인되어있는 user값
     nowUser = request.user
     #유저 값이 같을 때 삭제할 수 있도록
     if nowUser == realUser:
       notice_delete.delete()
-      return redirect('/board/notice/'+str(notice_id))
+      return redirect('/board/notice/'+str(post_id))
     else:
-      return redirect('/board/notice/'+str(notice_id))
+      return redirect('/board/notice/'+str(post_id))
       # return render(request,'notice/notice.html',{"error":"id값이 다릅니다."} )
 
 #좋아요 기능 구현
@@ -309,6 +306,7 @@ def developcreate(request):
 def developdelete(request, develop_id):
     #User 아이디 값 확인한 다음에 자기계발 지울수 있게 하기
     develop_delete = get_object_or_404(Develop,pk=develop_id)
+    post_id = develop_delete.develop.pk
     nowUser = request.user
     realUser = develop_delete.tnUser
     if nowUser == realUser:
@@ -344,14 +342,14 @@ def developcommentcreate(request, develop_id):
 def developcommentdelete(request, develop_id):
     #User 아이디 값 확인한 다음에 자기계발 지울수 있게 하기
     develop_delete = get_object_or_404(Developcomment,pk=develop_id)
+    post_id = develop_delete.develop.pk
     nowUser = request.user
-    realUser = develop_delete.tnUser
+    realUser = develop_delete.tnDevelopCommentUser
     if nowUser == realUser:
       develop_delete.delete()
-      return redirect('/board/develop/'+str(develop_id))
+      return redirect('/board/develop/'+str(post_id))
     else:
-      return redirect('/board/develop/'+str(develop_id))
-
+      return redirect('/board/develop/'+str(post_id))
 
 #좋아요 기능 구현
 def developLike(request,develop_id):

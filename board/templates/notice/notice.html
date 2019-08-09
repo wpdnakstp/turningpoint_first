@@ -3,11 +3,14 @@
 
 {% block content %}
 
+{% if error %}
+<script>
+    alert("{{error}},{{tnUser}},{{nowUser}}")
+</script>
 
-<<<<<<< HEAD
+{% endif %}
 
-=======
->>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a
+
 <table class='table'>
     <thead>
         <tr>
@@ -58,23 +61,6 @@
 
 <p><a href="{% url 'noticenew' %}">글쓰기</a></p>
 <p><a href="{% url 'intro_final' %}">홈으로</a></p>
-<<<<<<< HEAD
-
-
-
-
-<!-- 아래 신제우 -->
-
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block content %}
-
-
-=======
->>>>>>> 2e33213a0c4ec5cbc9a1c1e0dc32e6780cfc3c73
-=======
->>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a
 
 
   <div id="main">
@@ -189,9 +175,5 @@
 
 
 
-<<<<<<< HEAD
-{% endblock %}
-=======
 {% endblock %}
 
->>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a

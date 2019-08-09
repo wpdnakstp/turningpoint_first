@@ -1,109 +1,13 @@
-<<<<<<< HEAD
-=======
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
 {% if error %}
 <script>
     alert("{{error}},{{tnUser}},{{nowUser}}")
 </script>
 
 {% endif %}
-
-
-<table class='table'>
-    <thead>
-        <tr>
-            <th>No.</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>날짜</th>
-            <th>조회수</th>
-            <th>추천</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if develops %}
-            {% for post in posts %}
-                <tr>
-                <td>{{ post.id }}</td>
-                <td><a href="{% url 'developdetail' post.id %}">{{ post.title }}</a></td>
-                <td>{{ post.tnUser }}</td>
-                <td>{{ post.pub_date|date:"Y-m-d P"}}</td>
-                <td>{{ post.postHit }}</td>
-                <td>{{ post.totalLike }}</td>
-                </tr>
-            {% endfor %}
-        {% else %}
-            <p>글이 존재하지 않습니다!</p>
-        {% endif %}
-    </tbody>
-</table>
-<hr>
-
-<form action="{% url 'developlist' %}" method="get">
-        <input type="text" name="q" value="{{ q }}">
-        <input type="submit" value="검색">
-</form>
-
-{% if posts.has_previous %}
-    <a href="?page=1"><strong>&nbsp;</strong></a>
-    <a href="?page={{posts.previous_page_number}}"><strong><&nbsp;&nbsp;</strong></a>
-{% endif %}
-
-<span>{{posts.number}}</span>
-<span>of</span>
-<span>{{posts.paginator.num_pages}}&nbsp;&nbsp;</span>
-
-{% if posts.has_next %}
-    <a href="?page={{posts.next_page_number}}"><strong>>&nbsp;</strong></a>
-    <a href="?page={{posts.paginator.num_pages}}"><strong>>></strong></a>
-{% endif %}
-
-<p><a href="{% url 'developnew' %}">글쓰기</a></p>
-
-<p><a href="{% url 'intro_final' %}">홈으로</a></p>
-
-
-</div>
-	</body>
-</html>
-
-
->>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-{% block content %}
-
-
-
->
-  <div id="main">
-  <div id="wrapper">
-    <div class="navbar">
-        <div class="diary_title">
-            <h1>자기계발 게시판</h1>
-        </div>
-        <div class="navbar_data">
-            <ul class="data_ul">
-                <li class="li_1" data-href="https://naver.com">
-                        <a class="navbar_link" href="https://naver.com" style="margin-top:50px;">목록보기</a>
-                </li>
-      
-               
-            </ul>
-      
-        </div>
-        <br>
-        <br>
-    </div>
-<<<<<<< HEAD
-
-<div id="main">
-    {% if error %}
-    <script>
-        alert("{{error}},{{tnUser}},{{nowUser}}")
-    </script>
-    
-    {% endif %}
     
     
     <table class='table'>
@@ -164,50 +68,5 @@
 </div>
 	</body>
 </html>
-=======
-=======
->>>>>>> eabb1b55c7fbd269c6b6db84129e70a0f9eb0f2a
-  <br>
-  <br>
-    <div class="wrap_content"> 
-  
-      <div id="wrapArticle" class="wrap_article"> 
-  
-  
-      
-        <div class="wrap_article_list_common"> 
-  
-          <ul class="list_article_list_common"> 
-  
-        <!-- 이 리스트부터 for문돌려야함-->
-            <li class="list_has_image"> 
-  
-            <a href="https://www.naver.com" class="link_post"> 
-  
-                <!-- 이제 안에다가 본문제목, 본문내용 넣을거야 -->
-                
-                <!--  title_subject 가 제목,,,,  -->
-                <!-- tit_sub 가 본문내용, 날짜 입력폼은 직접 백엔드에서 받아와서 넣어야되니 남겨놈 -->
-              <strong class="title_subject"> 제목이다dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-              </strong>
-              <div class="wrap_sub_content">
-                <em class="tit_sub"> 그래dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                </em>
-  
-                                        </div>
-                                            </a>
-                                                </li>
-  <!-- 여기까지 for문 돌릴거 -->
-  
-  
-  
-                                                     </ul>
-                                                            </div>
-                                                                    </div>
-                                                                        </div>
-   
-
-
-
 
 {% endblock %}

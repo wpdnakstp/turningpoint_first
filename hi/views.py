@@ -100,6 +100,7 @@ def calender(request):
     return render(request, 'calender.html')
 
 def mypage(request):
+    
     return render(request, 'mypage.html')
 
 def intro_final(request):

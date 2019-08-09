@@ -231,26 +231,41 @@
 <div class="main">
     <div class="container">
       <input type="text" class="txtb" name="todoList" placeholder="계획을 적어보세요.">
+      
       <div class="notcomp">
         <h3>Not Completed</h3>
-        <div class="hiddenBox">
-          {% for i in todoList %}
+        {% for i in todoList %}
+        <div class="task">
+          
             {{i.todoBody}}
-            <br>
-            {{i.id}}
             <input type="hidden" id="deleteid" value="{{i.id}}">
+            <i class="fas fa-trash-alt" type="button" id="delte" value="삭제하기" onclick="return delteTodo();"  >
+            </i>
+            <i class="fas fa-check">
+            </i>
             <br>
-            <input type="button" id="delte" value="삭제하기" onclick="return delteTodo();" >
-          {% endfor %}
-        </div>
+            <!-- <input  > -->
+          
 
+        </div>
+        {% endfor %}
 
       </div>
 
       <div class="comp">
         <h3>Completed</h3>
+        {% for i in todoList %}
+        <div class="task">
+            {{i.todoBody}}
+            <input type="hidden" id="deleteid" value="{{i.id}}">
+            <i class="fas fa-trash-alt" type="button" id="delte" value="삭제하기" onclick="return delteTodo();"  >
+            </i>
+            <i class="fas fa-check">
+            </i>
+            <br>
+        </div>
       </div>
-    </div>
+      {% endfor %}
 
 </div>
 
@@ -266,8 +281,8 @@
             },
             datatype: 'json',
             success: function(data){
-              alert("삭제되었습니다.");
-              return;
+               alert("삭제되었습니다.");
+            return;
             }
           });
         }

@@ -196,7 +196,7 @@ def deleteTodoList(request):
     deleteTodoId = request.GET.get('idNumb')
     deletTodo = get_object_or_404(Todolist, pk=deleteTodoId)
     deletTodo.delete()
-    return redirect('todolist')
+    return redirect('todolist/')
 
 
 

@@ -3,3 +3,6 @@
 {{diaryDetail.diaryDate|date:"Y년 m월 d일"}}
 <br>
 {{diaryDetail.diaryBody}}
+
+<a href="{% url 'diary_update' diaryDetail.id %}">수정하기</a>
+<a href="{% url 'diary_delete' diaryDetail.id %}">삭제하기</a>
